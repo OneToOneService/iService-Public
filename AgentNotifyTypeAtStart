@@ -1,0 +1,6 @@
+$value -notifyresponse(bodyatstart)$<br>
+<br>
+$value -notifyresponse(id)$<br>
+<br>
+<br>
+This is text after the message appears above. You may place any desired text here.
