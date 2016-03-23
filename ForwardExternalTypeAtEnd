@@ -1,0 +1,33 @@
+<table border="0">
+<tr><td>
+<img src="http://www.1to1service.com/images/AR_FwdExternal.png" border="0"><br>
+<br>
+A new message has been submitted through our support website and you have been asked to provide the response. Details about the person that assigned this to you and their notes are shown below.<br>
+</td></tr>
+<tr><td>
+<br>
+<u>Details From Assigning Agent</u><br>
+<b>Agent that assigned this to you</b>: <u>$ForwardingAgentName$</u> <br>
+<b>Email address of agent that assigned this to you</b>: <u>$ForwardingAgentEmail$</u> <br>
+<b>Notes from agent (if any)</b>: <u>$ForwardingAgentPrivateComments$</u> <br>
+<br>
+You can answer this in one of two ways. <br>
+<br>
+(1) You can answer this by clicking the link below, or copying it into your browser:<br>
+<a href="$Forward URL$">$Forward URL$</a><br>
+<br>
+(2) You can provide your response by simply replying to this message. However, <b>you must type your response between the Begin Answer and Answer End markers below. The customer will only receive the text that is entered in this area.</b><br>
+<br>
+$NotifyResponseID$<br>
+<br>
+</td></tr>
+<tr bgcolor="#EDEDED"><td>
+$NotifyResponseBody$<br>
+</td></tr>
+</table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font size="1">Powered by <a href="http://www.1to1service.com">iService CRM</a></font>
