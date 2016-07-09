@@ -1,0 +1,30 @@
+<table border="0">
+<tbody><tr>
+<td>
+Dear $value -customer(name)$,<br>
+<br>
+We received your inquiry titled "$value -question(subject)$" and will respond as quickly as we can. We attempt to respond to all inquiries within one business day. <br>
+<br>
+Regards,<br>
+<br>
+<br>
+<br>
+</td></tr>
+<tr bgcolor="#D4D4D4"><td>
+<b>Your Original Question is as Follows:</b><br>
+<hr align="center" size="2" width="100%">
+</td></tr>
+<tr bgcolor="#EDEDED"><td>
+<br>
+$value -question(body)$<br>
+<br>
+</td></tr>
+</tbody></table>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<font size="1">Powered by <a href="http://www.1to1service.com">iService CRM</a></font>
