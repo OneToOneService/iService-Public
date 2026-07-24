@@ -1,0 +1,893 @@
+[
+  {
+    "skin": "siteforms",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Forms and workflow used on the company website",
+      "description": "The free trial for displayed on iService.us."
+    }
+  },
+  {
+    "skin": "siteforms",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "customersubmit",
+          "enabled": true,
+          "frametype": "all",
+          "customCSS": "body{background:none; height:auto;}\n.free-trial h3{    font-size: 24px;\n    font-weight: 600;}\n.primary{color:#0c9cd1}\n.success{color:#29a508}\n.workflow-timeline .timeline-content .inner-circle{background:#d7d4d4}\n.workflow-timeline .timeline-step .primary {\n    background-color: #3c8dbc;\n}\n.active .inner-circle{background:##3c8dbc}",
+          "customHead": "<script>\ndocument.addEventListener('DOMContentLoaded', function () {\n  // Get all timeline-content elements\n  const steps = document.querySelectorAll('.timeline-content');\n\n  steps.forEach(step => {\n    step.addEventListener('click', function () {\n      // Remove 'active' class from all\n      steps.forEach(s => s.classList.remove('active'));\n\n      // Add 'active' class to clicked one\n      this.classList.add('active');\n\n      // Optional: update inner-circle class\n      document.querySelectorAll('.inner-circle').forEach(c => c.classList.add('greyout'));\n      this.querySelector('.inner-circle')?.classList.remove('greyout');\n    });\n  });\n});\n</script>",
+          "bodyClass": "free-trial",
+          "url": "trial",
+          "enableAdsense": true,
+          "googleTag": "<!-- Google tag (gtag.js) --> <script async src=\"https://www.googletagmanager.com/gtag/js?id=AW-1042681921\"></script> <script> window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'AW-1042681921'); </script>",
+          "eventSnippet": "<!-- Event snippet for Submit lead form (5) conversion page\nIn your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->\n<script>\nfunction gtag_report_conversion(url) {\n  var callback = function () {\n    if (typeof(url) != 'undefined') {\n    }\n  };\n  gtag('event', 'conversion', {\n      'send_to': 'AW-1042681921/t0_5CMGmiMwbEMGgmPED',\n      'value': 1.0,\n      'currency': 'USD',\n      'event_callback': callback\n  });\n  return false;\n}\n</script>\n",
+          "successtype": "custom",
+          "successHtml": "<h1 class=\"sucess\" style=\"color: #0c9cd1;\">Your free trial is scheduled!</h1>\n<div>Thanks for setting up your iService free trial. Once we get you setup and onboarded, your team will thank you as well :)</div>\n<h2 class=\"primary\" style=\"color: #0c9cd1;\">Next Steps</h2>\n<div>A customer success manager will reach out to you soon to coordinate the setup of your tenant with a meeting scheduled for $value -case(property'freetrial:Select a date for onboarding')$.&nbsp;</div>\n<div></div>\n<table style=\"margin-top: 15px; border: 1px solid #ccc; border-collapse: collapse; width: 70%; font-family: Arial, sans-serif; font-size: 14px;\">\n<tbody>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 10px; background: #f1f1f1;\"><strong>Work Email (your login):</strong> &nbsp;$form -id'Value:Work Email'$</td>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 10px;\"><strong>Name:</strong> $value -customer(firstname)$ $value -customer(lastname)$</td>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 10px; background: #f1f1f1;\"><strong>Phone:</strong> $value -customer(phone)$</td>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 10px;\"><strong>Company: </strong>$value -customer(company)$</td>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 10px; background: #f1f1f1;\"><strong>Company Employees:</strong> &nbsp;$value -case(property'freetrial:Number of employees')$</td>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 10px;\"><strong>Plan:</strong> $value -case(property'freetrial:plan')$</td>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 10px; background: #f1f1f1;\"><strong>Number of Agents:</strong> $value -case(property'freetrial:Number of agents')$</td>\n</tr>\n</tbody>\n</table>",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Set Your Login",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "isConditional": true,
+                      "conditionIf": "if",
+                      "conditionName": "Number of agents",
+                      "conditionType": "property",
+                      "conditionOp": "exact",
+                      "conditionTarget": "",
+                      "propertyName": "stage",
+                      "propertyValue": "login"
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": "send-o",
+                  "noMessage": true
+                },
+                {
+                  "buttonID": "button1",
+                  "label": "Your Contact Info",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "isConditional": true,
+                      "conditionIf": "if",
+                      "conditionName": "Number of agents",
+                      "conditionType": "property",
+                      "conditionOp": "exact",
+                      "conditionTarget": "",
+                      "propertyName": "stage",
+                      "propertyValue": "contact"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "user",
+                  "noMessage": true,
+                  "greyoutProperty": "stage",
+                  "greyoutValue": "contact"
+                },
+                {
+                  "buttonID": "button2",
+                  "label": "Your Company",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "isConditional": true,
+                      "conditionIf": "if",
+                      "conditionName": "Number of agents",
+                      "conditionType": "property",
+                      "conditionOp": "exact",
+                      "conditionTarget": "",
+                      "propertyName": "stage",
+                      "propertyValue": "company"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "building-o",
+                  "noMessage": true,
+                  "greyoutProperty": "stage",
+                  "greyoutValue": "company"
+                },
+                {
+                  "buttonID": "button3",
+                  "label": "Your Plan Choice",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "isConditional": true,
+                      "conditionIf": "if",
+                      "conditionName": "Number of agents",
+                      "conditionType": "property",
+                      "conditionOp": "exact",
+                      "conditionTarget": "",
+                      "propertyName": "stage",
+                      "propertyValue": "plan"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "arrows",
+                  "noMessage": true,
+                  "greyoutProperty": "stage",
+                  "greyoutValue": "plan"
+                },
+                {
+                  "buttonID": "button4",
+                  "label": "Schedule Intro",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "isConditional": true,
+                      "conditionIf": "if",
+                      "conditionName": "Number of agents",
+                      "conditionType": "property",
+                      "conditionOp": "exact",
+                      "conditionTarget": "",
+                      "propertyName": "stage",
+                      "propertyValue": "intro"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "calendar",
+                  "noMessage": true,
+                  "greyoutProperty": "stage",
+                  "greyoutValue": "intro"
+                }
+              ],
+              "includeCancel": false,
+              "buttonsStyle": "timeline"
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Contact Info",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "stage",
+                  "autoValue": "contact",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-12",
+                      "html": "<h4>Provide your contact information for your customer success manager.</h4>",
+                      "htmlID": "html0",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-9",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "First Name",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-9",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "Last Name",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-7",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "Phone Type and Number",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-2",
+                      "inputClassFixed": "col-2",
+                      "buttons": [
+                        {
+                          "buttonID": "button5",
+                          "label": "Next",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "stage",
+                              "propertyValue": "company"
+                            }
+                          ],
+                          "requiremode": "all",
+                          "icon": "",
+                          "noMessage": true
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Company",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "stage",
+                  "autoValue": "company",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<h4>What company do you work for?</h4>",
+                      "htmlID": "html1",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "Company",
+                      "placeholder": "e.g., My Company, Inc."
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Number of employees",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-2",
+                      "inputClassFixed": "col-2",
+                      "buttons": [
+                        {
+                          "buttonID": "button6",
+                          "label": "Next",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "stage",
+                              "propertyValue": "plan"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "",
+                          "noMessage": true
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Plan Choice",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "stage",
+                  "autoValue": "plan",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<h4>Select your plan and number of agents.</h4>\n<div><br>Choose the plan to fits your needs.</div>",
+                      "htmlID": "html2",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button7",
+                          "label": "Suite",
+                          "style": "aqua",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Plan",
+                              "propertyValue": "Suite"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "",
+                          "greyoutProperty": "Plan",
+                          "greyoutValue": "Suite"
+                        },
+                        {
+                          "buttonID": "button8",
+                          "label": "Professional",
+                          "style": "aqua",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Plan",
+                              "propertyValue": "Professional"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "",
+                          "greyoutProperty": "Plan",
+                          "greyoutValue": "Professional"
+                        },
+                        {
+                          "buttonID": "button9",
+                          "label": "Enterprise",
+                          "style": "aqua",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Plan",
+                              "propertyValue": "Enterprise"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "",
+                          "greyoutProperty": "Plan",
+                          "greyoutValue": "Enterprise"
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "How many agents do you need?",
+                      "htmlID": "html3",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-6",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Number of agents",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-3",
+                      "buttons": [
+                        {
+                          "buttonID": "button10",
+                          "label": "Next",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "stage",
+                              "propertyValue": "intro"
+                            }
+                          ],
+                          "requiremode": "all",
+                          "icon": "",
+                          "noMessage": true
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Intro",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "stage",
+                  "autoValue": "intro",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<h4>Almost done! Now let's setup a time to get you onboarded.</h4>Your free trial period will begin after your onboarding training. The initial setup and training is generally done within a one hour webinar. ",
+                      "htmlID": "html4",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-4",
+                      "labelStyle": "vertical",
+                      "propertyName": "Select a date for onboarding",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-9",
+                      "groupClass": "col-md-12",
+                      "html": "If the details below appear complete and correct, submit your free trial request.",
+                      "htmlID": "html5",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-3",
+                      "buttons": [
+                        {
+                          "buttonID": "button11",
+                          "label": "Submit Trial Request",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "customerticket",
+                              "destEmail": "Work Email",
+                              "topictype": "preset",
+                              "topicName": "Free Trial",
+                              "subjecttype": "preset",
+                              "subject": "Free trial for $form -id'company'$",
+                              "bodytype": "preset",
+                              "bodyName": "ticket",
+                              "noAck": "yes",
+                              "tag": "",
+                              "resultName": ""
+                            },
+                            {
+                              "type": "emailtocustomer",
+                              "destEmail": "Work Email",
+                              "topictype": "preset",
+                              "topicName": "Free Trial",
+                              "subjecttype": "preset",
+                              "subject": "Your iService free trial has been scheduled",
+                              "bodytype": "preset",
+                              "bodyName": "Customer Acknowledgment",
+                              "tag": "",
+                              "mailboxName": "",
+                              "resultName": "",
+                              "suppressRef": false
+                            }
+                          ],
+                          "requiremode": "all",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<hr>",
+                      "htmlID": "html6",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "email",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "inputName": "Work Email",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "First Name",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "Last Name",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "Phone Type and Number",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "contactproperty",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "contactPropName": "Company",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Number of employees",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Plan",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Number of agents",
+                      "placeholder": ""
+                    }
+                  ]
+                },
+                {
+                  "label": "Login",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<h4>Your work email address will be your initial login to your new tenant.</h4>\n<div><br>Enter a <span style=\"text-decoration: underline;\">work email address</span> that includes your company domain (e.g., <span style=\"font-family: 'courier new', courier, monospace;\">john@mycompany.com</span>). The domain will become the web address for your tenant (e.g., <span style=\"font-family: 'courier new', courier, monospace;\">https://mycompany.iservicecrm.com</span>).</div>",
+                      "htmlID": "html7",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "email",
+                      "inputClass": "col-md-6",
+                      "inputClassFixed": "col-6",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "inputName": "Work Email",
+                      "placeholder": "e.g., john@mycompany.com"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-2",
+                      "inputClassFixed": "col-2",
+                      "buttons": [
+                        {
+                          "buttonID": "button12",
+                          "label": "Next",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "stage",
+                              "propertyValue": "contact"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "",
+                          "noMessage": true
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<div style=\"text-align: right;\"><span style=\"font-size: 8pt;\">Powered by an iService workflow</span></div>",
+              "htmlID": "html8",
+              "editorStyle": "editor"
+            }
+          ]
+        },
+        {
+          "type": "customersubmit",
+          "enabled": true,
+          "frametype": "all",
+          "customCSS": "",
+          "customHead": "",
+          "bodyClass": "",
+          "url": "freightwp",
+          "successtype": "custom",
+          "successHtml": "<div>We've received your request for a white paper and will be sending it to you shortly. In the meantime, if you have any questions give us a ring at 217.398.6245 ext 2.</div>",
+          "inputs": [
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-3",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "contactPropName": "First Name",
+              "placeholder": "John"
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "contactPropName": "Last Name",
+              "placeholder": "Doe"
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "contactPropName": "Title",
+              "placeholder": "Director, Customer Service"
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "contactPropName": "Company",
+              "placeholder": "Example Company"
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "inputName": "Business Email",
+              "placeholder": "john.doe@example.com"
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "contactPropName": "Phone Type and Number",
+              "placeholder": "512.555.1212"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button13",
+                  "label": "Send me the white paper",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "contactprops",
+                      "destEmail": "Business Email"
+                    },
+                    {
+                      "type": "customerticket",
+                      "destEmail": "Business Email",
+                      "topictype": "preset",
+                      "topicName": "Web Leads",
+                      "subjecttype": "preset",
+                      "subject": "Freight & Logistics White Paper Request",
+                      "bodytype": "preset",
+                      "bodyName": "White Paper Request",
+                      "noAck": "yes",
+                      "tag": "",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": "newspaper-o"
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "customersubmit",
+          "enabled": true,
+          "frametype": "all",
+          "customCSS": "",
+          "customHead": "",
+          "bodyClass": "",
+          "url": "tsc",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "contactPropName": "First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-6",
+              "labelStyle": "vertical",
+              "contactPropName": "Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "Email Address",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "contactPropName": "Phone Type and Number",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "contactPropName": "Company",
+              "placeholder": ""
+            },
+            {
+              "type": "richtext",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "inputName": "Comments",
+              "placeholder": "Tell us about your customer CX needs."
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button14",
+                  "label": "Request Security Report",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "contactprops",
+                      "destEmail": "Email Address"
+                    },
+                    {
+                      "type": "customerticket",
+                      "destEmail": "Email Address",
+                      "topictype": "preset",
+                      "topicName": "Security Requests",
+                      "subjecttype": "preset",
+                      "subject": "Request for Trust Services Framework documentation",
+                      "bodytype": "preset",
+                      "bodyName": "Security Request Ticket",
+                      "noAck": "yes",
+                      "tag": "",
+                      "resultName": "ticketID"
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": "key"
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "siteforms",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Number of agents": "def",
+        "Number of employees": "def",
+        "Plan": "def",
+        "Select a date for onboarding": "def",
+        "stage": "def"
+      },
+      "defs": {
+        "Number of agents": {
+          "type": "number",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": "",
+          "isNotnegative": true
+        },
+        "Number of employees": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "< 100",
+            "100 to 1000",
+            "1001 to 10,000",
+            "> 10,000"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Plan": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Suite",
+            "Professional",
+            "Enterprise"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Select a date for onboarding": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2025-06-15T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "stage": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "plan",
+            "contact",
+            "intro",
+            "company",
+            "login"
+          ],
+          "indexed": true,
+          "allowMultiple": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "siteforms",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "Customer Acknowledgment": {
+        "name": "Customer Acknowledgment",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Security Request Ticket": {
+        "name": "Security Request Ticket",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      },
+      "ticket": {
+        "name": "ticket",
+        "type": "rich",
+        "blobID": "wf-text-2"
+      },
+      "White Paper Request": {
+        "name": "White Paper Request",
+        "type": "rich",
+        "blobID": "wf-text-3"
+      }
+    }
+  },
+  {
+    "skin": "siteforms",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<center><!-- NAME: 1 COLUMN --><!-- NAME: 1 COLUMN -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #f1f1f1; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td>&nbsp;</td>\\n<td width=\\\"680\\\" style=\\\"width: 680px;\\\"><center>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 680px;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; height: 80px; background-color: #fff;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"3\\\"><img src=\\\"https://www.iservice.info/emailer_assets/notification_template/head.png\\\"></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 30px;\\\">&nbsp;</td>\\n<td>\\n<h1 class=\\\"sucess\\\" style=\\\"color: #29a508;\\\">Your free trial is scheduled.</h1>\\n<div>Thanks for setting up your iService free trial. Once we get you setup and onboarded, your team will thank you as well :)</div>\\n<h2 class=\\\"primary\\\" style=\\\"color: #0c9cd1;\\\">Next Steps</h2>\\n<div>A customer success manager will reach out to you soon to coordinate the setup of your tenant with a meeting scheduled for $value -case(property'freetrial:Select a date for onboarding')$.&nbsp;</div>\\n<div></div>\\n<table style=\\\"margin-top: 20px; border: 1px solid #ccc; border-collapse: collapse; width: 100%; font-family: Arial, sans-serif; font-size: 14px;\\\">\\n<tbody>\\n<tr style=\\\"background: #f1f1f1;\\\">\\n<td style=\\\"border: 1px solid #ccc; padding: 10px;\\\"><strong>Work Email (your login):</strong> &nbsp;$form -id'Value:Work Email'$</td>\\n</tr>\\n<tr>\\n<td style=\\\"border: 1px solid #ccc; padding: 10px;\\\"><strong>Name:</strong> $value -customer(firstname)$ $value -customer(lastname)$</td>\\n</tr>\\n<tr style=\\\"background: #f1f1f1;\\\">\\n<td style=\\\"border: 1px solid #ccc; padding: 10px;\\\"><strong>Phone:</strong> $value -customer(phone)$</td>\\n</tr>\\n<tr>\\n<td style=\\\"border: 1px solid #ccc; padding: 10px;\\\"><strong>Company: </strong>$value -customer(company)$</td>\\n</tr>\\n<tr style=\\\"background: #f1f1f1;\\\">\\n<td style=\\\"border: 1px solid #ccc; padding: 10px;\\\"><strong>Company Employees:</strong> &nbsp;$value -case(property'freetrial:Number of employees')$</td>\\n</tr>\\n<tr>\\n<td style=\\\"border: 1px solid #ccc; padding: 10px;\\\"><strong>Plan:</strong> $value -case(property'freetrial:plan')$</td>\\n</tr>\\n<tr style=\\\"background: #f1f1f1;\\\">\\n<td style=\\\"border: 1px solid #ccc; padding: 10px;\\\"><strong>Number of Agents:</strong> $value -case(property'freetrial:Number of agents')$</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\"></td>\\n</tr>\\n<tr>\\n<td style=\\\"background-color: #29292a; background: #29292a; padding: 20px 40px 20px 40px;\\\">\\n<table width=\\\"100%\\\" border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"text-align: center; padding-left: 15px; color: #fff;\\\"></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center></td>\\n<td>&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\""
+  },
+  {
+    "skin": "siteforms",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<div>A prospect or customer has requested the iService Trust Services Criteria report.</div>\\n<div></div>\\n<div><strong>Name:</strong> $value -customer(firstname)$ $value -customer(lastname)$</div>\\n<div><strong>Email:</strong> $form -id'Value:Email Address'$</div>\\n<div><strong>Phone:</strong> $value -customer(phone)$</div>\\n<div><strong>Company: </strong>$value -customer(company)$</div>\\n<div></div>\\n<div></div>\""
+  },
+  {
+    "skin": "siteforms",
+    "application": "blob",
+    "name": "wf-text-2",
+    "data": "\"<h1 class=\\\"sucess\\\" style=\\\"color: #29a508;\\\">Your free trial is scheduled.</h1>\\n<div>Thanks for setting up your iService free trial. Once we get you setup and onboarded, your team will thank you as well :)</div>\\n<h2 class=\\\"primary\\\" style=\\\"color: #0c9cd1;\\\">Next Steps</h2>\\n<div>A customer success manager will reach out to you soon to coordinate the setup of your tenant with a meeting scheduled for $value -case(property'freetrial:Select a date for onboarding')$.&nbsp;</div>\\n<div></div>\\n<div></div>\\n<table style=\\\"border: 1px solid #ccc;\\\">\\n<tbody>\\n<tr>\\n<td><strong>Work Email (your login):</strong> &nbsp;$form -id'Value:Work Email'$</td>\\n</tr>\\n<tr></tr>\\n<tr>\\n<td><strong>Name:</strong> $value -customer(firstname)$ $value -customer(lastname)$</td>\\n</tr>\\n<tr>\\n<td><strong>Phone:</strong> $value -customer(phone)$</td>\\n</tr>\\n<tr>\\n<td><strong>Company: </strong>$value -customer(company)$</td>\\n</tr>\\n<tr>\\n<td><strong>Company Employees:</strong> &nbsp;$value -case(property'freetrial:Number of employees')$</td>\\n</tr>\\n<tr>\\n<td><strong>Plan:</strong> $value -case(property'freetrial:plan')$</td>\\n</tr>\\n<tr>\\n<td><strong>Number of Agents:</strong> $value -case(property'freetrial:Number of agents')$</td>\\n</tr>\\n</tbody>\\n</table>\""
+  },
+  {
+    "skin": "siteforms",
+    "application": "blob",
+    "name": "wf-text-3",
+    "data": "\"<div><strong>Freight and Logistics White Paper Request</strong></div>\\n<div></div>\\n<div>\\n<table border=\\\"1\\\" style=\\\"border-collapse: collapse; width: 100%;\\\"><colgroup><col style=\\\"width: 13.5611%;\\\"><col style=\\\"width: 86.4389%;\\\"></colgroup>\\n<tbody>\\n<tr>\\n<td><strong>Name</strong></td>\\n<td>$value -customer(firstname)$ $value -customer(lastname)$</td>\\n</tr>\\n<tr>\\n<td><strong>Title</strong></td>\\n<td>$form -id'title'$&nbsp; - $value -customer(job title)$</td>\\n</tr>\\n<tr>\\n<td><strong>Company</strong></td>\\n<td>$value -customer(company)$</td>\\n</tr>\\n<tr>\\n<td><strong>Business Email</strong></td>\\n<td>$form -id'Value:Business Email'$</td>\\n</tr>\\n<tr>\\n<td><strong>Phone Number</strong></td>\\n<td>$value -customer(phone)$</td>\\n</tr>\\n</tbody>\\n</table>\\n</div>\\n<div></div>\\n<div></div>\""
+  }
+]
