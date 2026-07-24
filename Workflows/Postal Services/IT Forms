@@ -1,0 +1,358 @@
+[
+  {
+    "skin": "itforms",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "IT Forms",
+      "description": ""
+    }
+  },
+  {
+    "skin": "itforms",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "itequipmentdestroy",
+          "label": "Destroy IT Equipment",
+          "icon": "trash",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p>Please enter your details<strong> (First Name, Last Name etc) </strong>and the destroyed IT equipment along with <strong>pictures </strong>and <strong>certificate </strong>of the destroyed equipment</p>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "contactPropName": "First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "contactPropName": "Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "Email Address",
+              "placeholder": ""
+            },
+            {
+              "type": "plainmulti",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "inputName": "Details of Equipment",
+              "placeholder": ""
+            },
+            {
+              "type": "uploads",
+              "inputClass": "col-md-12"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Submit for Approval",
+                  "style": "aqua",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "All Topics",
+                      "subjecttype": "preset",
+                      "subject": "IT Equipment Destroyed",
+                      "bodytype": "preset",
+                      "bodyName": "IT Equipment Destroyed",
+                      "tag": "",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "changerequest",
+          "label": "Change Management Request",
+          "icon": "exchange",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><span style=\"font-size: 12pt;\">Please fill out this form to request approval for a change to the system, such as <strong>Firewall Rules </strong>or<strong> System Updates.</strong> Use the <strong>Attachment </strong>option in case of any attachments needed to explain the change request</span></p>",
+              "htmlID": "html1",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "inputClassFixed": "col-4",
+              "groupClass": "col-md-6",
+              "labelStyle": "horizontal",
+              "propertyName": "System Affected",
+              "placeholder": ""
+            },
+            {
+              "type": "plainmulti",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "inputName": "Changes Requested",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Please indicate if this ticket will include attachments",
+              "placeholder": ""
+            },
+            {
+              "type": "uploads",
+              "inputClass": "col-md-12"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button1",
+                  "label": "Submit for Approval",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "Approval Required",
+                      "subjecttype": "preset",
+                      "subject": "Change Requested ",
+                      "bodytype": "preset",
+                      "bodyName": "Change Requested",
+                      "tag": "changerequest",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Approval Required",
+          "tag": "changerequest",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button2",
+                  "label": "Approve",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "sign",
+                      "propertyName": "Approver",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Approved Changes",
+                      "subject": "Approved Changes"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "Submitter Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "topic",
+                      "topicName": "IT Tasks"
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button3",
+                  "label": "Decline",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Declined Changes",
+                      "subject": "Declined Changes"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Submitter Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": "close"
+                },
+                {
+                  "buttonID": "button4",
+                  "label": "See Attachments",
+                  "style": "link",
+                  "actions": [
+                    {
+                      "type": "standard",
+                      "cancelLabel": "Go Back"
+                    }
+                  ],
+                  "requiremode": ""
+                }
+              ],
+              "includeCancel": false
+            },
+            {
+              "type": "toaddresses",
+              "inputClass": "col-md-6",
+              "labelStyle": "horizontal",
+              "inputName": "Submitter Email Address",
+              "addressFilter": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "Reason for Approval or Denial",
+              "placeholder": ""
+            },
+            {
+              "type": "question",
+              "inputClass": "col-md-12"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "itforms",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Approver": "",
+        "Please indicate if this ticket will include attachments": "def",
+        "Reason for Approval or Denial": "def",
+        "System Affected": "def"
+      },
+      "defs": {
+        "Please indicate if this ticket will include attachments": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "fieldWidth": ""
+        },
+        "Reason for Approval or Denial": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "System Affected": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "itforms",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "Approved Changes": {
+        "name": "Approved Changes",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Change Requested": {
+        "name": "Change Requested",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      },
+      "Declined Changes": {
+        "name": "Declined Changes",
+        "type": "rich",
+        "blobID": "wf-text-2"
+      },
+      "IT Equipment Destroyed": {
+        "name": "IT Equipment Destroyed",
+        "type": "rich",
+        "blobID": "wf-text-3"
+      }
+    }
+  },
+  {
+    "skin": "itforms",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<p>The changes you requested have been approved. See approver notes below:<br><br>$value -case(property'itforms:Reason for Approval or Denial')$</p>\""
+  },
+  {
+    "skin": "itforms",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<p>Some changes have been requested to Mail Services systems. Please review the changes and <strong><span style=\\\"color: rgb(45, 194, 107);\\\">Approve </span></strong>or <strong><span style=\\\"color: rgb(224, 62, 45);\\\">Decline </span></strong>the changes requested.<br><br><strong>Person Requesting the change:</strong><br><strong>Name:</strong> $value -customer(firstname)$ $value -customer(lastname)$&nbsp;<br><strong>Email Address:</strong> $value -interaction(fromemail)$<br><br><strong>System Affected:</strong><br>$value -case(property'System Affected')$<br><br><strong>Details of the Change:</strong><br>$form -id'Value:Changes Requested'$<br><br><strong>Does Ticket Include Attachments:<br></strong>$value -case(property'itforms:Please indicate if this ticket will include attachments')$<br><br></p>\""
+  },
+  {
+    "skin": "itforms",
+    "application": "blob",
+    "name": "wf-text-2",
+    "data": "\"<p>The changes you requested have been declined. Please see the reason below:<br><br>$value -case(property'itforms:Reason for Approval or Denial')$</p>\""
+  },
+  {
+    "skin": "itforms",
+    "application": "blob",
+    "name": "wf-text-3",
+    "data": "\"<p>Some IT equipment was destroyed.<br><br>Please see the details below along with the attached certificate and pictures or destroyed equipment. You can respond to the agent with questions or simply add your notes and&nbsp;<strong>\\\"Resolve\\\" </strong>this ticket.<br><br>$form -id'Value:Details of Equipment'$<br><br><br></p>\""
+  }
+]
