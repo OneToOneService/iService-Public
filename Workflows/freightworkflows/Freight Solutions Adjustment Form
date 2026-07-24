@@ -1,0 +1,2389 @@
+[
+  {
+    "skin": "adjustment",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "FS adjustment form",
+      "description": ""
+    }
+  },
+  {
+    "skin": "adjustment",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Pre-Approval - Customer",
+          "tag": "tier1adjustment",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "If you approve the adjustment, click the <strong>Approve </strong>button and the request will be sent to Finance for processing. If you <strong>Reject </strong>the request, an email will be sent to inform the requester and the adjustment request will be resolved without processing by Finance. You can reassign this request to another approver using the <strong>Reassign to Another Agent</strong> tab below.&nbsp;",
+              "htmlID": "html0",
+              "editorStyle": "raw"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Approve Adjustment",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Adjustment - Customer"
+                    },
+                    {
+                      "type": "sign",
+                      "propertyName": "Approved by",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "adjustment approved",
+                      "subject": "Your adjustment request has been approved"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button1",
+                  "label": "Reject Adjustment",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Rejection To Requester",
+                      "subject": "Your adjustment request was rejected"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "ban"
+                }
+              ],
+              "includeCancel": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Adjustment Details",
+                  "icon": "ticket",
+                  "inputs": [
+                    {
+                      "type": "toaddresses",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-6",
+                      "labelStyle": "horizontal",
+                      "inputName": "Requester Email Address",
+                      "addressFilter": "Email"
+                    },
+                    {
+                      "type": "question",
+                      "inputClass": "col-md-12"
+                    }
+                  ]
+                },
+                {
+                  "label": "Reassign to Another Agent",
+                  "icon": "arrows",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button2",
+                          "label": "Assign to New Approver",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "reassign",
+                              "toPrevious": false,
+                              "agentInput": "Customer Approver Tier 1"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "arrows"
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Customer Approver Tier 1",
+                      "agentlistName": "Customer Approver Tier 1"
+                    }
+                  ]
+                },
+                {
+                  "label": "Interaction Properties",
+                  "icon": "exchange",
+                  "inputs": [
+                    {
+                      "type": "caseprops",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Pre-approval - Carrier",
+          "tag": "tier1adjustment",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button3",
+                  "label": "Approve Adjustment",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Adjustment - Carrier"
+                    },
+                    {
+                      "type": "sign",
+                      "propertyName": "Approved by",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "adjustment approved",
+                      "subject": "Your adjustment request was approved"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button4",
+                  "label": "Reject Adjustment",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Rejection To Requester",
+                      "subject": "Your adjustment request was rejected"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "ban"
+                }
+              ],
+              "includeCancel": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Adjustment Details",
+                  "icon": "ticket",
+                  "inputs": [
+                    {
+                      "type": "toaddresses",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Requester Email Address",
+                      "addressFilter": "Email"
+                    },
+                    {
+                      "type": "question",
+                      "inputClass": "col-md-12"
+                    }
+                  ]
+                },
+                {
+                  "label": "Reassign to Another Agent",
+                  "icon": "arrows",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button5",
+                          "label": "Reassign to Another Agent",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "reassign",
+                              "toPrevious": false,
+                              "agentInput": "Carrier Approver Tier 1"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Carrier Approver Tier 1",
+                      "agentlistName": "Carrier Approver Tier 1"
+                    }
+                  ]
+                },
+                {
+                  "label": "Interaction Properties",
+                  "icon": "exchange",
+                  "inputs": [
+                    {
+                      "type": "caseprops",
+                      "inputClass": "col-md-8",
+                      "labelStyle": "horizontal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "fsadjustment",
+          "label": "FS - Submit Adjustment Request - Approval Process",
+          "icon": "dollar",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "This form is used to submit adjustment requests to carrier or customer accounts. You will receive an automated acknowledgement after your form is submitted, and will receive an email from the Finance department when the adjustment has been approved and entered.",
+              "htmlID": "html1",
+              "editorStyle": "raw"
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><strong>Are you submitting a Customer or Carrier adjustment?</strong></p>",
+              "htmlID": "html2",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-8",
+              "groupClass": "col-md-8",
+              "labelStyle": "horizontal",
+              "propertyName": "Type of Adjustment",
+              "placeholder": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Customer Adjustment",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Type of Adjustment",
+                  "autoValue": "customer adjustment",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><span style=\"text-decoration: underline; font-size: 18pt;\"><strong>Enter Customer Details:</strong></span></p>",
+                      "htmlID": "html3",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Customer Name",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Customer Code",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Customer Adjustment Amount (AR)",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Is this an increase or decrease to billing",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Reason",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "vertical",
+                      "propertyName": "Reason Detail",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": " ",
+                      "htmlID": "html4",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "  ",
+                      "htmlID": "html5",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": " ",
+                      "htmlID": "html6",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "01- Increase",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "Is this an increase or decrease to billing",
+                          "autoValue": "01 - increase",
+                          "inputs": [
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": "<p><span style=\"text-decoration: underline; font-size: 18pt;\"><strong>Enter Your Details:</strong></span></p>",
+                              "htmlID": "html7",
+                              "editorStyle": "editor"
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-10",
+                              "labelStyle": "horizontal",
+                              "propertyName": "PRO Number",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "groupClass": "col-md-10",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Delivery Date",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Team",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button6",
+                                  "label": "Submit Request",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "Adjustment - Customer",
+                                      "subjecttype": "preset",
+                                      "subject": "New Adjustment Request - PRO# $form -id'PRO Number'$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Customer Adjustment Request no preapproval",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "Adjustment - Customer",
+                                      "subjecttype": "preset",
+                                      "subject": "Customer Adjustment",
+                                      "bodytype": "preset",
+                                      "bodyName": "Customer Adjustment Submitter Notification",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": "  ",
+                              "htmlID": "html8",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html9",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html10",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html11",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " \n\n\n\n\n\n\n\n\n\n\n      ",
+                              "htmlID": "html12",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html13",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html14",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html15",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html16",
+                              "editorStyle": "raw"
+                            }
+                          ]
+                        },
+                        {
+                          "label": "02 - Decrease",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "Is this an increase or decrease to billing",
+                          "autoValue": "02 - decrease",
+                          "inputs": [
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": "<p><span style=\"text-decoration: underline; font-size: 18pt;\"><strong>Enter Your Details:</strong></span></p>",
+                              "htmlID": "html17",
+                              "editorStyle": "editor"
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-10",
+                              "labelStyle": "horizontal",
+                              "propertyName": "PRO Number",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "groupClass": "col-md-10",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Delivery Date",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "groupClass": "col-md-10",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Team",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-12",
+                              "groupClass": "col-md-12",
+                              "tabs": [
+                                {
+                                  "label": "<$100",
+                                  "icon": "",
+                                  "autoType": "num<",
+                                  "autoProperty": "Customer Adjustment Amount (AR)",
+                                  "autoValue": "100",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;$100 No Approval needed</strong></p>",
+                                      "htmlID": "html18",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button7",
+                                          "label": "Submit Request",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Adjustment - Customer",
+                                              "subjecttype": "preset",
+                                              "subject": "New Adjustment request - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Customer Adjustment Request no preapproval",
+                                              "tag": "",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "emailtosubmitter",
+                                              "topictype": "preset",
+                                              "topicName": "Adjustment - Customer",
+                                              "subjecttype": "preset",
+                                              "subject": "Customer Adjustment",
+                                              "bodytype": "preset",
+                                              "bodyName": "Customer Adjustment Submitter Notification",
+                                              "tag": "",
+                                              "mailboxName": "",
+                                              "resultName": "",
+                                              "suppressRef": false
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "$100-$5000",
+                                  "icon": "",
+                                  "autoType": "num<=",
+                                  "autoProperty": "Customer Adjustment Amount (AR)",
+                                  "autoValue": "5000",
+                                  "inputs": [
+                                    {
+                                      "type": "agentpick",
+                                      "inputClass": "col-md-12",
+                                      "groupClass": "col-md-9",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Customer Approver Tier 1",
+                                      "agentlistName": "Customer Approver Tier 1"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "groupClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button8",
+                                          "label": "Submit Request",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "Customer Approver Tier 1",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Pre-Approval - Customer",
+                                              "subjecttype": "preset",
+                                              "subject": "New Adjustment request needs approval - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Customer Adjustment Request Preapproval",
+                                              "tag": "tier1adjustment",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "agentnotification",
+                                              "subject": "A new adjustment request requires your approval - PRO# $form -id'PRO Number'$",
+                                              "bodyName": "Customer Adjustment Preapproval Agent Notification"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "$5001-$25000",
+                                  "icon": "",
+                                  "autoType": "num<=",
+                                  "autoProperty": "Customer Adjustment Amount (AR)",
+                                  "autoValue": "25000",
+                                  "inputs": [
+                                    {
+                                      "type": "agentpick",
+                                      "inputClass": "col-md-9",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Customer Approver Tier 2",
+                                      "agentlistName": "Customer Approver Tier 2"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button9",
+                                          "label": "Submit",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "Customer Approver Tier 2",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Pre-Approval - Customer",
+                                              "subjecttype": "preset",
+                                              "subject": "New Adjustment request needs approval - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Customer Adjustment Request Preapproval",
+                                              "tag": "tier2adjustment",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "agentnotification",
+                                              "subject": "A new adjustment request requires your approval - PRO# $form -id'PRO Number'$",
+                                              "bodyName": "Customer Adjustment Preapproval Agent Notification"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": ">$25000",
+                                  "icon": "",
+                                  "autoType": "num>",
+                                  "autoProperty": "Customer Adjustment Amount (AR)",
+                                  "autoValue": "25000",
+                                  "inputs": [
+                                    {
+                                      "type": "agentpick",
+                                      "inputClass": "col-md-9",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Customer Approver Tier 3",
+                                      "agentlistName": "Customer Approver Tier 3"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button10",
+                                          "label": "Submit",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "Customer Approver Tier 3",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Pre-Approval - Customer",
+                                              "subjecttype": "preset",
+                                              "subject": "New Adjustment request needs approval - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Customer Adjustment Request Preapproval",
+                                              "tag": "tier3adjustment",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "agentnotification",
+                                              "subject": "A new adjustment request requires your approval - PRO# $form -id'PRO Number'$",
+                                              "bodyName": "Customer Adjustment Preapproval Agent Notification"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "No entry",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "Customer Adjustment Amount (AR)",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "Please enter the amount of your adjustment.",
+                                      "htmlID": "html19",
+                                      "editorStyle": "raw"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html20",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html21",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html22",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html23",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html24",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html25",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html26",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html27",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html28",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html29",
+                              "editorStyle": "raw"
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                },
+                {
+                  "label": "Carrier Adjustment",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Type of Adjustment",
+                  "autoValue": "carrier adjustment",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><span style=\"text-decoration: underline; font-size: 18pt;\"><strong>Enter Carrier Details</strong></span></p>",
+                      "htmlID": "html30",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Carrier Name",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-10",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Carrier Code",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Carrier Adjustment Amount (AP)",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Is this an increase or decrease to billing",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Reason",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "vertical",
+                      "propertyName": "Reason Detail",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": " ",
+                      "htmlID": "html31",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": " ",
+                      "htmlID": "html32",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": " ",
+                      "htmlID": "html33",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": " ",
+                      "htmlID": "html34",
+                      "editorStyle": "raw"
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "02 - decrease",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "Is this an increase or decrease to billing",
+                          "autoValue": "02 - decrease",
+                          "inputs": [
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": "<p><span style=\"text-decoration: underline; font-size: 18pt;\"><strong>Enter Your Details</strong></span></p>",
+                              "htmlID": "html35",
+                              "editorStyle": "editor"
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "groupClass": "col-md-10",
+                              "labelStyle": "horizontal",
+                              "propertyName": "PRO Number",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Delivery Date",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Team",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button11",
+                                  "label": "Submit Request",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "Adjustment - Carrier",
+                                      "subjecttype": "preset",
+                                      "subject": "New Carrier Adjustment Request - PRO# $form -id'PRO Number'$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Carrier Adjustment Request no preapproval",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "Adjustment - Carrier",
+                                      "subjecttype": "preset",
+                                      "subject": "Carrier Adjustment",
+                                      "bodytype": "preset",
+                                      "bodyName": "Carrier Adjustment Submitter Notification",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html36",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html37",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html38",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html39",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html40",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html41",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html42",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html43",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html44",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html45",
+                              "editorStyle": "raw"
+                            }
+                          ]
+                        },
+                        {
+                          "label": "01 - increase",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "Is this an increase or decrease to billing",
+                          "autoValue": "01 - increase",
+                          "inputs": [
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": "<p><span style=\"text-decoration: underline; font-size: 18pt;\"><strong>Enter Your Details</strong></span></p>",
+                              "htmlID": "html46",
+                              "editorStyle": "editor"
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "groupClass": "col-md-10",
+                              "labelStyle": "horizontal",
+                              "propertyName": "PRO Number",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Delivery Date",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "propertyName": "Team",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-12",
+                              "tabs": [
+                                {
+                                  "label": "<$100",
+                                  "icon": "",
+                                  "autoType": "num<",
+                                  "autoProperty": "Carrier Adjustment Amount (AP)",
+                                  "autoValue": "100",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<p><strong>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&lt;$100 No Approval needed</strong></p>",
+                                      "htmlID": "html47",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button12",
+                                          "label": "Submit Request",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Adjustment - Carrier",
+                                              "subjecttype": "preset",
+                                              "subject": "New Carrier Adjustment Request - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Carrier Adjustment Request no preapproval",
+                                              "tag": "",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "emailtosubmitter",
+                                              "topictype": "preset",
+                                              "topicName": "Adjustment - Carrier",
+                                              "subjecttype": "preset",
+                                              "subject": "Carrier Adjustment",
+                                              "bodytype": "preset",
+                                              "bodyName": "Carrier Adjustment Submitter Notification",
+                                              "tag": "",
+                                              "mailboxName": "",
+                                              "resultName": "",
+                                              "suppressRef": false
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "$100-$5000",
+                                  "icon": "",
+                                  "autoType": "num<=",
+                                  "autoProperty": "Carrier Adjustment Amount (AP)",
+                                  "autoValue": "5000",
+                                  "inputs": [
+                                    {
+                                      "type": "agentpick",
+                                      "inputClass": "col-md-12",
+                                      "groupClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Carrier Approver Tier 1",
+                                      "agentlistName": "Carrier Approver Tier 1"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button13",
+                                          "label": "Submit Request",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "Carrier Approver Tier 1",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Pre-approval - Carrier",
+                                              "subjecttype": "preset",
+                                              "subject": "New Carrier Adjustment needs approval - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Carrier Adjustment Request Preapproval",
+                                              "tag": "tier1adjustment",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "agentnotification",
+                                              "subject": "A new carrier adjustment request requires your approval - PRO# $form -id'PRO Number'$",
+                                              "bodyName": "Carrier Adjustment Preapproval Agent Notification"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "$5001-$25000",
+                                  "icon": "",
+                                  "autoType": "num<=",
+                                  "autoProperty": "Carrier Adjustment Amount (AP)",
+                                  "autoValue": "25000",
+                                  "inputs": [
+                                    {
+                                      "type": "agentpick",
+                                      "inputClass": "col-md-12",
+                                      "groupClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Carrier Approver  Tier 2",
+                                      "agentlistName": "Carrier Approver  Tier 2"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button14",
+                                          "label": "Submit",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "Carrier Approver  Tier 2",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Pre-approval - Carrier",
+                                              "subjecttype": "preset",
+                                              "subject": "New Carrier Adjustment needs approval - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Carrier Adjustment Request Preapproval",
+                                              "tag": "tier2adjustment",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "agentnotification",
+                                              "subject": "A new carrier adjustment request requires your approval - PRO# $form -id'PRO Number'$",
+                                              "bodyName": "Carrier Adjustment Preapproval Agent Notification"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": ">$25000",
+                                  "icon": "",
+                                  "autoType": "num>",
+                                  "autoProperty": "Carrier Adjustment Amount (AP)",
+                                  "autoValue": "25000",
+                                  "inputs": [
+                                    {
+                                      "type": "agentpick",
+                                      "inputClass": "col-md-12",
+                                      "groupClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Carrier Approver Tier 3",
+                                      "agentlistName": "Carrier Approver Tier 3"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button15",
+                                          "label": "Submit",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "agentticket",
+                                              "agentInput": "Carrier Approver Tier 3",
+                                              "destEmail": "",
+                                              "topictype": "preset",
+                                              "topicName": "Pre-approval - Carrier",
+                                              "subjecttype": "preset",
+                                              "subject": "New Carrier Adjustment needs approval - PRO# $form -id'PRO Number'$",
+                                              "bodytype": "preset",
+                                              "bodyName": "Carrier Adjustment Request Preapproval",
+                                              "tag": "tier3adjustment",
+                                              "resultName": ""
+                                            },
+                                            {
+                                              "type": "agentnotification",
+                                              "subject": "A new carrier adjustment request requires your approval - PRO# $form -id'PRO Number'$",
+                                              "bodyName": "Carrier Adjustment Preapproval Agent Notification"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "No entry",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "Carrier Adjustment Amount (AP)",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "Please enter the amount of your adjustment.",
+                                      "htmlID": "html48",
+                                      "editorStyle": "raw"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html49",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html50",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html51",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html52",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html53",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html54",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html55",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html56",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html57",
+                              "editorStyle": "raw"
+                            },
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": " ",
+                              "htmlID": "html58",
+                              "editorStyle": "raw"
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": "info"
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": "info",
+              "autoBoxTitle": true
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Pre-Approval - Customer",
+          "tag": "tier2adjustment",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "If you approve the adjustment, click the <strong>Approve </strong>button and the request will be sent to Finance for processing. If you <strong>Reject </strong>the request, an email will be sent to inform the requester and the adjustment request will be resolved without processing by Finance. You can reassign this request to another approver using the <strong>Reassign to Another Agent</strong> tab below.&nbsp;",
+              "htmlID": "html59",
+              "editorStyle": "raw"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button16",
+                  "label": "Approve Adjustment",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Adjustment - Customer"
+                    },
+                    {
+                      "type": "sign",
+                      "propertyName": "Approved by",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "adjustment approved",
+                      "subject": "Your adjustment request has been approved"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button17",
+                  "label": "Reject Adjustment",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Rejection To Requester",
+                      "subject": "Your adjustment request was rejected"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "ban"
+                }
+              ],
+              "includeCancel": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Adjustment Details",
+                  "icon": "ticket",
+                  "inputs": [
+                    {
+                      "type": "toaddresses",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-6",
+                      "labelStyle": "horizontal",
+                      "inputName": "Requester Email Address",
+                      "addressFilter": "Email"
+                    },
+                    {
+                      "type": "question",
+                      "inputClass": "col-md-12"
+                    }
+                  ]
+                },
+                {
+                  "label": "Reassign to Another Agent",
+                  "icon": "arrows",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button18",
+                          "label": "Assign to New Approver",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "reassign",
+                              "toPrevious": false,
+                              "agentInput": "Customer Approver Tier 2"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "arrows"
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Customer Approver Tier 2",
+                      "agentlistName": "Customer Approver Tier 2"
+                    }
+                  ]
+                },
+                {
+                  "label": "Interaction Properties",
+                  "icon": "exchange",
+                  "inputs": [
+                    {
+                      "type": "caseprops",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Pre-Approval - Customer",
+          "tag": "tier3adjustment",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "If you approve the adjustment, click the <strong>Approve </strong>button and the request will be sent to Finance for processing. If you <strong>Reject </strong>the request, an email will be sent to inform the requester and the adjustment request will be resolved without processing by Finance. You can reassign this request to another approver using the <strong>Reassign to Another Agent</strong> tab below.&nbsp;",
+              "htmlID": "html60",
+              "editorStyle": "raw"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button19",
+                  "label": "Approve Adjustment",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Adjustment - Customer"
+                    },
+                    {
+                      "type": "sign",
+                      "propertyName": "Approved by",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "adjustment approved",
+                      "subject": "Your adjustment request has been approved"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button20",
+                  "label": "Reject Adjustment",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Rejection To Requester",
+                      "subject": "Your adjustment request was rejected"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "ban"
+                }
+              ],
+              "includeCancel": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Adjustment Details",
+                  "icon": "ticket",
+                  "inputs": [
+                    {
+                      "type": "toaddresses",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-6",
+                      "labelStyle": "horizontal",
+                      "inputName": "Requester Email Address",
+                      "addressFilter": "Email"
+                    },
+                    {
+                      "type": "question",
+                      "inputClass": "col-md-12"
+                    }
+                  ]
+                },
+                {
+                  "label": "Reassign to Another Agent",
+                  "icon": "arrows",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button21",
+                          "label": "Assign to New Approver",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "reassign",
+                              "toPrevious": false,
+                              "agentInput": "Customer Approver Tier 3"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "arrows"
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Customer Approver Tier 3",
+                      "agentlistName": "Customer Approver Tier 3"
+                    }
+                  ]
+                },
+                {
+                  "label": "Interaction Properties",
+                  "icon": "exchange",
+                  "inputs": [
+                    {
+                      "type": "caseprops",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Pre-approval - Carrier",
+          "tag": "tier2adjustment",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button22",
+                  "label": "Approve Adjustment",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Adjustment - Carrier"
+                    },
+                    {
+                      "type": "sign",
+                      "propertyName": "Approved by",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "adjustment approved",
+                      "subject": "Your adjustment request was approved"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button23",
+                  "label": "Reject Adjustment",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Rejection To Requester",
+                      "subject": "Your adjustment request was rejected"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "ban"
+                }
+              ],
+              "includeCancel": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Adjustment Details",
+                  "icon": "ticket",
+                  "inputs": [
+                    {
+                      "type": "toaddresses",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Requester Email Address",
+                      "addressFilter": "Email"
+                    },
+                    {
+                      "type": "question",
+                      "inputClass": "col-md-12"
+                    }
+                  ]
+                },
+                {
+                  "label": "Reassign to Another Agent",
+                  "icon": "arrows",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button24",
+                          "label": "Reassign to Another Agent",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "reassign",
+                              "toPrevious": false,
+                              "agentInput": "Carrier Approver  Tier 2"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Carrier Approver  Tier 2",
+                      "agentlistName": "Carrier Approver  Tier 2"
+                    }
+                  ]
+                },
+                {
+                  "label": "Interaction Properties",
+                  "icon": "exchange",
+                  "inputs": [
+                    {
+                      "type": "caseprops",
+                      "inputClass": "col-md-8",
+                      "labelStyle": "horizontal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Pre-approval - Carrier",
+          "tag": "tier3adjustment",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button25",
+                  "label": "Approve Adjustment",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Adjustment - Carrier"
+                    },
+                    {
+                      "type": "sign",
+                      "propertyName": "Approved by",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "adjustment approved",
+                      "subject": "Your adjustment request was approved"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button26",
+                  "label": "Reject Adjustment",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Rejection To Requester",
+                      "subject": "Your adjustment request was rejected"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Requester Email Address",
+                      "recipient": "customer",
+                      "tag": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "ban"
+                }
+              ],
+              "includeCancel": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Adjustment Details",
+                  "icon": "ticket",
+                  "inputs": [
+                    {
+                      "type": "toaddresses",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Requester Email Address",
+                      "addressFilter": "Email"
+                    },
+                    {
+                      "type": "question",
+                      "inputClass": "col-md-12"
+                    }
+                  ]
+                },
+                {
+                  "label": "Reassign to Another Agent",
+                  "icon": "arrows",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button27",
+                          "label": "Reassign to Another Agent",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "reassign",
+                              "toPrevious": false,
+                              "agentInput": "Carrier Approver Tier 3"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-12",
+                      "groupClass": "col-md-8",
+                      "labelStyle": "horizontal",
+                      "inputName": "Carrier Approver Tier 3",
+                      "agentlistName": "Carrier Approver Tier 3"
+                    }
+                  ]
+                },
+                {
+                  "label": "Interaction Properties",
+                  "icon": "exchange",
+                  "inputs": [
+                    {
+                      "type": "caseprops",
+                      "inputClass": "col-md-8",
+                      "labelStyle": "horizontal"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "adjustment",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Approved by": "",
+        "Carrier Adjustment Amount (AP)": "def",
+        "Carrier Code": "def",
+        "Carrier Name": "def",
+        "Customer Adjustment Amount (AR)": "def",
+        "Customer Code": "def",
+        "Customer Name": "def",
+        "Delivery Date": "def",
+        "Is this an increase or decrease to billing": "def",
+        "PRO Number": "def",
+        "Reason": "def",
+        "Reason Detail": "",
+        "Team": "def",
+        "Type of Adjustment": "def"
+      },
+      "defs": {
+        "Carrier Adjustment Amount (AP)": {
+          "type": "number",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": "",
+          "isNotnegative": false
+        },
+        "Carrier Code": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Carrier Name": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Customer Adjustment Amount (AR)": {
+          "type": "number",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": "",
+          "isNotnegative": false
+        },
+        "Customer Code": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Customer Name": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Delivery Date": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Is this an increase or decrease to billing": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "01 - Increase",
+            "02 - Decrease"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "PRO Number": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Reason": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Additional cargo liability",
+            "Additional routing",
+            "Border Crossing",
+            "Canadian cross border fee",
+            "Capacity Quote Not on BOL",
+            "CHASSIS FEE",
+            "Corrected BOL",
+            "CUSTOMER SATISFACTION",
+            "DEADHEAD",
+            "DEMURRAGE",
+            "DETENTION",
+            "DRAYAGE",
+            "DRIVER ASSIST",
+            "DROP TRAILER",
+            "Excessive Length Fee",
+            "FUEL SURCHARGE",
+            "Fuel Surcharge - LTL",
+            "Guaranteed Delivery",
+            "HAZMAT FEE",
+            "High Cost Area",
+            "In-Bond Charges",
+            "INSIDE DELIVERY",
+            "Inside Pickup",
+            "LABOR",
+            "LAYOVER",
+            "LIFTGATE",
+            "Liftgate at Delivery",
+            "Liftgate at Pickup",
+            "Limited Access Delivery",
+            "Limited Access Pickup",
+            "LINEHAUL (ADTL CARRIER)",
+            "LOADING CHARGES",
+            "LUMPER",
+            "Notify on Delivery",
+            "Notify on Pickup",
+            "NY ISLAND FEE",
+            "Order Entry Error",
+            "Pallet Exchange",
+            "PERMIT CHARGES",
+            "PERMITS",
+            "PICK UP CHARGE PICKUP",
+            "RECLASS AND REWEIGH",
+            "RECLASS CHARGE",
+            "RECONSIGNMENT",
+            "Redelivery",
+            "Residential Delivery",
+            "Residential Pickup",
+            "REWEIGH",
+            "SATURDAY PICKUP/DELIVERY",
+            "SCALING FEES",
+            "SEASONAL FEE",
+            "Single Shipment",
+            "Sort and Segregate",
+            "STOP OFF CHARGE",
+            "STORAGE CHARGES",
+            "SUNDAY PICKUP/DELIVERY",
+            "TARPING CHARGE",
+            "TEAM DRIVERS",
+            "Tolls",
+            "TRACKING VISIBILITY",
+            "TRUCK ORDERED & NOT USED",
+            "UNBLOCKING CHARGE",
+            "UNLOADING CHARGES",
+            "Weekend Layover",
+            "Weight and Inspection Fee",
+            "Write Off"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Team": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Kalyn Sharrow",
+            "Nate Rumm",
+            "Peter Mittas",
+            "Ryan Griffiths",
+            "Ryan Russell",
+            "Tim Edwards",
+            "Hillary Jones"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Type of Adjustment": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Carrier Adjustment",
+            "Customer Adjustment"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "adjustment",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "adjustment approved": {
+        "name": "adjustment approved",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Carrier Adjustment Preapproval Agent Notification": {
+        "name": "Carrier Adjustment Preapproval Agent Notification",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      },
+      "Carrier Adjustment Request no preapproval": {
+        "name": "Carrier Adjustment Request no preapproval",
+        "type": "rich",
+        "blobID": "wf-text-2"
+      },
+      "Carrier Adjustment Request Preapproval": {
+        "name": "Carrier Adjustment Request Preapproval",
+        "type": "rich",
+        "blobID": "wf-text-3"
+      },
+      "Carrier Adjustment Submitter Notification": {
+        "name": "Carrier Adjustment Submitter Notification",
+        "type": "rich",
+        "blobID": "wf-text-4"
+      },
+      "Customer Adjustment Preapproval Agent Notification": {
+        "name": "Customer Adjustment Preapproval Agent Notification",
+        "type": "rich",
+        "blobID": "wf-text-5"
+      },
+      "Customer Adjustment Request no preapproval": {
+        "name": "Customer Adjustment Request no preapproval",
+        "type": "rich",
+        "blobID": "wf-text-6"
+      },
+      "Customer Adjustment Request Preapproval": {
+        "name": "Customer Adjustment Request Preapproval",
+        "type": "rich",
+        "blobID": "wf-text-7"
+      },
+      "Customer Adjustment Submitter Notification": {
+        "name": "Customer Adjustment Submitter Notification",
+        "type": "rich",
+        "blobID": "wf-text-8"
+      },
+      "Rejection To Requester": {
+        "name": "Rejection To Requester",
+        "type": "rich",
+        "blobID": "wf-text-9"
+      }
+    }
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"Your request for an adjustment was approved. Details of your request are below.&nbsp;<br /><br />$value -question(quotedbody)$\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<p>A new adjustment to a carrier invoice requires your approval. The request has been assigned to you and can be found in your <a href=\\\"https://fedextraining.iservicecrm.com/app/my-message-inbox\\\">My Message Inbox page</a>. Details about the request are listed below.&nbsp;<br><br><span style=\\\"font-size: 18px;\\\"><strong>Adjustment Request Detail</strong></span><br>&nbsp;</p>\\n<table border=\\\"1\\\" cellpadding=\\\"5\\\" cellspacing=\\\"1\\\" style=\\\"border: 1px solid #cccccc; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Details</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Requester Name:</strong></td>\\n<td>$value -customer(name)$</td>\\n</tr>\\n<tr>\\n<td><strong>PRO Number:</strong></td>\\n<td>$value -case(property'PRO Number')$</td>\\n</tr>\\n<tr>\\n<td><strong>Delivery Date:</strong></td>\\n<td>$value -case(property'Delivery Date')$</td>\\n</tr>\\n<tr>\\n<td><strong>Email Address:</strong>&nbsp;</td>\\n<td>$value -question(fromemail)$</td>\\n</tr>\\n<tr>\\n<td><strong>Team:</strong></td>\\n<td>$value -case(property'Team')$</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Carrier Detail&nbsp;</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Name:</strong></td>\\n<td>$value -case(property'Carrier Name')$</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Code:</strong></td>\\n<td>$value -case(property'Carrier Code')$</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Adjustment Amount:</strong></td>\\n<td>$value -case(property'Carrier Adjustment Amount (AP)')$</td>\\n</tr>\\n<tr>\\n<td><strong>Is this an increase or decrease to invoice?</strong></td>\\n<td>$value -case(property'is this an increase or decrease to billing')$</td>\\n</tr>\\n<tr>\\n<td><strong>Reason</strong></td>\\n<td>$value -case(property'Reason')$</td>\\n</tr>\\n<tr>\\n<td><strong>Details from agent:</strong></td>\\n<td>$form -id'prop:adjustment:reason detail for freight adjustment'$</td>\\n</tr>\\n</tbody>\\n</table>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-2",
+    "data": "\"<p><span style=\\\"font-size: 18px;\\\"><strong>Adjustment Request Detail</strong></span><br>&nbsp;</p>\\n<table border=\\\"1\\\" cellpadding=\\\"5\\\" cellspacing=\\\"1\\\" style=\\\"border: 1px solid #cccccc; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Details</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Requester Name:</strong></td>\\n<td>$value -customer(name)$</td>\\n</tr>\\n<tr>\\n<td><strong>PRO Number:</strong></td>\\n<td>$value -case(property'PRO Number')$</td>\\n</tr>\\n<tr>\\n<td><strong>Delivery Date:</strong></td>\\n<td>$value -case(property'Delivery Date')$</td>\\n</tr>\\n<tr>\\n<td><strong>Email Address:</strong>&nbsp;</td>\\n<td>$value -question(fromemail)$</td>\\n</tr>\\n<tr>\\n<td><strong>Team:</strong></td>\\n<td>$value -case(property'Team')$</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Carrier Detail&nbsp;</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Name:</strong></td>\\n<td>$value -case(property'Carrier Name')$</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Code:</strong></td>\\n<td>$value -case(property'Carrier Code')$</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Adjustment Amount:</strong></td>\\n<td>$value -case(property'Carrier Adjustment Amount (AP)')$</td>\\n</tr>\\n<tr>\\n<td><strong>Is this an increase or decrease to invoice?</strong></td>\\n<td>$value -case(property'is this an increase or decrease to billing')$</td>\\n</tr>\\n<tr>\\n<td><strong>Reason</strong></td>\\n<td>$value -case(property'Reason')$</td>\\n</tr>\\n<tr>\\n<td><strong>Details from agent:</strong></td>\\n<td>$form -id'prop:adjustment:reason detail for freight adjustment'$</td>\\n</tr>\\n</tbody>\\n</table>\\n<p></p>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-3",
+    "data": "\"<p><span style=\\\"font-size: 18px;\\\"><strong>Adjustment Request Detail</strong></span><br>&nbsp;</p>\\n<table border=\\\"1\\\" cellpadding=\\\"5\\\" cellspacing=\\\"1\\\" style=\\\"border: 1px solid #cccccc; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Details</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Requester Name:</strong></td>\\n<td>$value -customer(name)$</td>\\n</tr>\\n<tr>\\n<td><strong>PRO Number:</strong></td>\\n<td>$value -case(property'PRO Number')$</td>\\n</tr>\\n<tr>\\n<td><strong>Delivery Date:</strong></td>\\n<td>$value -case(property'Delivery Date')$</td>\\n</tr>\\n<tr>\\n<td><strong>Email Address:</strong>&nbsp;</td>\\n<td>$value -question(fromemail)$</td>\\n</tr>\\n<tr>\\n<td><strong>Team:</strong></td>\\n<td>$value -case(property'Team')$</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Carrier Detail&nbsp;</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Name:</strong></td>\\n<td>$value -case(property'Carrier Name')$</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Code:</strong></td>\\n<td>$value -case(property'Carrier Code')$</td>\\n</tr>\\n<tr>\\n<td><strong>Carrier Adjustment Amount:</strong></td>\\n<td>$value -case(property'Carrier Adjustment Amount (AP)')$</td>\\n</tr>\\n<tr>\\n<td><strong>Is this an increase or decrease to invoice?</strong></td>\\n<td>$value -case(property'is this an increase or decrease to billing')$</td>\\n</tr>\\n<tr>\\n<td><strong>Reason</strong></td>\\n<td>$value -case(property'Reason')$</td>\\n</tr>\\n<tr>\\n<td><strong>Details from agent:</strong></td>\\n<td>$form -id'prop:adjustment:reason detail for freight adjustment'$</td>\\n</tr>\\n</tbody>\\n</table>\\n<p></p>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-4",
+    "data": "\"<p><span style=\\\"font-family: Arial, Verdana; font-size: 10pt;\\\">Dear $value -customer(name)$,</span><br><br><span style=\\\"font-family: Arial, Verdana; font-size: 10pt;\\\"> Your request for an adjustment has been received and will be reviewed and applied within the next 48 hours. </span><br><br></p>\\n<table style=\\\"font-family: Arial, Verdana; font-size: 10pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;\\\">\\n<tbody>\\n<tr bgcolor=\\\"#d4d4d4\\\">\\n<td colspan=\\\"2\\\"><b>Your Original Adjustment is as Follows:</b><br><hr align=\\\"center\\\" size=\\\"2\\\" width=\\\"100%\\\"></td>\\n</tr>\\n<tr bgcolor=\\\"#ededed\\\">\\n<td colspan=\\\"2\\\"><br>$value -question(body)$<br><br></td>\\n</tr>\\n</tbody>\\n</table>\\n<p><br><br><span style=\\\"font-family: Arial, Verdana; font-size: 10pt;\\\"> Please to not reply to this message as it is sent from a mailbox that does not accept incoming email. If you need to revise your adjustment, please enter the difference as a new adjustment request using the form below.</span><br><br><a href=\\\"https://fedextraining.iservicecrm.com/app/adjustment/submit/fsadjustment\\\">https://fedextraining.iservicecrm.com/app/adjustment/submit/fsadjustment</a><br><br><span style=\\\"font-family: Arial, Verdana; font-size: 10pt;\\\">Regards,</span><br><br>FedEx Custom Critical Freight Solutions&nbsp;<br>Finance Team</p>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-5",
+    "data": "\"<p>A new adjustment to a customer billing requires your approval. The request has been assigned to you and can be found in your <a href=\\\"https://fedextraining.iservicecrm.com/app/my-message-inbox\\\">My Message Inbox page</a>. Details about the request are listed below.&nbsp;<br><br><br><span style=\\\"font-size: 18px;\\\"><strong>Adjustment Request Detail</strong></span><br>&nbsp;</p>\\n<table border=\\\"1\\\" cellpadding=\\\"5\\\" cellspacing=\\\"1\\\" style=\\\"border: 1px solid #cccccc; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Details</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Requester Name:</strong></td>\\n<td>$value -customer(name)$</td>\\n</tr>\\n<tr>\\n<td><strong>PRO Number:</strong></td>\\n<td>$value -case(property'Pro Number')$</td>\\n</tr>\\n<tr>\\n<td><strong>Delivery Date:</strong></td>\\n<td>$value -case(property'Delivery Date')$</td>\\n</tr>\\n<tr>\\n<td><strong>Email Address:</strong>&nbsp;</td>\\n<td>$value -question(fromemail)$</td>\\n</tr>\\n<tr>\\n<td><strong>Team:</strong></td>\\n<td>$value -case(property'Team')$</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Customer Detail&nbsp;</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Name:</strong></td>\\n<td>$value -case(property'Customer Name')$</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Code:</strong></td>\\n<td>$value -case(property'Customer Code')$</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Adjustment Amount:</strong></td>\\n<td>$value -case(property'Customer Adjustment Amount (AR)')$</td>\\n</tr>\\n<tr>\\n<td><strong>Is this an increase or decrease to billing?</strong></td>\\n<td>$value -case(property'is this an increase or decrease to billing')$</td>\\n</tr>\\n<tr>\\n<td><strong>Reason</strong></td>\\n<td>$value -case(property'Reason')$</td>\\n</tr>\\n<tr>\\n<td><strong>Details from agent:</strong></td>\\n<td>$form -id'prop:adjustment:reason detail for freight adjustment'$</td>\\n</tr>\\n</tbody>\\n</table>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-6",
+    "data": "\"<p><span style=\\\"font-size: 18px;\\\"><strong>Adjustment Request Detail</strong></span><br>&nbsp;</p>\\n<table border=\\\"1\\\" cellpadding=\\\"5\\\" cellspacing=\\\"1\\\" style=\\\"border: 1px solid #cccccc; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Details</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Requester Name:</strong></td>\\n<td>$value -customer(name)$</td>\\n</tr>\\n<tr>\\n<td><strong>PRO Number:</strong></td>\\n<td>$value -case(property'Pro Number')$</td>\\n</tr>\\n<tr>\\n<td><strong>Delivery Date:</strong></td>\\n<td>$value -case(property'Delivery Date')$</td>\\n</tr>\\n<tr>\\n<td><strong>Email Address:</strong>&nbsp;</td>\\n<td>$value -question(fromemail)$</td>\\n</tr>\\n<tr>\\n<td><strong>Team:</strong></td>\\n<td>$value -case(property'Team')$</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Customer Detail&nbsp;</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Name:</strong></td>\\n<td>$value -case(property'Customer Name')$</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Code:</strong></td>\\n<td>$value -case(property'Customer Code')$</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Adjustment Amount:</strong></td>\\n<td>$value -case(property'Customer Adjustment Amount (AR)')$</td>\\n</tr>\\n<tr>\\n<td><strong>Is this an increase or decrease to billing?</strong></td>\\n<td>$value -case(property'is this an increase or decrease to billing')$</td>\\n</tr>\\n<tr>\\n<td><strong>Reason</strong></td>\\n<td>$value -case(property'Reason')$</td>\\n</tr>\\n<tr>\\n<td><strong>Details from agent:</strong></td>\\n<td>$form -id'prop:adjustment:reason detail for freight adjustment'$</td>\\n</tr>\\n</tbody>\\n</table>\\n<p></p>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-7",
+    "data": "\"<p><span style=\\\"font-size: 18px;\\\"><strong>Adjustment Request Detail</strong></span><br>&nbsp;</p>\\n<table border=\\\"1\\\" cellpadding=\\\"5\\\" cellspacing=\\\"1\\\" style=\\\"border: 1px solid #cccccc; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Details</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Requester Name:</strong></td>\\n<td>$value -customer(name)$</td>\\n</tr>\\n<tr>\\n<td><strong>PRO Number:</strong></td>\\n<td>$value -case(property'Pro Number')$</td>\\n</tr>\\n<tr>\\n<td><strong>Delivery Date:</strong></td>\\n<td>$value -case(property'Delivery Date')$</td>\\n</tr>\\n<tr>\\n<td><strong>Email Address:</strong>&nbsp;</td>\\n<td>$value -question(fromemail)$</td>\\n</tr>\\n<tr>\\n<td><strong>Team:</strong></td>\\n<td>$value -case(property'Team')$</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"2\\\">\\n<h3><strong>Customer Detail&nbsp;</strong></h3>\\n</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Name:</strong></td>\\n<td>$value -case(property'Customer Name')$</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Code:</strong></td>\\n<td>$value -case(property'Customer Code')$</td>\\n</tr>\\n<tr>\\n<td><strong>Customer Adjustment Amount:</strong></td>\\n<td>$value -case(property'Customer Adjustment Amount (AR)')$</td>\\n</tr>\\n<tr>\\n<td><strong>Is this an increase or decrease to billing?</strong></td>\\n<td>$value -case(property'is this an increase or decrease to billing')$</td>\\n</tr>\\n<tr>\\n<td><strong>Reason</strong></td>\\n<td>$value -case(property'Reason')$</td>\\n</tr>\\n<tr>\\n<td><strong>Details from agent:</strong></td>\\n<td>$form -id'prop:adjustment:reason detail for freight adjustment'$</td>\\n</tr>\\n</tbody>\\n</table>\\n<p></p>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-8",
+    "data": "\"<p><span style=\\\"font-family: Arial, Verdana; font-size: 10pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;\\\">Dear $value -customer(name)$,</span><br><br><span style=\\\"font-family: Arial, Verdana; font-size: 10pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;\\\"> Your request for an adjustment has been received and will be reviewed and applied within the next 48 hours. </span><br><br></p>\\n<table style=\\\"font-family: Arial, Verdana; font-size: 10pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;\\\">\\n<tbody>\\n<tr bgcolor=\\\"#d4d4d4\\\">\\n<td colspan=\\\"2\\\"><b>Your Original Adjustment is as Follows:</b><br><hr align=\\\"center\\\" size=\\\"2\\\" width=\\\"100%\\\"></td>\\n</tr>\\n<tr bgcolor=\\\"#ededed\\\">\\n<td colspan=\\\"2\\\"><br>$value -question(body)$<br><br></td>\\n</tr>\\n</tbody>\\n</table>\\n<p><br><br><span style=\\\"font-family: Arial, Verdana; font-size: 10pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;\\\"> Please to not reply to this message as it is sent from a mailbox that does not accept incoming email. If you need to revise your adjustment, please enter the difference as a new adjustment request using the form below.</span><br><br><a href=\\\"https://fedextraining.iservicecrm.com/app/adjustment/submit/fsadjustment\\\">https://fedextraining.iservicecrm.com/app/adjustment/submit/fsadjustment</a><br><br><span style=\\\"font-family: Arial, Verdana; font-size: 10pt; font-style: normal; font-variant-ligatures: normal; font-variant-caps: normal; font-weight: normal;\\\">Regards,</span><br><br><span style=\\\"font-family: Arial; font-size: small;\\\">FedEx Custom Critical Freight Solutions&nbsp;<br>Finance Team</span></p>\""
+  },
+  {
+    "skin": "adjustment",
+    "application": "blob",
+    "name": "wf-text-9",
+    "data": "\"Your request for an adjustment was rejected. Details of your request are below.&nbsp;<br /><br />$value -question(quotedbody)$\""
+  }
+]
