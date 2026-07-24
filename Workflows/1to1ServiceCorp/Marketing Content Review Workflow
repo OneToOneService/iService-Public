@@ -1,0 +1,590 @@
+[
+  {
+    "skin": "marketing",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Marketing Content",
+      "description": "This flow will be used to keep the marketing team and track for future releases."
+    }
+  },
+  {
+    "skin": "marketing",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "topic",
+          "topic": "Marketing Content",
+          "inboxUrl": "marketingpipeline",
+          "manageUrl": "fullmarketingpipeline",
+          "inputs": [
+            {
+              "type": "tabs",
+              "inputClass": "col-md-5",
+              "groupClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Marketing Workflow",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button0",
+                          "label": "Review",
+                          "style": "aqua",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Stage",
+                              "propertyValue": "Review"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "calendar",
+                          "noMessage": true,
+                          "greyoutProperty": "Content Stage",
+                          "greyoutValue": "Review"
+                        },
+                        {
+                          "buttonID": "button1",
+                          "label": "Design",
+                          "style": "success",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Stage",
+                              "propertyValue": "Design"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "user",
+                          "noMessage": true,
+                          "greyoutProperty": "Content Stage",
+                          "greyoutValue": "Design"
+                        },
+                        {
+                          "buttonID": "button2",
+                          "label": "Approval",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Stage",
+                              "propertyValue": "Approval"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "bullseye",
+                          "noMessage": true,
+                          "greyoutProperty": "Content Stage",
+                          "greyoutValue": "Approval"
+                        }
+                      ],
+                      "includeCancel": false,
+                      "buttonsStyle": "timeline"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button3",
+                          "label": "Save Changes",
+                          "style": "primary",
+                          "actions": [],
+                          "requiremode": "",
+                          "icon": "save"
+                        },
+                        {
+                          "buttonID": "button4",
+                          "label": "Standard answer panel",
+                          "style": "link",
+                          "actions": [
+                            {
+                              "type": "standard",
+                              "cancelLabel": "Back to workflow"
+                            }
+                          ],
+                          "requiremode": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": "info",
+              "autoBoxTitle": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-7",
+              "tabs": [
+                {
+                  "label": "Initial Review",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Content Stage",
+                  "autoValue": "Review",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><strong>Status at This Stage<br></strong>Copywriting is completed and published to WordPress (where appropriate). The content has not been reviewed yet.&nbsp;</p>\n<p><strong>Action Required</strong>&nbsp;<br>The Editor reviews the copywriting to determine if it is well written, engaging, and relevant to our marketing goals.</p>\n<p><em>Content is usable&nbsp;&nbsp;<br></em>The Editor will make any copywriting changes required in the draft and then assign it for SEO review and additional graphic design.</p>\n<p><em>Content is unusable</em><br>The Editor will document the problem and log an issue into GitHub to fix the marketingbot issue, Click the Reject button to resolve the ticket. &nbsp;<br><strong></strong></p>\n<p data-start=\"640\" data-end=\"657\"><strong></strong></p>",
+                      "htmlID": "html0",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button5",
+                          "label": "Reject Asset",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Status",
+                              "propertyValue": "rejected"
+                            },
+                            {
+                              "type": "setdraft",
+                              "bodyName": "Rejection Details",
+                              "subject": ""
+                            },
+                            {
+                              "type": "saveresolve",
+                              "tag": ""
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        },
+                        {
+                          "buttonID": "button6",
+                          "label": "Forward to Designer",
+                          "style": "success",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Stage",
+                              "propertyValue": "design"
+                            },
+                            {
+                              "type": "reassign",
+                              "toPrevious": false,
+                              "agentInput": "Owner",
+                              "fromRoleName": "Editor"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        },
+                        {
+                          "buttonID": "button7",
+                          "label": "Published",
+                          "style": "aqua",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Status",
+                              "propertyValue": "published"
+                            },
+                            {
+                              "type": "setdraft",
+                              "bodyName": "Published Details",
+                              "subject": ""
+                            },
+                            {
+                              "type": "saveresolve",
+                              "tag": ""
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "",
+                          "greyoutProperty": "Content Stage",
+                          "greyoutValue": ""
+                        },
+                        {
+                          "buttonID": "button8",
+                          "label": "SEO Ready",
+                          "style": "link",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Status",
+                              "propertyValue": "SEO Ready"
+                            }
+                          ],
+                          "requiremode": ""
+                        },
+                        {
+                          "buttonID": "button9",
+                          "label": "SEO Completed",
+                          "style": "link",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Status",
+                              "propertyValue": "SEO Completed"
+                            }
+                          ],
+                          "requiremode": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "inputName": "Owner",
+                      "agentlistName": "Owners"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "vertical",
+                      "propertyName": "Notes",
+                      "placeholder": ""
+                    }
+                  ]
+                },
+                {
+                  "label": "Design",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Content Stage",
+                  "autoValue": "design",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><strong>Status at This Stage<br></strong>The content has been edited for style and SEO.</p>\n<p><strong>Action Required</strong>&nbsp;<br>The Designer reviews editor notes and makes requested changes. Assign to Editor for approval when changes are completed.<strong></strong></p>\n<p data-start=\"640\" data-end=\"657\"><strong></strong></p>",
+                      "htmlID": "html1",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "vertical",
+                      "propertyName": "Notes",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button10",
+                          "label": "Assign back  to Editor",
+                          "style": "success",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Stage",
+                              "propertyValue": "Approval"
+                            },
+                            {
+                              "type": "reassign",
+                              "toPrevious": true,
+                              "toRoleName": "Editor"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": "",
+                          "greyoutProperty": "Content Stage",
+                          "greyoutValue": "Design"
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Approval",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Content Stage",
+                  "autoValue": "Approval",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><strong>Status at This Stage<br></strong>The content is ready for final review and publication.</p>\n<p><strong>Action Required</strong>&nbsp;<br>Review the updated blog to ensure images and layout are good. Then publish the blog in WordPress and resolve this ticket.&nbsp;<strong></strong></p>\n<p data-start=\"640\" data-end=\"657\"><strong></strong></p>",
+                      "htmlID": "html2",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "vertical",
+                      "propertyName": "Notes",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button11",
+                          "label": "Blog Published",
+                          "style": "success",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Content Status",
+                              "propertyValue": "published"
+                            },
+                            {
+                              "type": "saveresolve",
+                              "tag": ""
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": "info",
+              "autoBoxTitle": true
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": " ",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": [
+                    {
+                      "type": "question",
+                      "inputClass": "col-md-12"
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "tabs": []
+            }
+          ]
+        },
+        {
+          "type": "inbox",
+          "enabled": true,
+          "url": "marketingpipeline",
+          "label": "My Marketing Pipeline",
+          "icon": "bullhorn",
+          "segmentName": "Marketing",
+          "inputs": []
+        },
+        {
+          "type": "manage",
+          "enabled": true,
+          "url": "fullmarketingpipeline",
+          "label": "Manage Marketing Pipeline",
+          "icon": "bullhorn",
+          "inputs": []
+        }
+      ]
+    }
+  },
+  {
+    "skin": "marketing",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Content Stage": "def",
+        "Content Status": "def",
+        "Notes": "def"
+      },
+      "defs": {
+        "Content Stage": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "actionOnly": true,
+          "fieldWidth": ""
+        },
+        "Content Status": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "actionOnly": true,
+          "fieldWidth": ""
+        },
+        "Notes": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "marketing",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "Published Details": {
+        "name": "Published Details",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Rejection Details": {
+        "name": "Rejection Details",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      }
+    }
+  },
+  {
+    "skin": "marketing",
+    "application": "workflow",
+    "name": "datas",
+    "data": {
+      "One Time Charges": {
+        "name": "One Time Charges",
+        "dataID": "wf-data-0",
+        "def": {
+          "type": "text",
+          "purpose": "case",
+          "fieldName": "Item",
+          "fieldWidth": "",
+          "subFields": [
+            {
+              "type": "text",
+              "fieldName": "Unit",
+              "fieldWidth": ""
+            },
+            {
+              "type": "number",
+              "fieldName": "Price",
+              "fieldWidth": "",
+              "isNotnegative": false
+            }
+          ]
+        }
+      },
+      "Monthly Recurring Charges": {
+        "name": "Monthly Recurring Charges",
+        "dataID": "wf-data-1",
+        "def": {
+          "type": "text",
+          "purpose": "case",
+          "fieldName": "Item",
+          "fieldWidth": "",
+          "subFields": [
+            {
+              "type": "text",
+              "fieldName": "Unit",
+              "fieldWidth": ""
+            },
+            {
+              "type": "number",
+              "fieldName": "Price",
+              "fieldWidth": "",
+              "isNotnegative": false
+            }
+          ]
+        }
+      }
+    }
+  },
+  {
+    "skin": "marketing",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<div>\\n<div><strong>Publication Details</strong></div>\\n<div></div>\\n<div>This copywriting asset was published. Any notes are listed below.&nbsp;</div>\\n<div></div>\\n<div>$value -case(property'marketing:Notes')$</div>\\n</div>\""
+  },
+  {
+    "skin": "marketing",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<div><strong>Rejection Details</strong></div>\\n<div></div>\\n<div>This copywriting asset was rejected for the following reasons.</div>\\n<div></div>\\n<div>$value -case(property'marketing:Notes')$</div>\\n<div></div>\\n<div></div>\""
+  },
+  {
+    "skin": "marketing",
+    "application": "data",
+    "name": "wf-data-0",
+    "data": [
+      {
+        "Item": "Professional Services (level 1)",
+        "Unit": "Hour",
+        "Price": 150
+      },
+      {
+        "Item": "Professional Services. (level 2)",
+        "Unit": "Hour",
+        "Price": 175
+      },
+      {
+        "Item": "Professional Services (level 3)",
+        "Unit": "Hour",
+        "Price": 200
+      },
+      {
+        "Item": "Professional Services Flat Rate",
+        "Unit": "Total",
+        "Price": 1
+      },
+      {
+        "Item": "iService Setup and Training Fee",
+        "Unit": "Per Installation",
+        "Price": 2500
+      }
+    ]
+  },
+  {
+    "skin": "marketing",
+    "application": "data",
+    "name": "wf-data-1",
+    "data": [
+      {
+        "Item": "iService Agents (First 10)",
+        "Unit": "Per Agent",
+        "Price": 109
+      },
+      {
+        "Item": "iService Agents (11 to 25)",
+        "Unit": "Per Agent",
+        "Price": 94
+      },
+      {
+        "Item": "iService Agents (26 to 50)",
+        "Unit": "Per Agent",
+        "Price": 72
+      },
+      {
+        "Item": "iService Agents (Over 50)",
+        "Unit": "Per Agent",
+        "Price": 50
+      }
+    ]
+  }
+]
