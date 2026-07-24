@@ -1,0 +1,143 @@
+[
+  {
+    "skin": "accounttransfer",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Account Transfer Workflow for FS",
+      "description": ""
+    }
+  },
+  {
+    "skin": "accounttransfer",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "accounttransfer",
+          "label": "Account Transfer",
+          "icon": "mail-forward",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-9",
+              "groupClass": "col-md-12",
+              "html": "<p><span>Submit this form to distribute an account through the pinwheel routing queue. Enter the details about the account below. iService will send a notification to the assigned agent and provide 1 business day for them to accept the offer.</span></p>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-6",
+              "labelStyle": "horizontal",
+              "propertyName": "Company Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Account ID",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Department",
+              "placeholder": ""
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Submit Transfer",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "property",
+                      "topicProperty": "Department",
+                      "subjecttype": "preset",
+                      "subject": "ID: $form -id'prop:accounttransfer:account id'$ | Company : $form -id'prop:accounttransfer:company name'$",
+                      "bodytype": "preset",
+                      "bodyName": "Account Transfer Agent Submit",
+                      "tag": "",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "accounttransfer",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Account ID": "def",
+        "Company Name": "def",
+        "Department": "def"
+      },
+      "defs": {
+        "Account ID": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Company Name": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Department": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "ADS",
+            "Sales Specialist"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "accounttransfer",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "Account Transfer Agent Submit": {
+        "name": "Account Transfer Agent Submit",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      }
+    }
+  },
+  {
+    "skin": "accounttransfer",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<h2>This is a transfer request for the following account.</h2>\\n<p><strong>Company Name</strong>: &nbsp;$value -case(property'accounttransfer:Company Name')$<br><strong>Account ID</strong>: &nbsp;$value -case(property'accounttransfer:Account ID')$<br><strong>Department</strong>: &nbsp;$value -case(property'accounttransfer:Department')$</p>\""
+  }
+]
