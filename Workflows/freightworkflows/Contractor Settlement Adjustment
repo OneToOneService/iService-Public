@@ -1,0 +1,1076 @@
+[
+  {
+    "skin": "csf",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Contractor Settlement Adjustment",
+      "description": ""
+    }
+  },
+  {
+    "skin": "csf",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "adjustment",
+          "label": "Contractor Settlement Adjustment",
+          "icon": "truck",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p>Please complete this form for every owner operator payment or transaction.<br><span style=\"text-decoration: underline;\"><strong><br><span style=\"color: rgb(224, 62, 45); text-decoration: underline;\">Reminders:</span></strong></span><br>&nbsp;<strong> &nbsp; &nbsp; &nbsp;1. Enter the details for the owner. All correspondence will be sent to them directly.<br>&nbsp; &nbsp; &nbsp; &nbsp;2. Please confirm Truck ID is affiliated with the Fleet ID</strong><br><strong>&nbsp; &nbsp; &nbsp; &nbsp;3. Use the letter O or the number 0 when applicable, they are not interchangeable</strong></p>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Truck ID",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "propertyName": "Fleet ID",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "propertyName": "PRO Number",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "contactPropName": "Owner First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "contactPropName": "Owner last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "inputName": "Owner Email",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Choose a Settlement Type",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Amount",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Express Code",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Reason for settlement",
+              "placeholder": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-8",
+              "html": "<p><span style=\"color: rgb(224, 62, 45);\"><strong>A receipt must be uploaded when selecting REIMBURSEMENT for EQUIPMENT.&nbsp;<br><br></strong></span></p>",
+              "htmlID": "html1",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "html": "<p><span style=\"text-decoration: underline;\"><strong>MUST</strong></span> enter what type of equip. was bought when selecting REIMBURSEMENT for EQUIPMENT (bars, straps, pads, etc.)<br>If using Run Pay Adjustment, you must enter the reason for the adjustment.</p>",
+              "htmlID": "html2",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "Details",
+              "placeholder": ""
+            },
+            {
+              "type": "uploads",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12"
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "No approver",
+                  "icon": "",
+                  "autoType": "empty",
+                  "autoProperty": "Amount",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "Enter an amount to determine the required approver. ",
+                      "htmlID": "html3",
+                      "editorStyle": "raw"
+                    }
+                  ]
+                },
+                {
+                  "label": "Approvers <$5,000",
+                  "icon": "",
+                  "autoType": "num<",
+                  "autoProperty": "Amount",
+                  "autoValue": "5000",
+                  "inputs": [
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-6",
+                      "labelStyle": "vertical",
+                      "inputName": "Select tier 1 approver",
+                      "agentlistName": "Tier1"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><span style=\"color: rgb(224, 62, 45);\"><strong>Do not select yourself as an approver because you will not be allowed to approve your own request.</strong></span></p>",
+                      "htmlID": "html4",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button0",
+                          "label": "Submit",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "contactprops",
+                              "destEmail": "Owner Email"
+                            },
+                            {
+                              "type": "agentticket",
+                              "agentInput": "Select tier 1 approver",
+                              "destEmail": "Owner Email",
+                              "topictype": "preset",
+                              "topicName": "Pending Approval",
+                              "subjecttype": "preset",
+                              "subject": "Contractor Settlement - $form -id'prop:csf:PRO Number'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Adjustment Ticket",
+                              "tag": "csf",
+                              "resultName": "ticket"
+                            },
+                            {
+                              "type": "emailtosubmitter",
+                              "topictype": "preset",
+                              "topicName": "Pending Approval",
+                              "subjecttype": "preset",
+                              "subject": "Your request for a contractor adjustment was received",
+                              "bodytype": "preset",
+                              "bodyName": "Acknowledgement to submitter",
+                              "tag": "csf",
+                              "mailboxName": "",
+                              "resultName": "",
+                              "suppressRef": false
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Approvers $5,000 to $25,000",
+                  "icon": "",
+                  "autoType": "num<",
+                  "autoProperty": "Amount",
+                  "autoValue": "25000",
+                  "inputs": [
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-6",
+                      "labelStyle": "horizontal",
+                      "inputName": "Select tier 2 approver",
+                      "agentlistName": "Tier2"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><span style=\"color: rgb(224, 62, 45);\"><strong>Do not select yourself as an approver because you will not be allowed to approve your own request.</strong></span></p>",
+                      "htmlID": "html5",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button1",
+                          "label": "Submit",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "contactprops",
+                              "destEmail": "Owner Email"
+                            },
+                            {
+                              "type": "agentticket",
+                              "agentInput": "Select tier 2 approver",
+                              "destEmail": "Owner Email",
+                              "topictype": "preset",
+                              "topicName": "Pending Approval",
+                              "subjecttype": "preset",
+                              "subject": "Contractor Settlement - $form -id'prop:csf:PRO Number'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Adjustment Ticket",
+                              "tag": "csf",
+                              "resultName": ""
+                            },
+                            {
+                              "type": "emailtosubmitter",
+                              "topictype": "preset",
+                              "topicName": "Pending Approval",
+                              "subjecttype": "preset",
+                              "subject": "Your request for a contractor adjustment was received",
+                              "bodytype": "preset",
+                              "bodyName": "Acknowledgement to submitter",
+                              "tag": "csf",
+                              "mailboxName": "",
+                              "resultName": "",
+                              "suppressRef": false
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Approvers >$25,000",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": [
+                    {
+                      "type": "agentpick",
+                      "inputClass": "col-md-6",
+                      "labelStyle": "horizontal",
+                      "inputName": "Select tier 3 approver",
+                      "agentlistName": "Tier3"
+                    },
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p><span style=\"color: rgb(224, 62, 45);\"><strong>Do not select yourself as an approver because you will not be allowed to approve your own request.</strong></span></p>",
+                      "htmlID": "html6",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button2",
+                          "label": "Submit",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "contactprops",
+                              "destEmail": "Owner Email"
+                            },
+                            {
+                              "type": "agentticket",
+                              "agentInput": "Select tier 3 approver",
+                              "destEmail": "Owner Email",
+                              "topictype": "preset",
+                              "topicName": "Pending Approval",
+                              "subjecttype": "preset",
+                              "subject": "Contractor Settlement - $form -id'prop:csf:PRO Number'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Adjustment Ticket",
+                              "tag": "csf",
+                              "resultName": ""
+                            },
+                            {
+                              "type": "emailtosubmitter",
+                              "topictype": "preset",
+                              "topicName": "Pending Approval",
+                              "subjecttype": "preset",
+                              "subject": "Your request for a contractor adjustment was received",
+                              "bodytype": "preset",
+                              "bodyName": "Acknowledgement to submitter",
+                              "tag": "csf",
+                              "mailboxName": "",
+                              "resultName": "",
+                              "suppressRef": false
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Pending Approval",
+          "tag": "csf",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button3",
+                  "label": "Approve settlement",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Approved"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Approval Disposition",
+                      "propertyValue": "Approved"
+                    },
+                    {
+                      "type": "sign",
+                      "propertyName": "Agent Approval",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "Owner Email",
+                      "recipient": "submitter",
+                      "subject": "Your adjustment request was approved",
+                      "bodyName": "Approval Notification",
+                      "tag": "csf",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button4",
+                  "label": "Reject Settlement",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Approval Disposition",
+                      "propertyValue": "Rejected"
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "Requester Email Address",
+                      "recipient": "submitter",
+                      "subject": "Your request for adjustment has been rejected",
+                      "bodyName": "Rejection Notice",
+                      "tag": "csf",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "saveresolve",
+                      "tag": "csf"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "close"
+                },
+                {
+                  "buttonID": "button5",
+                  "label": "Show standard answer panel",
+                  "style": "link",
+                  "actions": [
+                    {
+                      "type": "standard",
+                      "cancelLabel": "Back to approval panel"
+                    }
+                  ],
+                  "requiremode": ""
+                }
+              ],
+              "includeCancel": false
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Adjustment Details",
+                  "icon": "ticket",
+                  "inputs": [
+                    {
+                      "type": "toaddresses",
+                      "inputClass": "col-md-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "inputName": "Owner Email",
+                      "addressFilter": "Email"
+                    },
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-6",
+                      "groupClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Reason for Rejection",
+                      "placeholder": ""
+                    }
+                  ]
+                },
+                {
+                  "label": "Reassign to another agent",
+                  "icon": "",
+                  "inputs": [
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "No value",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "Amount",
+                          "inputs": [
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": "There is no value set for the amount of the adjustment.",
+                              "htmlID": "html7",
+                              "editorStyle": "raw"
+                            }
+                          ]
+                        },
+                        {
+                          "label": "Tier1",
+                          "icon": "",
+                          "autoType": "num<",
+                          "autoProperty": "Amount",
+                          "autoValue": "5000",
+                          "inputs": [
+                            {
+                              "type": "agentpick",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "inputName": "Select tier 1 approver",
+                              "agentlistName": "Tier1"
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button6",
+                                  "label": "Reassign to the selected approver",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "reassign",
+                                      "toPrevious": false,
+                                      "agentInput": "Select tier 1 approver"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        },
+                        {
+                          "label": "Tier2",
+                          "icon": "",
+                          "autoType": "num<",
+                          "autoProperty": "Amount",
+                          "autoValue": "25000",
+                          "inputs": [
+                            {
+                              "type": "agentpick",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "inputName": "Select tier 2 approver",
+                              "agentlistName": "Tier2"
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button7",
+                                  "label": "Reassign to the selected approver",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "reassign",
+                                      "toPrevious": false,
+                                      "agentInput": "Select tier 2 approver"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        },
+                        {
+                          "label": "Tier3",
+                          "icon": "",
+                          "autoType": "always",
+                          "inputs": [
+                            {
+                              "type": "agentpick",
+                              "inputClass": "col-md-12",
+                              "labelStyle": "horizontal",
+                              "inputName": "Select tier 3 approver",
+                              "agentlistName": "Tier3"
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button8",
+                                  "label": "Reassign to the selected approver",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "reassign",
+                                      "toPrevious": false,
+                                      "agentInput": "Select tier 3 approver"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "question",
+              "inputClass": "col-md-12"
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "approved",
+          "tag": "csf",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button9",
+                  "label": "A30",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "propertyName": "deduction code",
+                      "propertyValue": "A30"
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "Owner Email",
+                      "recipient": "submitter",
+                      "subject": "Your adjustment has been processed",
+                      "bodyName": "completed adjustment to submitter",
+                      "tag": "csf",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "completed adjustment",
+                      "subject": "Your adjustment has been processed"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Owner Email",
+                      "recipient": "customer",
+                      "tag": "csf",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button10",
+                  "label": "A55",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "propertyName": "deduction code",
+                      "propertyValue": "A55"
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "Owner Email",
+                      "recipient": "submitter",
+                      "subject": "Your adjustment has been processed",
+                      "bodyName": "completed adjustment to submitter",
+                      "tag": "csf",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "completed adjustment",
+                      "subject": "Your adjustment has been processed"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Owner Email",
+                      "recipient": "customer",
+                      "tag": "csf",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button11",
+                  "label": "F14",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "propertyName": "deduction code",
+                      "propertyValue": "F14"
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "Owner Email",
+                      "recipient": "submitter",
+                      "subject": "Your adjustment has been processed",
+                      "bodyName": "completed adjustment to submitter",
+                      "tag": "csf",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "completed adjustment",
+                      "subject": "Your adjustment has been processed"
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Owner Email",
+                      "recipient": "customer",
+                      "tag": "csf",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button12",
+                  "label": "OTH9",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "propertyName": "deduction code",
+                      "propertyValue": "OTH9"
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "",
+                      "recipient": "submitter",
+                      "subject": "Your adjustment has been processed.",
+                      "bodyName": "completed adjustment to submitter",
+                      "tag": "csf",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "setdraft",
+                      "bodyName": "completed adjustment",
+                      "subject": "Your adjustment has been processed."
+                    },
+                    {
+                      "type": "sendresolve",
+                      "toInput": "Owner Email",
+                      "recipient": "customer",
+                      "tag": "csf",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button13",
+                  "label": "Decline",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "topic",
+                      "topicName": "Pending Approval"
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "Owner Email",
+                      "recipient": "submitter",
+                      "subject": "Your adjustment has been declined by Finance",
+                      "bodyName": "Declined Notice",
+                      "tag": "csf",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "saveresolve",
+                      "tag": "csf"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "close"
+                },
+                {
+                  "buttonID": "button14",
+                  "label": "Email Agent",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "Submitter additional info request",
+                      "subject": "Need Additional Information for your request for $form -id'prop:csf:PRO Number'$"
+                    },
+                    {
+                      "type": "sendleaveopen",
+                      "toInput": "",
+                      "recipient": "submitter",
+                      "tag": "csf",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><strong><span style=\"color: rgb(224, 62, 45);\">NOTE: Please fill in the \"Request Additional Information\" field before using the Email Agent button.</span></strong></p>",
+              "htmlID": "html8",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Reason for decline",
+              "placeholder": ""
+            },
+            {
+              "type": "toaddresses",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "Owner Email",
+              "addressFilter": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "Request Additional Information",
+              "placeholder": ""
+            },
+            {
+              "type": "question",
+              "inputClass": "col-md-12"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "csf",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Agent Approval": "",
+        "Amount": "def",
+        "Approval Disposition": "def",
+        "Choose a Settlement Type": "def",
+        "deduction code": "def",
+        "Details": "def",
+        "Express Code": "def",
+        "Fleet ID": "def",
+        "PRO Number": "def",
+        "Reason for decline": "def",
+        "Reason for Rejection": "def",
+        "Reason for settlement": "def",
+        "Request Additional Information": "",
+        "Truck ID": "def"
+      },
+      "defs": {
+        "Amount": {
+          "type": "number",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": "",
+          "isNotnegative": false
+        },
+        "Approval Disposition": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Choose a Settlement Type": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Pay to owner",
+            "Deduct from owner"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "deduction code": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Details": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Express Code": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Fleet ID": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "PRO Number": {
+          "type": "number",
+          "purpose": "case",
+          "indexed": true,
+          "onlyUnique": true,
+          "fieldWidth": "",
+          "isNotnegative": false
+        },
+        "Reason for decline": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Reason for Rejection": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Reason for settlement": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Lost EFS Card",
+            "Fuel for Pickup",
+            "Fuel for delivery",
+            "Repairs to truck",
+            "Repairs to trailer",
+            "Towing",
+            "Reim. Equip.",
+            "Detention adjustment",
+            "Run Pay Adjustment",
+            "Reimbursement for Equipment"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Truck ID": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "csf",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "Acknowledgement to submitter": {
+        "name": "Acknowledgement to submitter",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Adjustment Ticket": {
+        "name": "Adjustment Ticket",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      },
+      "Approval Notification": {
+        "name": "Approval Notification",
+        "type": "rich",
+        "blobID": "wf-text-2"
+      },
+      "completed adjustment": {
+        "name": "completed adjustment",
+        "type": "rich",
+        "blobID": "wf-text-3"
+      },
+      "completed adjustment to submitter": {
+        "name": "completed adjustment to submitter",
+        "type": "rich",
+        "blobID": "wf-text-4"
+      },
+      "Declined Notice": {
+        "name": "Declined Notice",
+        "type": "rich",
+        "blobID": "wf-text-5"
+      },
+      "Rejection Notice": {
+        "name": "Rejection Notice",
+        "type": "rich",
+        "blobID": "wf-text-6"
+      },
+      "Submitter additional info request": {
+        "name": "Submitter additional info request",
+        "type": "rich",
+        "blobID": "wf-text-7"
+      }
+    }
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<p>Dear $value -loggedin(name)$,<br><br>We've received your request for an adjustment which is detailed below.<br><br><strong>Your original request is below:</strong><br>$value -question(quotedbody)$<br><br>You will be notified when the request is approved or rejected.<br><br>Regards,<br><br>FedEx Custom Critical</p>\""
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<h1>Contractor Settlement Adjustment Request</h1>\\n<p>The following adjustment request has been submitted by <strong>$value -loggedin(name)$</strong>.<br><br><strong>Owner Details</strong><br>Owner Name: $value -customer(firstname)$ $value -customer(lastname)$&nbsp;<br>Owner Email: $value -customer(email)$&nbsp;<br><br><strong>Adjustment Details</strong><br>Truck ID: $form -id'prop:csf:Truck ID'$<br>Fleet ID: $form -id'prop:csf:Fleet ID'$<br>PRO #: $form -id'prop:csf:PRO Number'$<br>Settlement Type: $form -id'prop:csf:Choose a Settlement Type'$<br>Amount: $form -id'prop:csf:amount'$<br>Express Code: $form -id'prop:csf:Express Code'$<br>Reason for Settlement: $form -id'prop:csf:reason for Settlement'$<br><br>Details: $form -id'prop:csf:Details'$<br><br><br></p>\""
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-2",
+    "data": "\"<p>Dear $value -question(submittedbyname)$,<br><br>Your requested adjustment below was approved by $value -question(modifiedbyname)$.<br><br><strong>Your original request is below:</strong><br>$value -question(quotedbody)$<br><br>Regards,<br><br>FedEx Custom Critical</p>\""
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-3",
+    "data": "\"<p>Dear $value -question(customername)$,<br><br>Your requested adjustment below has been processed. This adjustment will appear on your next settlement statement.<br><br><strong>Your original request is below:</strong><br>$value -question(quotedbody)$<br><br>Regards,<br><br>FedEx Custom Critical</p>\""
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-4",
+    "data": "\"<p>Dear $value -question(submittedbyname)$,<br><br>Your requested adjustment below has been processed. This adjustment will appear on the Owner's next settlement statement.&nbsp;<br><br><strong>Your original request is below:</strong><br>$value -question(quotedbody)$<br><br>Regards,<br><br>FedEx Custom Critical</p>\""
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-5",
+    "data": "\"<p>Dear $value -question(customername)$,<br><br>Your requested adjustment below has been declined by $value -question(modifiedbyname)$. If Finance provided a reason for declining this adjustment, it is shown below.<br><br><strong>Reason for Decline:</strong><br>$form -id'prop:csf:Reason for Decline'$<br><br><strong>Your original request is below:</strong><br>$value -question(quotedbody)$<br><br>Regards,<br><br>FedEx Custom Critical</p>\""
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-6",
+    "data": "\"<p>Dear $value -question(customername)$,<br><br>Your requested adjustment below was rejected by $value -question(modifiedbyname)$. If the approver provided a reason for the rejection, it is shown below.<br><br><strong>Reason for rejection:</strong><br>$form -id'prop:csf:Reason for Rejection'$<br><br><strong>Your original request is below:</strong><br>$value -question(quotedbody)$<br><br>Regards,<br><br>FedEx Custom Critical</p>\""
+  },
+  {
+    "skin": "csf",
+    "application": "blob",
+    "name": "wf-text-7",
+    "data": "\"<p>Dear $value -question(submittedbyname)$,<br><br>We need additional information to process your request. Please see the comments below:<br><br><br>$value -case(property'Request Additional Information')$<br><br><br><strong>Your original request is below:</strong><br>$value -question(quotedbody)$<br><br>Regards,<br><br>FedEx Custom Critical</p>\""
+  }
+]
