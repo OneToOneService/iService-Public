@@ -1,0 +1,3175 @@
+[
+  {
+    "skin": "task",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Task Request Automation",
+      "description": "A workflow to manage customer task requests"
+    }
+  },
+  {
+    "skin": "task",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagged",
+          "tag": "taskrequest",
+          "inboxUrl": "mytasks",
+          "manageUrl": "managetasks",
+          "eventStartProperty": "Due Date",
+          "eventEndProperty": "Due Date",
+          "inputs": [
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "inputClassFixed": "col-12",
+              "tabs": [
+                {
+                  "label": "Row 1 Container",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": [
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Task Updates",
+                          "icon": "asterisk",
+                          "autoType": "notempty",
+                          "autoProperty": "Task Updated",
+                          "inputs": [
+                            {
+                              "type": "statichtml",
+                              "inputClass": "col-md-12",
+                              "html": "<div><strong><span style=\"font-size: 14pt; color: #e03e2d;\">This Task Request was updated by the Requester. Please see the details in the \"Task Updates\" section</span></strong></div>",
+                              "htmlID": "html0",
+                              "editorStyle": "editor"
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Task Stages",
+                          "icon": "arrows-h",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button0",
+                                  "label": "Review Request",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Review Request"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "search",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Review Request"
+                                },
+                                {
+                                  "buttonID": "button1",
+                                  "label": "Estimate Hours",
+                                  "style": "aqua",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Estimate Hours"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "hourglass-1",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Estimate Hours"
+                                },
+                                {
+                                  "buttonID": "button2",
+                                  "label": "Estimate Cost",
+                                  "style": "success",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Estimate Cost"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "dollar",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Estimate Cost"
+                                },
+                                {
+                                  "buttonID": "button3",
+                                  "label": "Quote Approval",
+                                  "style": "aqua",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Quote Approval"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "dollar",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Quote Approval"
+                                },
+                                {
+                                  "buttonID": "button4",
+                                  "label": "Programming",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Programming"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "code",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Programming"
+                                },
+                                {
+                                  "buttonID": "button5",
+                                  "label": "Proof Required",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Proof Required"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "camera",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Proof Required"
+                                },
+                                {
+                                  "buttonID": "button6",
+                                  "label": "Peer Review",
+                                  "style": "aqua",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Peer Review"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "book",
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Peer Review"
+                                },
+                                {
+                                  "buttonID": "button7",
+                                  "label": "Proof Approval",
+                                  "style": "success",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "Proof Approval"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "check",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Proof Approval"
+                                },
+                                {
+                                  "buttonID": "button8",
+                                  "label": "App Release",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Task Stage",
+                                      "propertyValue": "App Release"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "folder-open-o",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "App Release"
+                                },
+                                {
+                                  "buttonID": "button9",
+                                  "label": "Ready to Close",
+                                  "style": "danger",
+                                  "actions": [],
+                                  "requiremode": "",
+                                  "icon": "close",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Task Stage",
+                                  "greyoutValue": "Ready to Close"
+                                },
+                                {
+                                  "buttonID": "button10",
+                                  "label": "Reassign",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Reassign",
+                                      "propertyValue": "Yes"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": "mail-forward",
+                                  "noMessage": true,
+                                  "greyoutProperty": "Reassign",
+                                  "greyoutValue": "Yes"
+                                }
+                              ],
+                              "includeCancel": false,
+                              "buttonsStyle": "timeline"
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button11",
+                                  "label": "Exit workflow",
+                                  "style": "link",
+                                  "actions": [
+                                    {
+                                      "type": "standard",
+                                      "cancelLabel": "Back to workflow view"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "noMessage": true
+                                }
+                              ],
+                              "includeCancel": false
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-12",
+                              "tabs": [
+                                {
+                                  "label": "Reassign Notes",
+                                  "icon": "",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Reassigned",
+                                  "autoValue": "Yes",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><span style=\"text-decoration: underline; color: #e03e2d;\"><strong><span style=\"font-size: 12pt;\">NOTE:</span></strong></span></div>\n<div><span style=\"font-size: 12pt;\">This task Request was reassigned to you.&nbsp;Please see the notes below from the previous participant:</span></div>\n<div><span style=\"font-size: 12pt;\"></span></div>\n<div><strong><span style=\"font-size: 12pt;\">Reassign Notes:</span></strong></div>\n<div><span style=\"font-size: 12pt;\"></span></div>\n<div><span style=\"font-size: 12pt;\">$value -case(property'task:Reassign Notes')$</span></div>\n<div></div>\n<div></div>",
+                                      "htmlID": "html1",
+                                      "editorStyle": "editor"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-12",
+                              "tabs": [
+                                {
+                                  "label": "Reassign",
+                                  "icon": "mail-forward",
+                                  "autoType": "text=",
+                                  "autoProperty": "Reassign",
+                                  "autoValue": "Yes",
+                                  "inputs": [
+                                    {
+                                      "type": "agentpick",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Select Agent",
+                                      "agentlistName": "All Agents"
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "propertyName": "Reassign Notes",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button12",
+                                          "label": "Assign",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Reassign",
+                                              "propertyValue": "No"
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": false,
+                                              "agentInput": "Select Agent"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Reassigned",
+                                              "propertyValue": "Yes"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "check"
+                                        },
+                                        {
+                                          "buttonID": "button13",
+                                          "label": "Cancel",
+                                          "style": "danger",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Reassign",
+                                              "propertyValue": "No"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "close"
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            }
+                          ]
+                        },
+                        {
+                          "label": "Task Details",
+                          "icon": "question",
+                          "inputs": [
+                            {
+                              "type": "question",
+                              "inputClass": "col-md-12"
+                            },
+                            {
+                              "type": "attachments",
+                              "inputClass": "col-md-12"
+                            }
+                          ]
+                        },
+                        {
+                          "label": "Task Updates",
+                          "icon": "asterisk",
+                          "inputs": [
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-12",
+                              "tabs": [
+                                {
+                                  "label": "Hide Button when clicked",
+                                  "icon": "",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Updates Needed",
+                                  "autoValue": "No",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button14",
+                                          "label": "Make Updates to Task",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Updates Needed",
+                                              "propertyValue": "Yes"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "cogs",
+                                          "noMessage": true
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-12",
+                              "tabs": [
+                                {
+                                  "label": "Task Updates",
+                                  "icon": "",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Updates Needed",
+                                  "autoValue": "Yes",
+                                  "inputs": [
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "vertical",
+                                      "propertyName": "Task Updates",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "uploads",
+                                      "inputClass": "col-md-12"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button15",
+                                          "label": "Update Task Request",
+                                          "style": "success",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Updated",
+                                              "propertyValue": "Yes"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Updates Needed",
+                                              "propertyValue": "No"
+                                            }
+                                          ],
+                                          "requiremode": "some",
+                                          "icon": "check-square",
+                                          "requireValues": [
+                                            "Task Updates"
+                                          ]
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-12",
+                              "tabs": [
+                                {
+                                  "label": "Yes",
+                                  "icon": "",
+                                  "autoType": "notempty",
+                                  "autoProperty": "Task Updated",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><span style=\"font-size: 14pt;\">This Task Request has been updated by the Requester. Please see the details below:</span></div>\n<div><span style=\"color: #000000;\"><strong><span style=\"font-size: 14pt;\">&nbsp;</span></strong></span></div>\n<div><span style=\"color: #000000;\"><strong><span style=\"font-size: 14pt;\">$value -case(property'Task Updates')$</span></strong></span></div>",
+                                      "htmlID": "html2",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "attachments",
+                                      "inputClass": "col-md-12"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            }
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Row 2 Container",
+                          "icon": "",
+                          "autoType": "always",
+                          "inputs": [
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-4",
+                              "tabs": [
+                                {
+                                  "label": "Customer Details",
+                                  "icon": "list",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div>\n<p><strong>Task Description</strong><br>$value -case(property'task:Task Description')$</p>\n<p style=\"text-decoration: underline; font-size: 12pt;\"><strong>Customer Details</strong></p>\n<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse: collapse; font-family: Arial; font-size: 12pt;\">\n<tbody>\n<tr style=\"background-color: #f2f2f2;\">\n<td style=\"font-weight: bold; width: 45%;\">Company Name</td>\n<td style=\"font-weight: normal; width: 55%;\">$value -customer(company)$</td>\n</tr>\n<tr style=\"background-color: #ffffff;\">\n<td style=\"font-weight: bold; width: 45%;\">Linked Account Name</td>\n<td style=\"font-weight: normal; width: 55%;\">$value -customer(accountname)$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2;\">\n<td style=\"font-weight: bold;\">Contact First Name</td>\n<td style=\"font-weight: normal;\">$value -customer(firstname)$</td>\n</tr>\n<tr style=\"background-color: #ffffff;\">\n<td style=\"font-weight: bold;\">Contact Last Name</td>\n<td style=\"font-weight: normal;\">$value -customer(lastname)$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2;\">\n<td style=\"font-weight: bold;\">Contact Email</td>\n<td style=\"font-weight: normal;\">$value -customer(email)$</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-decoration: underline; font-size: 12pt;\"><strong><br>Task Details</strong></p>\n<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse: collapse; font-family: Arial; font-size: 12pt; height: 662.594px;\">\n<tbody>\n<tr style=\"background-color: #ffffff; height: 61.7812px;\">\n<td style=\"font-weight: bold;\">Type of Request</td>\n<td style=\"font-weight: normal;\">$value -case(property'Type of Request')$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2; height: 61.7812px;\">\n<td style=\"font-weight: bold;\">Due Date</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Due Date')$</td>\n</tr>\n<tr style=\"background-color: #ffffff; height: 84.1719px;\">\n<td style=\"font-weight: bold;\">Scheduled Mail Date</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Scheduled Mail Date')$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2; height: 61.7812px;\">\n<td style=\"font-weight: bold;\">Frequency</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Frequency')$</td>\n</tr>\n<tr style=\"background-color: #ffffff; height: 84.1719px;\">\n<td style=\"font-weight: bold;\">Frequency Date Range</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Frequency Date Range')$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2; height: 61.7812px;\">\n<td style=\"font-weight: bold;\">Delivery Method</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Delivery Method')$</td>\n</tr>\n<tr style=\"background-color: #ffffff; height: 61.7812px;\">\n<td style=\"font-weight: bold;\">Data Type</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Data Type')$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2; height: 61.7812px;\">\n<td style=\"font-weight: bold;\">Print Engine</td>\n<td style=\"font-weight: normal;\">$value -case(property'Print Engine')$</td>\n</tr>\n<tr style=\"background-color: #ffffff; height: 84.1719px;\">\n<td style=\"font-weight: bold;\">Submitter ID</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Submitter ID')$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2; height: 61.7812px;\">\n<td style=\"font-weight: bold;\">Proof Processing (if requested)</td>\n<td style=\"font-weight: normal;\">$value -case(property'proof processing')$</td>\n</tr>\n</tbody>\n</table>\n<p style=\"text-decoration: underline; font-size: 12pt;\"><strong><br>Options</strong></p>\n<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse: collapse; font-family: Arial; font-size: 12pt;\">\n<tbody>\n<tr style=\"background-color: #ffffff;\">\n<td style=\"font-weight: bold;\">Chargeable to Customer</td>\n<td style=\"font-weight: normal;\">$value -case(property'task:Chargeable to customer')$</td>\n</tr>\n<tr style=\"background-color: #f2f2f2;\">\n<td style=\"font-weight: bold;\">Proof Requested</td>\n<td style=\"font-weight: normal;\">\n<div>$value -case(property'task:Proof Requested')$</div>\n</td>\n</tr>\n<tr>\n<td style=\"font-weight: bold;\">Peer Review Required</td>\n<td style=\"font-weight: normal;\">\n<div>$value -case(property'task:Peer Review Required')$</div>\n</td>\n</tr>\n</tbody>\n</table>\n<div><strong></strong></div>\n</div>",
+                                      "htmlID": "html3",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html4",
+                                      "editorStyle": "raw"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Task Actions",
+                                  "icon": "tasks",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button16",
+                                          "label": "Email Customer",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "showemail",
+                                              "cancelLabel": "Cancel"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "send"
+                                        },
+                                        {
+                                          "buttonID": "button17",
+                                          "label": "Add Note",
+                                          "style": "success",
+                                          "actions": [
+                                            {
+                                              "type": "shownote",
+                                              "cancelLabel": "Cancel"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "file-text"
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    },
+                                    {
+                                      "type": "toaddresses",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "inputName": "Contact Email",
+                                      "addressFilter": ""
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<p style=\"text-decoration: underline; font-size: 12pt;\"><strong>Steps Completed</strong></p>\n\n<table border=\"1\" cellpadding=\"8\" cellspacing=\"0\" width=\"100%\" style=\"border-collapse: collapse; font-family: Arial; font-size: 12pt;\">\n  <tbody>\n    <tr style=\"background-color: #f2f2f2;\">\n      <td style=\"font-weight: bold;\">Feasible:</td>\n      <td>$value -case(property'task:is this task feasible as requested')$</td>\n    </tr>\n\n    <tr style=\"background-color: #ffffff;\">\n      <td style=\"font-weight: bold;\">Due Date OK:</td>\n      <td>$value -case(property'task:Is the due date feasible')$</td>\n    </tr>\n\n    <tr style=\"background-color: #f2f2f2;\">\n      <td style=\"font-weight: bold;\">Quote Sent to Customer:</td>\n      <td>$value -case(property'task:quote sent')$</td>\n    </tr>\n\n    <tr style=\"background-color: #ffffff;\">\n      <td style=\"font-weight: bold;\">Quote Approved:</td>\n      <td>$value -case(property'task:quote accepted')$</td>\n    </tr>\n\n    <tr style=\"background-color: #f2f2f2;\">\n      <td style=\"font-weight: bold;\">Test Data Received:</td>\n      <td>$value -case(property'task:test data received')$</td>\n    </tr>\n\n    <tr style=\"background-color: #ffffff;\">\n      <td style=\"font-weight: bold;\">Proof Approved:</td>\n      <td>$value -case(property'task:proof approved')$</td>\n    </tr>\n\n    <tr style=\"background-color: #f2f2f2;\">\n      <td style=\"font-weight: bold;\">Peer Review Complete:</td>\n      <td>$value -case(property'task:Peer Review Approved')$</td>\n    </tr>\n\n    <tr style=\"background-color: #ffffff;\">\n      <td style=\"font-weight: bold;\">App Released:</td>\n      <td>$value -case(property'task:app released')$</td>\n    </tr>\n<!--$repeat -question(participants)$-->\n    <tr style=\"background-color: #f2f2f2;\">\n      <td style=\"font-weight: bold;\">$value -participant(role)$:</td>\n      <td>$value -participant(displayname)$</td>\n    </tr>\n<!--$endrepeat$-->\n  </tbody>\n</table>\n",
+                                      "htmlID": "html5",
+                                      "editorStyle": "raw"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-8",
+                              "tabs": [
+                                {
+                                  "label": "Review Request",
+                                  "icon": "search",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Review Request",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html6",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "propertyName": "Is this task feasible as requested",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "propertyName": "Is the due date feasible",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "vertical",
+                                      "propertyName": "Coordinator Notes",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Not Feasible",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Is this task feasible as requested",
+                                          "autoValue": "No",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div>\n<div><span style=\"font-size: 12pt;\">You have indicated the task is not feasible.</span></div>\n<div><span style=\"font-size: 12pt;\">Please enter an explanation below and submit the response to the requester</span></div>\n<div></div>\n</div>",
+                                              "htmlID": "html7",
+                                              "editorStyle": "editor"
+                                            },
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-12",
+                                              "labelStyle": "vertical",
+                                              "propertyName": "Task Rejection Reason",
+                                              "placeholder": ""
+                                            },
+                                            {
+                                              "type": "buttons",
+                                              "inputClass": "col-md-12",
+                                              "buttons": [
+                                                {
+                                                  "buttonID": "button18",
+                                                  "label": "Reject Task Request",
+                                                  "style": "danger",
+                                                  "actions": [
+                                                    {
+                                                      "type": "setproperty",
+                                                      "propertyName": "Task Stage",
+                                                      "propertyValue": "Not Feasible"
+                                                    },
+                                                    {
+                                                      "type": "notification",
+                                                      "toInput": "",
+                                                      "recipient": "submitter",
+                                                      "subject": "Task Request is not feasible for $value -customer(firstname)$ $value -customer(lastname)$",
+                                                      "bodyName": "Task Request not feasible csr notification",
+                                                      "tag": "",
+                                                      "suppressRef": false
+                                                    },
+                                                    {
+                                                      "type": "setdraft",
+                                                      "bodyName": "Task Request not feasible",
+                                                      "subject": "Task Request is not feasible for $value -customer(firstname)$ $value -customer(lastname)$"
+                                                    },
+                                                    {
+                                                      "type": "sendresolve",
+                                                      "toInput": "Contact Email",
+                                                      "recipient": "submitter",
+                                                      "tag": "",
+                                                      "suppressRef": false
+                                                    }
+                                                  ],
+                                                  "requiremode": "except",
+                                                  "icon": "close",
+                                                  "requireValues": [
+                                                    "Coordinator Notes"
+                                                  ]
+                                                }
+                                              ],
+                                              "includeCancel": false
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "label": "Due Date Not Feasible",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Is the due date feasible",
+                                          "autoValue": "No",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div><span style=\"font-size: 12pt;\">You have indicated the due date is not feasible.</span><br><span style=\"font-size: 12pt;\">Please enter a reasonable due date below and send a notification to the requester using the <span style=\"color: #3598db;\"><strong>Update Due Date</strong> </span>button</span></div>",
+                                              "htmlID": "html8",
+                                              "editorStyle": "editor"
+                                            },
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-12",
+                                              "labelStyle": "horizontal",
+                                              "propertyName": "Proposed Due Date",
+                                              "placeholder": ""
+                                            },
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-12",
+                                              "labelStyle": "vertical",
+                                              "propertyName": "Notes to CSR",
+                                              "placeholder": ""
+                                            },
+                                            {
+                                              "type": "buttons",
+                                              "inputClass": "col-md-12",
+                                              "buttons": [
+                                                {
+                                                  "buttonID": "button19",
+                                                  "label": "Update Due Date",
+                                                  "style": "aqua",
+                                                  "actions": [
+                                                    {
+                                                      "type": "setproperty",
+                                                      "propertyName": "Due Date",
+                                                      "propertyValue": "$form -id'Proposed Due Date'$"
+                                                    },
+                                                    {
+                                                      "type": "setdraft",
+                                                      "bodyName": "Due Date Updated",
+                                                      "subject": "New Due Date for task request by $value -customer(firstname)$ $value -customer(lastname)$"
+                                                    },
+                                                    {
+                                                      "type": "sendleaveopen",
+                                                      "toInput": "",
+                                                      "recipient": "submitter",
+                                                      "tag": "",
+                                                      "suppressRef": false
+                                                    },
+                                                    {
+                                                      "type": "setproperty",
+                                                      "propertyName": "Is the due date feasible",
+                                                      "propertyValue": "Yes"
+                                                    }
+                                                  ],
+                                                  "requiremode": "except",
+                                                  "icon": "calendar-times-o",
+                                                  "requireValues": [
+                                                    "Notes to CSR",
+                                                    "Coordinator Notes"
+                                                  ]
+                                                },
+                                                {
+                                                  "buttonID": "button20",
+                                                  "label": "Unable to Schedule",
+                                                  "style": "danger",
+                                                  "actions": [
+                                                    {
+                                                      "type": "setdraft",
+                                                      "bodyName": "Due Date cannot be met",
+                                                      "subject": "Due Date cannot be met for task request by $value -customer(firstname)$ $value -customer(lastname)$"
+                                                    },
+                                                    {
+                                                      "type": "sendleaveopen",
+                                                      "toInput": "",
+                                                      "recipient": "submitter",
+                                                      "tag": "",
+                                                      "suppressRef": false
+                                                    },
+                                                    {
+                                                      "type": "setproperty",
+                                                      "propertyName": "Is the due date feasible",
+                                                      "propertyValue": "No"
+                                                    },
+                                                    {
+                                                      "type": "saveresolve",
+                                                      "tag": ""
+                                                    }
+                                                  ],
+                                                  "requiremode": "except",
+                                                  "icon": "close",
+                                                  "requireValues": [
+                                                    "Notes to CSR",
+                                                    "Coordinator Notes"
+                                                  ]
+                                                }
+                                              ],
+                                              "includeCancel": false
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html9",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html10",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html11",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html12",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html13",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html14",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html15",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": " ",
+                                              "htmlID": "html16",
+                                              "editorStyle": "raw"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "label": "Queue For Programming",
+                                          "icon": "",
+                                          "autoType": "always",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div><span style=\"font-size: 12pt;\">Task is approved for assignment. Please select a Print Engine and Programmer. Once done, click the button below to assign the task</span></div>",
+                                              "htmlID": "html17",
+                                              "editorStyle": "editor"
+                                            },
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-12",
+                                              "labelStyle": "horizontal",
+                                              "propertyName": "Print Engine",
+                                              "placeholder": ""
+                                            },
+                                            {
+                                              "type": "agentpick",
+                                              "inputClass": "col-md-12",
+                                              "labelStyle": "horizontal",
+                                              "inputName": "Programmer",
+                                              "agentlistName": "Programmers"
+                                            },
+                                            {
+                                              "type": "buttons",
+                                              "inputClass": "col-md-12",
+                                              "buttons": [
+                                                {
+                                                  "buttonID": "button21",
+                                                  "label": "Queue for Next Action",
+                                                  "style": "success",
+                                                  "actions": [
+                                                    {
+                                                      "type": "setproperty",
+                                                      "isConditional": true,
+                                                      "conditionIf": "if",
+                                                      "conditionName": "Chargeable to customer",
+                                                      "conditionType": "property",
+                                                      "conditionOp": "exact",
+                                                      "conditionTarget": "Yes",
+                                                      "propertyName": "Task Stage",
+                                                      "propertyValue": "Estimate Hours"
+                                                    },
+                                                    {
+                                                      "type": "setproperty",
+                                                      "isConditional": true,
+                                                      "conditionIf": "else",
+                                                      "conditionName": "Chargeable to customer",
+                                                      "conditionType": "property",
+                                                      "conditionOp": "exact",
+                                                      "conditionTarget": "No",
+                                                      "propertyName": "Task Stage",
+                                                      "propertyValue": "Programming"
+                                                    },
+                                                    {
+                                                      "type": "topic",
+                                                      "topicName": "Tasks in progress"
+                                                    },
+                                                    {
+                                                      "type": "reassign",
+                                                      "toPrevious": false,
+                                                      "agentInput": "Programmer",
+                                                      "fromRoleName": "Coordinator"
+                                                    }
+                                                  ],
+                                                  "requiremode": "except",
+                                                  "icon": "code",
+                                                  "requireValues": [
+                                                    "Coordinator Notes"
+                                                  ]
+                                                }
+                                              ],
+                                              "includeCancel": false
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html18",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html19",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html20",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html21",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html22",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html23",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html24",
+                                      "editorStyle": "raw"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Estimate Hours",
+                                  "icon": "hourglass",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Estimate Hours",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><span style=\"font-size: 12pt;\">You've been assigned a Task Request. Please estimate the hours that will be spent on this task.&nbsp;</span></div>\n<div><span style=\"font-size: 12pt;\"></span></div>\n<div><span style=\"font-size: 12pt;\">Make sure to review the full Task Request in the \"Task Details\" tab above.</span></div>\n<div><span style=\"font-size: 12pt;\"><br></span></div>\n<div><strong><span style=\"font-size: 12pt;\"><span style=\"text-decoration: underline; color: #e03e2d;\">PRINT ENGINE:</span> </span></strong><span style=\"font-size: 12pt;\">$value -case(property'Print Engine')$</span></div>",
+                                      "htmlID": "html25",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-6",
+                                      "labelStyle": "horizontal",
+                                      "propertyName": "Programming Hours",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button22",
+                                          "label": "Send to Requester",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Estimate Cost"
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "Client Services"
+                                            },
+                                            {
+                                              "type": "notification",
+                                              "toInput": "",
+                                              "recipient": "submitter",
+                                              "subject": "Programmer Estimated Hours",
+                                              "bodyName": "Programmer Estimated Hours",
+                                              "tag": "",
+                                              "suppressRef": false
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": true,
+                                              "toRoleName": "Submitter",
+                                              "fromRoleName": "Programmer"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": "send"
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Estimate Cost",
+                                  "icon": "dollar",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Estimate Cost",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><span style=\"font-size: 12pt;\">A programmer has estimated <strong>$value -case(property'task:Programming Hours')$</strong> <strong>hours </strong>for this Task Request. Please enter the rate for this customer to get a final quote.&nbsp;<br><br></span></div>\n<div><span style=\"font-size: 12pt;\">Quote can be previewed/sent by clicking on the \"Quote Preview\" tab.&nbsp;</span><span style=\"font-size: 12pt;\"></span></div>\n<div></div>\n<div></div>",
+                                      "htmlID": "html26",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "groupClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Price Calculator",
+                                          "icon": "dollar",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div><span style=\"font-size: 12pt;\">Please enter the rate for this customer below:</span></div>",
+                                              "htmlID": "html27",
+                                              "editorStyle": "editor"
+                                            },
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-12",
+                                              "labelStyle": "vertical",
+                                              "propertyName": "Total Price",
+                                              "placeholder": ""
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<hr>",
+                                              "htmlID": "html28",
+                                              "editorStyle": "raw"
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-9",
+                                              "html": " ",
+                                              "htmlID": "html29",
+                                              "editorStyle": "raw"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "label": "Quote Preview",
+                                          "icon": "eye",
+                                          "inputs": [
+                                            {
+                                              "type": "buttons",
+                                              "inputClass": "col-md-12",
+                                              "buttons": [
+                                                {
+                                                  "buttonID": "button23",
+                                                  "label": "Send Quote to Requester",
+                                                  "style": "primary",
+                                                  "actions": [
+                                                    {
+                                                      "type": "setproperty",
+                                                      "propertyName": "Task Stage",
+                                                      "propertyValue": "Quote Approval"
+                                                    },
+                                                    {
+                                                      "type": "setproperty",
+                                                      "propertyName": "Quote Sent",
+                                                      "propertyValue": "$value -now$"
+                                                    },
+                                                    {
+                                                      "type": "setdraft",
+                                                      "bodyName": "Price Quote",
+                                                      "subject": "Cost Estimate for Your Request"
+                                                    },
+                                                    {
+                                                      "type": "sendleaveopen",
+                                                      "toInput": "Contact Email",
+                                                      "recipient": "submitter",
+                                                      "tag": "",
+                                                      "suppressRef": false
+                                                    }
+                                                  ],
+                                                  "requiremode": "all",
+                                                  "icon": "send"
+                                                }
+                                              ],
+                                              "includeCancel": false
+                                            },
+                                            {
+                                              "type": "preview",
+                                              "inputClass": "col-md-12",
+                                              "blobName": "Price Quote"
+                                            }
+                                          ]
+                                        }
+                                      ]
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Quote Approval",
+                                  "icon": "dollar",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Quote Approval",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><span style=\"font-size: 12pt;\">You are responsible for obtaining customer approval for the quote shown below. </span></div>\n<div><span style=\"font-size: 12pt;\"></span></div>\n<div><span style=\"font-size: 12pt;\">Once you have obtained approval, indicate the name of the approver(if it is <strong>different</strong> from the customer contact on this task request)</span></div>",
+                                      "htmlID": "html30",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "propertyName": "Contact for estimate",
+                                      "placeholder": "If different from the customer contact"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button24",
+                                          "label": "Rejected - Close Ticket",
+                                          "style": "danger",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Quote Accepted",
+                                              "propertyValue": "Rejected"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Quote Rejected by Customer",
+                                              "subject": "Task Request Closed for $value -customer(name)$ – Quote Rejected by Customer"
+                                            },
+                                            {
+                                              "type": "saveresolve",
+                                              "tag": ""
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "close"
+                                        },
+                                        {
+                                          "buttonID": "button25",
+                                          "label": "Approved - Send for Programming",
+                                          "style": "success",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Programming"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Quote Accepted",
+                                              "propertyValue": "Accepted"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Quote Accepted by Customer",
+                                              "subject": "$value -customer(firstname)$ $value -customer(lastname)$ accepted the quote"
+                                            },
+                                            {
+                                              "type": "savenoteprivate",
+                                              "tag": ""
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "Tasks in progress"
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": true,
+                                              "toRoleName": "Programmer",
+                                              "fromRoleName": "Submitter"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "code"
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "A copy of the estimate provided by programming is shown below. ",
+                                      "htmlID": "html31",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "preview",
+                                      "inputClass": "col-md-12",
+                                      "blobName": "Price Quote"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Programming",
+                                  "icon": "code",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Programming",
+                                  "inputs": [
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "vertical",
+                                      "propertyName": "Programming Notes",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button26",
+                                          "label": "Programming Complete",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "isConditional": true,
+                                              "conditionIf": "if",
+                                              "conditionName": "Proof Requested",
+                                              "conditionType": "property",
+                                              "conditionOp": "exact",
+                                              "conditionTarget": "Yes",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Proof Required"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "isConditional": true,
+                                              "conditionIf": "else",
+                                              "conditionName": "",
+                                              "conditionType": "",
+                                              "conditionOp": "",
+                                              "conditionTarget": "",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "App Release"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Programming Complete",
+                                              "subject": "Programming Complete for Task Request by $value -customer(company)$"
+                                            },
+                                            {
+                                              "type": "savenoteprivate",
+                                              "tag": ""
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "code"
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Proof Required",
+                                  "icon": "print",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Proof Required",
+                                  "inputs": [
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "vertical",
+                                      "propertyName": "Programming Notes",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "horizontal",
+                                      "propertyName": "Test Data Received",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Peer Review Notes",
+                                          "icon": "",
+                                          "autoType": "notempty",
+                                          "autoProperty": "Notes from Peer Review",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div><span style=\"font-size: 14pt;\">This Task Request has failed the peer review. Please look at the notes below:</span></div>\n<div><span style=\"font-size: 14pt;\"></span></div>\n<div><span style=\"font-size: 14pt;\"><strong>Notes from Peer Review:</strong></span></div>\n<div><span style=\"font-size: 14pt;\"><strong></strong></span></div>\n<div><span style=\"font-size: 14pt;\">$value -case(property'task:Notes from Peer Review')$</span></div>\n<div></div>",
+                                              "htmlID": "html32",
+                                              "editorStyle": "editor"
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Proof Rejected",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Proof Approved",
+                                          "autoValue": "Not Approved",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div>\n<div><span style=\"font-size: 14pt;\">Proof for this Task Request was rejected by the customer. Please see notes from the Requester below:</span><span style=\"font-size: 14pt;\"></span></div>\n<div><span style=\"font-size: 14pt;\"></span></div>\n<div><span style=\"font-size: 14pt;\"><strong>Proof Notes:</strong></span></div>\n<div><span style=\"font-size: 14pt;\"><strong></strong></span></div>\n<div><span style=\"font-size: 14pt;\">$value -case(property'task:Notes from the customer')$</span></div>\n<div></div>\n</div>",
+                                              "htmlID": "html33",
+                                              "editorStyle": "editor"
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html34",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html35",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html36",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button27",
+                                          "label": "Send Proof to Requester",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "isConditional": true,
+                                              "conditionIf": "if",
+                                              "conditionName": "Peer Review Required",
+                                              "conditionType": "property",
+                                              "conditionOp": "exact",
+                                              "conditionTarget": "Yes",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Peer Review"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "isConditional": true,
+                                              "conditionIf": "else",
+                                              "conditionName": "",
+                                              "conditionType": "",
+                                              "conditionOp": "",
+                                              "conditionTarget": "",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Proof Approval"
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "Client Services"
+                                            },
+                                            {
+                                              "type": "notification",
+                                              "toInput": "",
+                                              "recipient": "submitter",
+                                              "subject": "Task Request Updated - Review Proof",
+                                              "bodyName": "Task Request Review Proof",
+                                              "tag": "",
+                                              "suppressRef": false
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": true,
+                                              "toRoleName": "Submitter",
+                                              "fromRoleName": "Programmer"
+                                            }
+                                          ],
+                                          "requiremode": "except",
+                                          "icon": "send",
+                                          "requireValues": [
+                                            "Programming Notes"
+                                          ]
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Peer Review",
+                                  "icon": "book",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Peer Review",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><span style=\"font-size: 14pt;\">This Task Request requires a Peer Review. Please assign it to a Peer using the <strong>\"</strong><span style=\"text-decoration: underline;\"><strong>Reassign</strong></span><strong>\"</strong> button</span></div>",
+                                      "htmlID": "html37",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div>\n<div><span style=\"font-size: 12pt;\"><strong>Programming Notes:</strong></span></div>\n<div></div>\n<div><span style=\"font-size: 12pt;\">$value -case(property'task:Programming Notes')$</span></div>\n</div>",
+                                      "htmlID": "html38",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "vertical",
+                                      "propertyName": "Notes from Peer Review",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button28",
+                                          "label": "Updates Needed",
+                                          "style": "danger",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Proof Required"
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "IT"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Peer Review Approved",
+                                              "propertyValue": "Rejected"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Proof Updated Needed",
+                                              "subject": "Proof Update Needed"
+                                            },
+                                            {
+                                              "type": "savenoteprivate",
+                                              "tag": ""
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": true,
+                                              "toRoleName": "Programmer",
+                                              "fromRoleName": "Peer"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": "backward"
+                                        },
+                                        {
+                                          "buttonID": "button29",
+                                          "label": "Move to Next Step",
+                                          "style": "success",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Proof Approval"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Peer Review Approved",
+                                              "propertyValue": "Approved"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Peer Review Complete",
+                                              "subject": "Peer Review Complete for Task Request by $value -customer(company)$"
+                                            },
+                                            {
+                                              "type": "savenoteprivate",
+                                              "tag": ""
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "forward"
+                                        },
+                                        {
+                                          "buttonID": "button30",
+                                          "label": "Reassign",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Reassign",
+                                              "propertyValue": "Yes"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": "mail-forward",
+                                          "noMessage": true
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Proof Approval",
+                                  "icon": "check",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Proof Approval",
+                                  "inputs": [
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Programming Notes",
+                                          "icon": "",
+                                          "autoType": "notempty",
+                                          "autoProperty": "Programming Notes",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div><strong><span style=\"font-size: 12pt;\">Proof Notes From the Programmer:</span></strong><strong><span style=\"font-size: 12pt;\"></span></strong></div>\n<div>\n<div></div>\n<div><span style=\"font-size: 12pt;\">$value -case(property'task:Programming Notes')$</span></div>\n</div>",
+                                              "htmlID": "html39",
+                                              "editorStyle": "editor"
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "Enter the date the proof was sent to the customer below. ",
+                                      "htmlID": "html40",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-4",
+                                      "labelStyle": "vertical",
+                                      "propertyName": "Proof Sent to Customer",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-4",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button31",
+                                          "label": "Save Proof Sent Date",
+                                          "style": "primary",
+                                          "actions": [],
+                                          "requiremode": "",
+                                          "icon": "save"
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-12",
+                                      "labelStyle": "vertical",
+                                      "propertyName": "Notes from the customer",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "After the customer approves or rejects the proof, click the appropriate button below. ",
+                                      "htmlID": "html41",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button32",
+                                          "label": "Proof rejected - Assign back to programmer",
+                                          "style": "danger",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Proof Required"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Proof Approved",
+                                              "propertyValue": "Not Approved"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Customer rejected proof",
+                                              "subject": "Proof rejected by customer"
+                                            },
+                                            {
+                                              "type": "savenoteprivate",
+                                              "tag": ""
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "IT"
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": true,
+                                              "toRoleName": "Programmer",
+                                              "fromRoleName": "Submitter"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": "close"
+                                        },
+                                        {
+                                          "buttonID": "button33",
+                                          "label": "Proof Approved",
+                                          "style": "success",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "App Release"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Proof Approved",
+                                              "propertyValue": "Approved"
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "Tasks in progress"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Customer Approved Proof",
+                                              "subject": "$value -customer(name)$ has accepted the proof"
+                                            },
+                                            {
+                                              "type": "savenoteprivate",
+                                              "tag": ""
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": true,
+                                              "toRoleName": "Programmer",
+                                              "fromRoleName": "Submitter"
+                                            }
+                                          ],
+                                          "requiremode": "except",
+                                          "icon": "code",
+                                          "requireValues": [
+                                            "Notes from the customer"
+                                          ]
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html42",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html43",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html44",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html45",
+                                      "editorStyle": "raw"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "App Release",
+                                  "icon": "folder-open-o",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "App Release",
+                                  "inputs": [
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Peer Review",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Peer Review Required",
+                                          "autoValue": "Yes",
+                                          "inputs": [
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div>\n<div><span style=\"font-size: 14pt;\"><strong>Proof Notes from the Customer:</strong></span></div>\n<div><span style=\"font-size: 14pt;\"><strong></strong></span></div>\n<div><span style=\"font-size: 14pt;\">$value -case(property'task:Notes from the Customer')$</span></div>\n</div>",
+                                              "htmlID": "html46",
+                                              "editorStyle": "editor"
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "property",
+                                      "inputClass": "col-md-7",
+                                      "labelStyle": "horizontal",
+                                      "propertyName": "App Release",
+                                      "placeholder": ""
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><strong><span style=\"font-size: 12pt;\">NOTE: </span></strong><span style=\"font-size: 12pt;\">Before closing this task request, all inputs listed below must be filled out. If any of the below inputs are not filled out, please reassign to the appropriate agent.</span></div>",
+                                      "htmlID": "html47",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Chargeable",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Chargeable to customer",
+                                          "autoValue": "Yes",
+                                          "inputs": [
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-7",
+                                              "labelStyle": "horizontal",
+                                              "propertyName": "Quote Accepted",
+                                              "placeholder": ""
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Proof Required",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Proof Requested",
+                                          "autoValue": "Yes",
+                                          "inputs": [
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-7",
+                                              "labelStyle": "horizontal",
+                                              "propertyName": "Proof Approved",
+                                              "placeholder": ""
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Peer Review Required",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Peer Review Required",
+                                          "autoValue": "Yes",
+                                          "inputs": [
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-7",
+                                              "labelStyle": "horizontal",
+                                              "propertyName": "Peer Review Approved",
+                                              "placeholder": ""
+                                            }
+                                          ]
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button34",
+                                          "label": "Complete Task",
+                                          "style": "success",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Ready to Close"
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "App Released",
+                                              "propertyValue": "Yes"
+                                            },
+                                            {
+                                              "type": "notification",
+                                              "toInput": "",
+                                              "recipient": "submitter",
+                                              "subject": "A task app release has been completed for $value -customer(company)$",
+                                              "bodyName": "App Release Complete",
+                                              "tag": "",
+                                              "suppressRef": false
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "Client Services"
+                                            },
+                                            {
+                                              "type": "reassign",
+                                              "toPrevious": true,
+                                              "toRoleName": "Submitter",
+                                              "fromRoleName": "Programmer"
+                                            }
+                                          ],
+                                          "requiremode": "except",
+                                          "icon": "check",
+                                          "requireValues": [
+                                            "Agent"
+                                          ]
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html48",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html49",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html50",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html51",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html52",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " \n\n\n\n\n",
+                                      "htmlID": "html53",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html54",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div>&nbsp;</div>\n<div>&nbsp;</div>\n<div>&nbsp;</div>",
+                                      "htmlID": "html55",
+                                      "editorStyle": "editor"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "label": "Ready to Close",
+                                  "icon": "close",
+                                  "autoType": "text=",
+                                  "autoProperty": "Task Stage",
+                                  "autoValue": "Ready to Close",
+                                  "inputs": [
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": "<div><span style=\"font-size: 12pt;\">No further action is required. The Task Request can now be closed.</span></div>",
+                                      "htmlID": "html56",
+                                      "editorStyle": "editor"
+                                    },
+                                    {
+                                      "type": "tabs",
+                                      "inputClass": "col-md-12",
+                                      "tabs": [
+                                        {
+                                          "label": "Chargeable",
+                                          "icon": "",
+                                          "autoType": "text=",
+                                          "autoProperty": "Chargeable to customer",
+                                          "autoValue": "Yes",
+                                          "inputs": [
+                                            {
+                                              "type": "property",
+                                              "inputClass": "col-md-12",
+                                              "labelStyle": "horizontal",
+                                              "propertyName": "Closed for Billing",
+                                              "placeholder": ""
+                                            },
+                                            {
+                                              "type": "statichtml",
+                                              "inputClass": "col-md-12",
+                                              "html": "<div><br><br></div>",
+                                              "htmlID": "html57",
+                                              "editorStyle": "editor"
+                                            }
+                                          ]
+                                        },
+                                        {
+                                          "label": "Not Chargeable",
+                                          "icon": "",
+                                          "autoType": "always",
+                                          "inputs": []
+                                        }
+                                      ],
+                                      "automaticTab": true,
+                                      "autoBoxStyle": ""
+                                    },
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button35",
+                                          "label": "Close Ticket",
+                                          "style": "success",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Task Stage",
+                                              "propertyValue": "Closed"
+                                            },
+                                            {
+                                              "type": "topic",
+                                              "topicName": "Client Services"
+                                            },
+                                            {
+                                              "type": "setdraft",
+                                              "bodyName": "Task Request Closed",
+                                              "subject": "Task Request for $form -id'Contact:first name'$ $form -id'Contact:last name'$ has been closed"
+                                            },
+                                            {
+                                              "type": "saveresolve",
+                                              "tag": ""
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": "folder"
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html58",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html59",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html60",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html61",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html62",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html63",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html64",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html65",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html66",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html67",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html68",
+                                      "editorStyle": "raw"
+                                    },
+                                    {
+                                      "type": "statichtml",
+                                      "inputClass": "col-md-12",
+                                      "html": " ",
+                                      "htmlID": "html69",
+                                      "editorStyle": "raw"
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": "info",
+                              "autoBoxTitle": true
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            }
+          ]
+        },
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "taskrequest",
+          "label": "Submit Task Request",
+          "icon": "file-code-o",
+          "eventStartProperty": "Due Date",
+          "eventEndProperty": "Due Date",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<div><span style=\"text-decoration: underline; font-size: 14pt;\"><strong>Customer Details</strong></span></div>",
+              "htmlID": "html70",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "contactPropName": "Company Name",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-6",
+              "labelStyle": "horizontal",
+              "contactPropName": "Contact First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "contactPropName": "Contact Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "Contact Email",
+              "placeholder": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<div><span style=\"text-decoration: underline; font-size: 14pt;\"><strong>Task Details</strong></span></div>",
+              "htmlID": "html71",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Type of Request",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Due Date",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Scheduled Mail Date",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Frequency",
+              "placeholder": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Frequency Temporary",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Frequency",
+                  "autoValue": "Temporary",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Frequency Date Range",
+                      "placeholder": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Delivery Method",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Data Type",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Submitter ID",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Chargeable to customer",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Proof Requested",
+              "placeholder": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Proof Requested",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Proof Requested",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-12",
+                      "labelStyle": "horizontal",
+                      "propertyName": "Proof Processing",
+                      "placeholder": ""
+                    }
+                  ]
+                },
+                {
+                  "label": "Proof Not Requested",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": []
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "Task Description",
+              "placeholder": ""
+            },
+            {
+              "type": "richtext",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical",
+              "inputName": "Task Details",
+              "placeholder": ""
+            },
+            {
+              "type": "uploads",
+              "inputClass": "col-md-12"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button36",
+                  "label": "Submit Task Request",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "contactprops",
+                      "destEmail": "Contact Email"
+                    },
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "Contact Email",
+                      "topictype": "preset",
+                      "topicName": "IT",
+                      "subjecttype": "preset",
+                      "subject": "$form -id'task description'$",
+                      "bodytype": "preset",
+                      "bodyName": "Task Request Ticket",
+                      "tag": "taskrequest",
+                      "resultName": "taskticket"
+                    },
+                    {
+                      "type": "emailtosubmitter",
+                      "topictype": "preset",
+                      "topicName": "Client Services",
+                      "subjecttype": "preset",
+                      "subject": "Task Request has been submitted for $form -id'contact first name'$ $form -id'contact last name'$",
+                      "bodytype": "preset",
+                      "bodyName": "Task Request Ticket Acknowledgment",
+                      "tag": "",
+                      "mailboxName": "",
+                      "resultName": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "setproperty",
+                      "isConditional": true,
+                      "conditionIf": "if",
+                      "conditionName": "Proof Requested",
+                      "conditionType": "input",
+                      "conditionOp": "exact",
+                      "conditionTarget": "Yes",
+                      "propertyName": "Peer Review Required",
+                      "propertyValue": "Yes"
+                    },
+                    {
+                      "type": "setproperty",
+                      "isConditional": true,
+                      "conditionIf": "else",
+                      "conditionName": "",
+                      "conditionType": "",
+                      "conditionOp": "",
+                      "conditionTarget": "",
+                      "propertyName": "Peer Review Required",
+                      "propertyValue": "No"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Task Stage",
+                      "propertyValue": "Review Request"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Original Due Date",
+                      "propertyValue": "$form -id'Due Date'$"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Task Request Submitter",
+                      "propertyValue": "$value -loggedin(name)$"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Task Updates Needed",
+                      "propertyValue": "No"
+                    }
+                  ],
+                  "requiremode": "except",
+                  "icon": "",
+                  "requireValues": [
+                    "Contact First Name",
+                    "Contact Last Name",
+                    "Submitter ID"
+                  ]
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "inbox",
+          "enabled": true,
+          "url": "mytasks",
+          "label": "My Tasks",
+          "icon": "calendar",
+          "isCalendar": true,
+          "submitUrl": "taskrequest",
+          "resultName": "taskticket",
+          "calendarProps": [
+            "Task Stage"
+          ],
+          "calendarPropIcons": {
+            "Task Stage": "code"
+          },
+          "calendarName": "Company Calendar",
+          "inputs": []
+        },
+        {
+          "type": "manage",
+          "enabled": true,
+          "url": "managetasks",
+          "label": "Manage Tasks",
+          "icon": "calendar",
+          "isCalendar": true,
+          "submitUrl": "taskrequest",
+          "resultName": "taskticket",
+          "calendarProps": [
+            "Task Stage"
+          ],
+          "calendarPropIcons": {
+            "Task Stage": "code"
+          },
+          "calendarName": "Company Calendar",
+          "inputs": []
+        }
+      ]
+    }
+  },
+  {
+    "skin": "task",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "App Release": "def",
+        "App Released": "def",
+        "Chargeable to customer": "def",
+        "Closed for Billing": "def",
+        "Contact for estimate": "def",
+        "Coordinator Notes": "def",
+        "Data Type": "def",
+        "Delivery Method": "def",
+        "Due Date": "def",
+        "Frequency": "def",
+        "Frequency Date Range": "def",
+        "Is the due date feasible": "def",
+        "Is this task feasible as requested": "def",
+        "Notes from Peer Review": "def",
+        "Notes from the customer": "def",
+        "Notes to CSR": "def",
+        "Original Due Date": "def",
+        "Peer Review Approved": "def",
+        "Peer Review Required": "def",
+        "Print Engine": "",
+        "Programming Hours": "def",
+        "Programming Notes": "def",
+        "Proof Approved": "def",
+        "Proof Processing": "def",
+        "Proof Requested": "def",
+        "Proof Sent to Customer": "def",
+        "Proposed Due Date": "def",
+        "Quote Accepted": "def",
+        "Quote Sent": "def",
+        "Reassign": "def",
+        "Reassign Notes": "def",
+        "Scheduled Mail Date": "def",
+        "Submitter ID": "def",
+        "Task Description": "def",
+        "Task Reassigned": "def",
+        "Task Rejection Reason": "def",
+        "Task Request Submitter": "def",
+        "Task Stage": "def",
+        "Task Updated": "def",
+        "Task Updates": "def",
+        "Task Updates Needed": "def",
+        "Test Data Received": "def",
+        "Total Price": "def",
+        "Type of Request": "def"
+      },
+      "defs": {
+        "App Release": {
+          "type": "datetime",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "App Released": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Chargeable to customer": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Closed for Billing": {
+          "type": "datetime",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Contact for estimate": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Coordinator Notes": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Data Type": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Current Data",
+            "New Data",
+            "Test Data",
+            "N/A"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Delivery Method": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Web View",
+            "Web Edit",
+            "EBP",
+            "EBPP",
+            "Power PDF",
+            "N/A",
+            "ShareFile"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Due Date": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Frequency": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "One-Time",
+            "Temporary",
+            "Repeating"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Frequency Date Range": {
+          "type": "daterange",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Is the due date feasible": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Is this task feasible as requested": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Notes from Peer Review": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Notes from the customer": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Notes to CSR": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Original Due Date": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Peer Review Approved": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Approved",
+            "Rejected"
+          ],
+          "actionOnly": true,
+          "fieldWidth": ""
+        },
+        "Peer Review Required": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Programming Hours": {
+          "type": "number",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": "",
+          "isNotnegative": false
+        },
+        "Programming Notes": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Proof Approved": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Approved",
+            "Not Approved"
+          ],
+          "indexed": true,
+          "actionOnly": true,
+          "fieldWidth": ""
+        },
+        "Proof Processing": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Put Submitter in proof status",
+            "Process files until change approved",
+            "New Setup"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Proof Requested": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Proof Sent to Customer": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Proposed Due Date": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Quote Accepted": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Accepted",
+            "Rejected"
+          ],
+          "indexed": true,
+          "actionOnly": true,
+          "fieldWidth": ""
+        },
+        "Quote Sent": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Reassign": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "fieldWidth": ""
+        },
+        "Reassign Notes": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Scheduled Mail Date": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Submitter ID": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Task Description": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Task Reassigned": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Task Rejection Reason": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Task Request Submitter": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Task Stage": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Estimate Cost",
+            "Closed",
+            "Rejected by Management",
+            "Not Feasible",
+            "Quote Rejected by Customer",
+            "App Release",
+            "Review Request",
+            "Management Approval",
+            "Task Assignment",
+            "Quote Approval",
+            "Proof Required",
+            "Proof Approval",
+            "Ready to Close",
+            "Estimate Hours",
+            "Peer Review",
+            "Programming"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Task Updated": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Task Updates": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Task Updates Needed": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Test Data Received": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Total Price": {
+          "type": "number",
+          "purpose": "case",
+          "indexed": true,
+          "fieldName": "Hours",
+          "fieldWidth": "",
+          "isNotnegative": true,
+          "subFields": [
+            {
+              "type": "number",
+              "indexed": true,
+              "fieldName": "Rate",
+              "fieldWidth": "",
+              "isNotnegative": true
+            },
+            {
+              "type": "rowtotal",
+              "indexed": true,
+              "fieldName": "Total",
+              "computeFieldA": "Hours",
+              "computeFieldB": "Rate",
+              "computeFieldC": "",
+              "fieldWidth": "",
+              "computedDigits": ""
+            }
+          ]
+        },
+        "Type of Request": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Live",
+            "New",
+            "Change",
+            "Fix",
+            "Other"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "task",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "App Release Complete": {
+        "name": "App Release Complete",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Customer Approved Proof": {
+        "name": "Customer Approved Proof",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      },
+      "Customer rejected proof": {
+        "name": "Customer rejected proof",
+        "type": "rich",
+        "blobID": "wf-text-2"
+      },
+      "Due Date cannot be met": {
+        "name": "Due Date cannot be met",
+        "type": "rich",
+        "blobID": "wf-text-3"
+      },
+      "Due Date Updated": {
+        "name": "Due Date Updated",
+        "type": "rich",
+        "blobID": "wf-text-4"
+      },
+      "Peer Review Complete": {
+        "name": "Peer Review Complete",
+        "type": "rich",
+        "blobID": "wf-text-5"
+      },
+      "Price Quote": {
+        "name": "Price Quote",
+        "type": "rich",
+        "blobID": "wf-text-6"
+      },
+      "Programmer Estimated Hours": {
+        "name": "Programmer Estimated Hours",
+        "type": "rich",
+        "blobID": "wf-text-7"
+      },
+      "Programming Complete": {
+        "name": "Programming Complete",
+        "type": "rich",
+        "blobID": "wf-text-8"
+      },
+      "Proof Updated Needed": {
+        "name": "Proof Updated Needed",
+        "type": "rich",
+        "blobID": "wf-text-9"
+      },
+      "Quote Accepted by Customer": {
+        "name": "Quote Accepted by Customer",
+        "type": "rich",
+        "blobID": "wf-text-10"
+      },
+      "Quote Rejected by Customer": {
+        "name": "Quote Rejected by Customer",
+        "type": "rich",
+        "blobID": "wf-text-11"
+      },
+      "Task Request Closed": {
+        "name": "Task Request Closed",
+        "type": "rich",
+        "blobID": "wf-text-12"
+      },
+      "Task Request not feasible": {
+        "name": "Task Request not feasible",
+        "type": "rich",
+        "blobID": "wf-text-13"
+      },
+      "Task Request not feasible csr notification": {
+        "name": "Task Request not feasible csr notification",
+        "type": "rich",
+        "blobID": "wf-text-14"
+      },
+      "Task Request Review Proof": {
+        "name": "Task Request Review Proof",
+        "type": "rich",
+        "blobID": "wf-text-15"
+      },
+      "Task Request Ticket": {
+        "name": "Task Request Ticket",
+        "type": "rich",
+        "blobID": "wf-text-16"
+      },
+      "Task Request Ticket Acknowledgment": {
+        "name": "Task Request Ticket Acknowledgment",
+        "type": "rich",
+        "blobID": "wf-text-17"
+      }
+    }
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<div>App Release Complete: <strong>$value -case(property'task:App Release')$&nbsp;</strong></div>\\n<div></div>\\n<div><strong>Customer Details:</strong></div>\\n<div></div>\\n<div><strong>Company:</strong> $value -customer(company)$</div>\\n<div></div>\\n<div><strong>Contact Name: </strong>$value -customer(firstname)$ $value -customer(lastname)$</div>\\n<div></div>\\n<div><strong>Contact Email:</strong> $form -id'Value:Contact Email'$</div>\\n<div></div>\\n<div><strong>Task Description: </strong>$value -case(property'task:Task Description')$</div>\\n<div></div>\\n<div></div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<div>The Proof was approved by <strong>$value -customer(firstname)$ $value -customer(lastname)$</strong> for <strong>$value -customer(company)$.</strong></div>\\n<div><strong></strong></div>\\n<div><strong>Notes from the customer:</strong></div>\\n<div><strong></strong></div>\\n<div>$value -case(property'task:Notes from the customer')$</div>\\n<div></div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-2",
+    "data": "\"<div>The Proof was rejected by&nbsp;<strong>$value -customer(firstname)$ $value -customer(lastname)$</strong> for <strong>$value -customer(company)$. </strong>Sending back to programmer for changes needed.</div>\\n<div></div>\\n<div><strong>Notes from the customer:</strong></div>\\n<div></div>\\n<div>$value -case(property'task:Notes from the customer')$</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-3",
+    "data": "\"<div>Hi <strong>$value -question(submittedbyname)$</strong>,&nbsp;</div>\\n<div></div>\\n<div>We won&rsquo;t be able to meet the originally requested due date for your task. Given current capacity and priorities, we&rsquo;ve had to cancel the request for now.</div>\\n<div></div>\\n<div>If you'd like to resubmit with a more flexible timeline, feel free to do so.</div>\\n<div></div>\\n<div>(MailServices footer)</div>\\n<div></div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-4",
+    "data": "\"<div>Hi <strong>$value -question(submittedbyname)$</strong>,</div>\\n<div></div>\\n<div>We won&rsquo;t be able to meet the originally requested due date for your task. Based on current estimates, the revised completion date that we discussed will be&nbsp;<strong>$value -case(property'task:Proposed Due Date')$</strong></div>\\n<div></div>\\n<div>Notes from the Coordinator are below:</div>\\n<div></div>\\n<div>$value -case(property'task:Notes to CSR')$</div>\\n<div></div>\\n<div>(MailServices footer here)</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-5",
+    "data": "\"<div>Peer Review is complete and matches the requirements <strong>$value -customer(company)$</strong> had. Moving forward to App Release</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-6",
+    "data": "\"<!-- [if mso]>\\n<style>\\n  body, table, td {\\n    background-color:#ffffff !important;\\n    color:#000000 !important;\\n  }\\n</style>\\n<![endif]-->\\n<table width=\\\"100%\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" border=\\\"0\\\">\\n<tbody>\\n<tr><!-- PAGE BACKGROUND (WHITE) -->\\n<td bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff;\\\">\\n<table width=\\\"100%\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" border=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td align=\\\"center\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; padding: 20px 0;\\\"><!-- OUTER BORDER (FORMAL QUOTE FRAME) -->\\n<table width=\\\"850\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" border=\\\"1\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; border: 2px solid #000000; font-family: Verdana, Geneva, Tahoma, sans-serif; color: #000000;\\\"><!-- HEADER -->\\n<tbody>\\n<tr>\\n<td bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; padding: 20px; border-bottom: 2px solid #000000;\\\">\\n<table width=\\\"100%\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" border=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td width=\\\"40%\\\" valign=\\\"top\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; font-size: 13px;\\\"><img src=\\\"https://www.mailserviceslc.com/images/global/mail-services-logo.gif\\\" alt=\\\"Mail Services, LLC\\\"><br><br>4100 121st Street<br>Des Moines, IA 50323<br>Office: 515.727.7700<br>Web: <a href=\\\"https://www.mailserviceslc.com/\\\">mailserviceslc.com</a></td>\\n<td width=\\\"60%\\\" align=\\\"right\\\" valign=\\\"middle\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff;\\\"><span style=\\\"font-size: 18pt;\\\"><strong>$value -question(subject)$</strong></span></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<!-- CUSTOMER + SUMMARY -->\\n<tr>\\n<td bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; padding: 20px;\\\">\\n<table width=\\\"100%\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" border=\\\"1\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; border-collapse: collapse; border-color: #000000;\\\">\\n<tbody>\\n<tr><!-- CUSTOMER DETAILS -->\\n<td width=\\\"50%\\\" valign=\\\"top\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; border-right: 1px solid #000000;\\\">\\n<table width=\\\"100%\\\" cellpadding=\\\"6\\\" cellspacing=\\\"0\\\" border=\\\"0\\\" bgcolor=\\\"#ffffff\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"font-size: 15px; font-weight: bold; color: #eba63d;\\\">Customer Details</td>\\n</tr>\\n<tr>\\n<td><strong>Name:</strong> $value -customer(firstname)$ $value -customer(lastname)$</td>\\n</tr>\\n<tr>\\n<td><strong>Company:</strong> $value -customer(company)$</td>\\n</tr>\\n<tr>\\n<td><strong>Email Address:</strong> $value -question(fromemail)$</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<!-- ESTIMATE SUMMARY -->\\n<td width=\\\"50%\\\" valign=\\\"top\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff;\\\">\\n<table width=\\\"100%\\\" cellpadding=\\\"6\\\" cellspacing=\\\"0\\\" border=\\\"0\\\" bgcolor=\\\"#ffffff\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"font-size: 15px; font-weight: bold; color: #eba63d;\\\">Estimate Summary</td>\\n</tr>\\n<tr>\\n<td><strong>Date Estimate Provided:</strong> $value -today$</td>\\n</tr>\\n<tr>\\n<td><strong>Type of Request:</strong> $value -case(property'Type of Request')$</td>\\n</tr>\\n<tr>\\n<td><strong>Scheduled Mail Date:</strong> $value -case(property'task:Scheduled Mail Date')$</td>\\n</tr>\\n<tr>\\n<td><strong>Delivery Method:</strong> $value -case(property'task:Delivery Method')$</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<!-- TASK ESTIMATE -->\\n<tr>\\n<td bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; padding: 20px;\\\">\\n<div style=\\\"font-size: 16px; font-weight: bold; color: #eba63d; text-decoration: underline; margin-bottom: 10px;\\\">Task Estimate</div>\\n<table width=\\\"100%\\\" cellpadding=\\\"8\\\" cellspacing=\\\"0\\\" border=\\\"1\\\" bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; border-collapse: collapse; border: 2px solid #000000;\\\">\\n<tbody>\\n<tr bgcolor=\\\"#f2f2f2\\\">\\n<th align=\\\"left\\\" style=\\\"border: 2px solid #000000;\\\">Hours</th>\\n<th align=\\\"left\\\" style=\\\"border: 2px solid #000000;\\\">Rate</th>\\n<th align=\\\"left\\\" style=\\\"border: 2px solid #000000;\\\">Total</th>\\n</tr>\\n<!-- $repeat -report(property'Total Price')$ -->\\n<tr bgcolor=\\\"#ffffff\\\">\\n<td style=\\\"border: 2px solid #000000;\\\">$value -report(row'Hours')$</td>\\n<td style=\\\"border: 2px solid #000000;\\\">$$value -report(row'Rate')$</td>\\n<td style=\\\"border: 2px solid #000000;\\\">$$value -report(row'Total')$</td>\\n</tr>\\n<!-- $endrepeat$ --></tbody>\\n</table>\\n</td>\\n</tr>\\n<!-- FOOT NOTE -->\\n<tr>\\n<td bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; padding: 10px 20px; text-align: right; font-size: 13px;\\\">Estimate valid for 30 days</td>\\n</tr>\\n<!-- FOOTER -->\\n<tr>\\n<td bgcolor=\\\"#ffffff\\\" style=\\\"background-color: #ffffff; padding: 20px; border-top: 2px solid #000000; text-align: center; font-size: 12px;\\\"><span>&copy;</span> 2025 Mail Services. All Rights Reserved.</td>\\n</tr>\\n</tbody>\\n</table>\\n<!-- END OUTER BORDER --></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-7",
+    "data": "\"<div>$form -id'Value:Programmer'$ has estimated $value -case(property'task:Hours')$ hours for this task request</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-8",
+    "data": "\"<div>Programming complete for task requested by $value -customer(company)$</div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-9",
+    "data": "\"<div>The Peer Review for this task request has failed due to the following reason and will require updates:</div>\\n<div></div>\\n<div>$value -case(property'task:Notes from Peer Review')$</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-10",
+    "data": "\"<div>The quote was accepted by <strong>$value -customer(firstname)$ $value -customer(lastname)$</strong> for <strong>$value -customer(company)$</strong>. If the customer contact was someone other than the person listed on this task, their name is show below.&nbsp;</div>\\n<div></div>\\n<div><strong>Alternate Estimate Approver</strong></div>\\n<div></div>\\n<div>$value -case(property'task:Contact for estimate')$</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-11",
+    "data": "\"<div>The quote was rejected by <strong>$value -customer(firstname)$ $value -customer(lastname)$</strong> for <strong>$value -customer(company)$</strong>. If the customer contact was someone other than the person listed on this task, their name is show below.&nbsp;</div>\\n<div></div>\\n<div><strong>Alternate Estimate Rejecter</strong></div>\\n<div></div>\\n<div>$value -case(property'task:Contact for estimate')$</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-12",
+    "data": "\"<div>Task Request for <strong>$value -customer(firstname)$ $value -customer(lastname)$</strong> has been closed</div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-13",
+    "data": "\"<div>Task Requested by <strong>$value -customer(firstname)$ $value -customer(lastname)$</strong> for&nbsp;<strong>$value -customer(company)$ </strong>is not feasible due to:</div>\\n<div></div>\\n<div>$value -case(property'task:Task Rejection Reason')$</div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-14",
+    "data": "\"<div>Hello <strong>$value -question(submittedbyname)$</strong>,</div>\\n<div></div>\\n<div>Task Requested by <strong>$value -customer(firstname)$ $value -customer(lastname)$</strong> for&nbsp;<strong>$value -customer(company)$ </strong>is not feasible at this time due to the following reason:</div>\\n<div></div>\\n<div>$value -case(property'task:Task Rejection Reason')$</div>\\n<div></div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-15",
+    "data": "\"<div>Test data for Task Request was received $value -case(property'task:Test Data Received')$.</div>\\n<div></div>\\n<div>Proof for task request by&nbsp;<strong>$value -customer(company)$ </strong>has been sent for customer approval to the submitting agent.<strong></strong></div>\\n<div></div>\\n<div>Proof Notes from programmer:</div>\\n<div></div>\\n<div>$value -case(property'task:Programming Notes')$</div>\\n<div></div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-16",
+    "data": "\"<div><span style=\\\"font-size: 12pt;\\\">$form -id'Task Details'$</span></div>\\n<div><span style=\\\"font-size: 12pt;\\\"><strong><span style=\\\"text-decoration: underline;\\\"></span></strong></span></div>\\n<div></div>\""
+  },
+  {
+    "skin": "task",
+    "application": "blob",
+    "name": "wf-text-17",
+    "data": "\"<center><!-- NAME: 1 COLUMN --><!-- NAME: 1 COLUMN -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #f1f1f1; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td>&nbsp;</td>\\n<td width=\\\"680\\\" style=\\\"width: 680px;\\\"><center>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 680px;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; height: 80px; background-color: #3c8dbc;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"text-align: left; padding-left: 15px; color: #ffffff;\\\"><img src=\\\"https://www.mailserviceslc.com/images/global/mail-services-logo.gif\\\" alt=\\\"Mail Services, LLC\\\"></td>\\n<td style=\\\"text-align: center; padding-left: 15px;\\\"></td>\\n<td style=\\\"text-align: right; padding-right: 15px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 30px;\\\">&nbsp;</td>\\n<td><span style=\\\"font-family: Verdana; font-size: 14px; line-height: 24px;\\\"><span style=\\\"font-size: 18pt;\\\"><b>Task Request Submitted</b></span><br><br></span>\\n<p><span style=\\\"font-family: verdana, geneva, sans-serif;\\\">Thanks for your submission. We've received your task request and will be evaluating it for feasibility. You'll hear from us shortly with next steps.</span><span style=\\\"font-family: verdana, geneva, sans-serif;\\\"></span><span style=\\\"font-family: verdana, geneva, sans-serif;\\\"></span><span style=\\\"font-family: verdana, geneva, sans-serif;\\\"></span></p>\\n<p><span style=\\\"font-family: verdana, geneva, sans-serif;\\\">We appreciate your patience while we review it.</span><span style=\\\"font-family: verdana, geneva, sans-serif;\\\"></span></p>\\n<span style=\\\"font-family: Verdana; font-size: 14px; line-height: 24px;\\\">Best Regards,<br>The Mail Services Team<br>Tel: <span>515.727.7700</span></span></td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>\\n<table cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"font-family: Arial; font-size: medium; vertical-align: -webkit-baseline-middle; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"vertical-align: middle;\\\">\\n<table align=\\\"right\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"font-family: Arial; font-size: medium; margin-top: 0px; vertical-align: -webkit-baseline-middle; width: 150px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\" style=\\\"height: 18px;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"5\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"5\\\" style=\\\"text-align: center;\\\"></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td style=\\\"background-color: #0f73ee; height: 32px;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\\"color: #ffffff;\\\"><strong>Your Original Question is as Follows</strong>:</span></td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>&nbsp;</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 20px;\\\">&nbsp;</td>\\n<td>$value -question(body)$</td>\\n<td style=\\\"width: 20px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background-color: #c4b8aa; background: #29292a; padding: 20px 40px 20px 40px;\\\">\\n<table width=\\\"100%\\\" border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"text-align: center; padding-left: 15px; color: #fff;\\\"><span>Mail Communications Group, LLC | 4100 121st Street | Des Moines, IA 50323-2334</span></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center></td>\\n<td>&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\\n<p></p>\""
+  }
+]
