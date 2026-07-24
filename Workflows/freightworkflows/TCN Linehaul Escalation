@@ -1,0 +1,239 @@
+[
+  {
+    "skin": "tcnlinehaul",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "TCN Linehaul Escalation ",
+      "description": "TCN agents to use when driver leaves shipper and their orders aren't built yet in the system."
+    }
+  },
+  {
+    "skin": "tcnlinehaul",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "tcnlinehaul",
+          "label": "TCN Linehaul Escalation",
+          "icon": "truck",
+          "segmentName": "TCN",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<div><strong><span style=\"font-size: 18pt; color: #fc0606;\">Welcome to the new&nbsp;TCN Linehaul Escalation form.</span></strong></div>\n<div><span></span></div>\n<div>You will use this form anytime the driver is leaving the shipper and the orders are not yet built in TMF.</div>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Shipper",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Truck Number",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "BOL Numbers",
+              "placeholder": ""
+            },
+            {
+              "type": "uploads",
+              "inputClass": "col-md-12"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Submit Linehaul Escalation",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "Linehaul",
+                      "subjecttype": "preset",
+                      "subject": "New TCN Linehaul Escalation - $form -id'prop:tcnlinehaul:Shipper'$",
+                      "bodytype": "preset",
+                      "bodyName": "TCN Linehaul",
+                      "tag": "tcn",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagged",
+          "tag": "tcn",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button1",
+                  "label": "Resolve",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button2",
+                  "label": "Agent Email",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "showemail",
+                      "cancelLabel": "Back to Linehaul form"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "",
+                  "noMessage": true
+                },
+                {
+                  "buttonID": "button3",
+                  "label": "Create Note in History",
+                  "style": "aqua",
+                  "actions": [
+                    {
+                      "type": "shownote",
+                      "cancelLabel": "Back to Linehaul form"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "",
+                  "noMessage": true
+                },
+                {
+                  "buttonID": "button4",
+                  "label": "Save",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "savenoteprivate",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "save"
+                },
+                {
+                  "buttonID": "button5",
+                  "label": "Exit Workflow",
+                  "style": "link",
+                  "actions": [
+                    {
+                      "type": "standard",
+                      "cancelLabel": "Go back"
+                    }
+                  ],
+                  "requiremode": "",
+                  "noMessage": true
+                }
+              ],
+              "includeCancel": false
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Escalation Updates",
+              "placeholder": ""
+            },
+            {
+              "type": "preview",
+              "inputClass": "col-md-12",
+              "blobName": "TCN Linehaul"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "tcnlinehaul",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "BOL Numbers": "def",
+        "Escalation Updates": "def",
+        "Shipper": "def",
+        "Truck Number": "def"
+      },
+      "defs": {
+        "BOL Numbers": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Escalation Updates": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Shipper": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Truck Number": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "tcnlinehaul",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "TCN Linehaul": {
+        "name": "TCN Linehaul",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      }
+    }
+  },
+  {
+    "skin": "tcnlinehaul",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<div>\\n<div>A new TCN Linehaul Escalation ticket has been submitted for $value -case(property'tcnlinehaul:Shipper')$&nbsp;<br><br>Please see the details below:</div>\\n<div></div>\\n<div><strong>Shipper: </strong>$value -case(property'tcnlinehaul:Shipper')$</div>\\n<div></div>\\n<div><strong>Truck Number: </strong>$value -case(property'tcnlinehaul:Truck Number')$</div>\\n<div></div>\\n<div><strong>BOL Number(s): </strong>$value -case(property'BOL Numbers')$</div>\\n</div>\""
+  }
+]
