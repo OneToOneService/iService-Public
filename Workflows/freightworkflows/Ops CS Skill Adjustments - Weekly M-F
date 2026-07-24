@@ -1,0 +1,505 @@
+[
+  {
+    "skin": "weekdayskills",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Ops CS Skill Adjustments - Weekly M-F",
+      "description": "URL weekly is for skill adjustments that happen at 0900 and URL weekly2 is for skill adjustments that happen before 0900"
+    }
+  },
+  {
+    "skin": "weekdayskills",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "adminsubmit",
+          "enabled": true,
+          "url": "weekly",
+          "label": "Ops CS Weekly skill adjustments",
+          "icon": "pagelines",
+          "inputs": [
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Add all skills at 0630",
+                  "icon": "",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<h3 style=\"font-weight: bold; margin-bottom: 10px;\">Agents Skill Status<br><br><span style=\"text-decoration: underline; font-weight: normal;\"><strong>Agent List &ndash;</strong> All Ops CS iService Skills except AE and AE Tenders at 0630</span></h3>\n<!-- All Ops CS iService Skills except AE and AE Tenders -->\n<style>\n\t.agent-skill-badges {\n\t\tdisplay: flex;\n\t\tflex-wrap: wrap;\n\t\tgap: 6px;\n\t\talign-items: flex-start;\n\t}\n\n\t.agent-skill-badge {\n\t\tdisplay: inline-block;\n\t\tcolor: #fff;\n\t\tpadding: 2px 5px;\n\t\tborder-radius: 3px;\n\t\tline-height: 1.2;\n\t\twhite-space: nowrap;\n\t}\n\n\t.agent-skill-badge--has-skill {\n\t\tbackground-color: #7c7;\n\t}\n\n\t.agent-skill-badge--missing-skill {\n\t\tbackground-color: #c77;\n\t}\n\t</style>\n<div style=\"margin-bottom: 25px;\">\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Art</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Art')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Customer Experience Center</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'customer experience center')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS Escalations</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS Escalations')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS LME Alerts</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS LME Alerts')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Pfizer Prebooked EDI Tenders</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Pfizer Prebooked EDI Tenders')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>",
+                      "htmlID": "html0",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button0",
+                          "label": "Add Skills",
+                          "style": "success",
+                          "actions": [
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                              "skillName": "Art"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                              "skillName": "Customer Experience Center"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                              "skillName": "Ops CS"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                              "skillName": "Ops CS Escalations"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                              "skillName": "Ops CS LME Alerts"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                              "skillName": "Pfizer Prebooked EDI Tenders"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Split skills at 0900",
+                  "icon": "",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<h3 style=\"font-weight: bold; margin-bottom: 10px;\">Agents Skill Status<br><br><span style=\"text-decoration: underline; font-weight: normal;\"><strong>Agent List</strong> &ndash; </span><span style=\"text-decoration: underline;\">Ops CS Escalations and Alert<strong> </strong></span><span style=\"text-decoration: underline;\">agents at 0900</span></h3>\n<!-- Inside Sales Escalations and LME Alerts -->\n<style>\n\t.agent-skill-badges {\n\t\tdisplay: flex;\n\t\tflex-wrap: wrap;\n\t\tgap: 6px;\n\t\talign-items: flex-start;\n\t}\n\n\t.agent-skill-badge {\n\t\tdisplay: inline-block;\n\t\tcolor: #fff;\n\t\tpadding: 2px 5px;\n\t\tborder-radius: 3px;\n\t\tline-height: 1.2;\n\t\twhite-space: nowrap;\n\t}\n\n\t.agent-skill-badge--has-skill {\n\t\tbackground-color: #7c7;\n\t}\n\n\t.agent-skill-badge--missing-skill {\n\t\tbackground-color: #c77;\n\t}\n\t</style>\n<div style=\"margin-bottom: 25px;\">\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS Escalations</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'Remove General iService for agents at 0900')$ --><!-- $if -agent(hasskill'Ops CS Escalations')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS LME Alerts</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'Remove General iService for agents at 0900')$ --><!-- $if -agent(hasskill'Ops CS LME Alerts')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>\n<!-- General iService -->\n<div style=\"margin-bottom: 25px;\">\n<h4 style=\"font-size: 18px; margin-bottom: 5px;\"><span style=\"text-decoration: underline;\"><strong>Agent List &ndash; </strong></span><span style=\"text-decoration: underline;\"></span><span style=\"text-decoration: underline; font-weight: normal;\">General iService agents at 0900</span></h4>\n<div><span style=\"text-decoration: underline;\"></span></div>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Art</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'Remove Ops CS Escalations and Alerts for agents at 0900')$ --><!-- $if -agent(hasskill'Art')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Customer Experience Center</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'Remove Ops CS Escalations and Alerts for agents at 0900')$ --><!-- $if -agent(hasskill'customer experience center')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'Remove Ops CS Escalations and Alerts for agents at 0900')$ --><!-- $if -agent(hasskill'Ops CS')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --><strong></strong></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Pfizer Prebooked EDI Tenders</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'Remove Ops CS Escalations and Alerts for agents at 0900')$ --><!-- $if -agent(hasskill'Pfizer Prebooked EDI Tenders')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>",
+                      "htmlID": "html1",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button1",
+                          "label": "Split Skills",
+                          "style": "aqua",
+                          "actions": [
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove General iService for agents at 0900",
+                              "skillName": "Art"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove General iService for agents at 0900",
+                              "skillName": "Customer Experience Center"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove General iService for agents at 0900",
+                              "skillName": "Ops CS"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove General iService for agents at 0900",
+                              "skillName": "Pfizer Prebooked EDI Tenders"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove Ops CS Escalations and Alerts for agents at 0900",
+                              "skillName": "Ops CS Escalations"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove Ops CS Escalations and Alerts for agents at 0900",
+                              "skillName": "Ops CS LME Alerts"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "2nd Shift - Add all skills at 1600",
+                  "icon": "",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<div>\n<h3 style=\"font-weight: bold; margin-bottom: 10px;\">Agents Skill Status<br><br><span style=\"text-decoration: underline; font-weight: normal;\"><strong>Agent List &ndash;</strong> All Ops CS iService Skills except AE and AE Tenders (2nd shift agents@ 1600)</span></h3>\n<!-- All Ops CS iService Skills except AE and AE Tenders --></div>\n<style>\n\t.agent-skill-badges {\n\t\tdisplay: flex;\n\t\tflex-wrap: wrap;\n\t\tgap: 6px;\n\t\talign-items: flex-start;\n\t}\n\n\t.agent-skill-badge {\n\t\tdisplay: inline-block;\n\t\tcolor: #fff;\n\t\tpadding: 2px 5px;\n\t\tborder-radius: 3px;\n\t\tline-height: 1.2;\n\t\twhite-space: nowrap;\n\t}\n\n\t.agent-skill-badge--has-skill {\n\t\tbackground-color: #7c7;\n\t}\n\n\t.agent-skill-badge--missing-skill {\n\t\tbackground-color: #c77;\n\t}\n\t</style>\n<div>\n<div style=\"margin-bottom: 25px;\">\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Art</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Art')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Customer Experience Center</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Customer Experience Center')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Ops CS')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --><strong></strong></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS Escalations</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Ops CS Escalations')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS LME Alerts</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Ops CS LME Alerts')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Pfizer Prebooked EDI Tenders</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Pfizer Prebooked EDI Tenders')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>\n</div>",
+                      "htmlID": "html2",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button2",
+                          "label": "Add Skills",
+                          "style": "success",
+                          "actions": [
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                              "skillName": "Art"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                              "skillName": "Customer Experience Center"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                              "skillName": "Ops CS"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                              "skillName": "Ops CS Escalations"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                              "skillName": "Ops CS LME Alerts"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": true,
+                              "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                              "skillName": "Pfizer Prebooked EDI Tenders"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "Remove all skills at 2130",
+                  "icon": "",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<h3 style=\"font-weight: bold; margin-bottom: 10px;\">Agents Skill Status<br><br><span style=\"text-decoration: underline; font-weight: normal;\"><strong>Agent List &ndash;</strong> Remove all skills M-F 2130</span></h3>\n<!-- All Ops CS iService Skills except AE and AE Tenders -->\n<style>\n\t.agent-skill-badges {\n\t\tdisplay: flex;\n\t\tflex-wrap: wrap;\n\t\tgap: 6px;\n\t\talign-items: flex-start;\n\t}\n\n\t.agent-skill-badge {\n\t\tdisplay: inline-block;\n\t\tcolor: #fff;\n\t\tpadding: 2px 5px;\n\t\tborder-radius: 3px;\n\t\tline-height: 1.2;\n\t\twhite-space: nowrap;\n\t}\n\n\t.agent-skill-badge--has-skill {\n\t\tbackground-color: #7c7;\n\t}\n\n\t.agent-skill-badge--missing-skill {\n\t\tbackground-color: #c77;\n\t}\n\t</style>\n<div style=\"margin-bottom: 25px;\">\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>AE Tenders</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'AE Tenders')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>AE Tender Escalations</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'AE Tender Escalations')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Art</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Art')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Customer Experience Center</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Customer Experience Center')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS Escalations</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS Escalations')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Ops CS LME Alerts</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS LME Alerts')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n<table style=\"width: 100%; border-collapse: collapse; margin-bottom: 15px;\">\n<tbody>\n<tr>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5; width: 220px;\">Skill</th>\n<th style=\"text-align: left; border: 1px solid #ccc; padding: 8px; background-color: #f5f5f5;\">Agents</th>\n</tr>\n<tr>\n<td style=\"border: 1px solid #ccc; padding: 8px;\"><strong>Pfizer Prebooked EDI Tenders</strong></td>\n<td style=\"border: 1px solid #ccc; padding: 8px;\">\n<div class=\"agent-skill-badges\"><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Pfizer Prebooked EDI Tenders')$ --> <span class=\"agent-skill-badge agent-skill-badge--has-skill\">$value -agent(displayname)$</span> <!-- $else$ --> <span class=\"agent-skill-badge agent-skill-badge--missing-skill\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></div>\n</td>\n</tr>\n</tbody>\n</table>\n</div>",
+                      "htmlID": "html3",
+                      "editorStyle": "editor"
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button3",
+                          "label": "Remove Skills",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "Art"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "Customer Experience Center"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "Ops CS"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "Ops CS Escalations"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "Ops CS LME Alerts"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "Pfizer Prebooked EDI Tenders"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "AE Tenders"
+                            },
+                            {
+                              "type": "agentskill",
+                              "isAdd": false,
+                              "agentlistName": "Remove All Skills M-F 2130",
+                              "skillName": "AE Tender Escalations"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "type": "adminsubmit",
+          "enabled": false,
+          "url": "weekly2",
+          "label": "Ops CS Weekly skill adjustments M-F at 06:30am est",
+          "icon": "pagelines",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<h3 style=\"font-weight: bold; margin-bottom: 10px;\">Agents Skill Status</h3>\n<!-- All Ops CS iService Skills except AE and AE Tenders -->\n<div style=\"margin-bottom: 25px;\">\n<h4 style=\"font-size: 18px; margin-bottom: 5px;\"><span style=\"text-decoration: underline;\"><strong>Agent List &ndash;</strong> All Ops CS iService Skills except AE and AE Tenders at 0630</span></h4>\n<ul style=\"list-style-type: disc; margin-left: 20px;\">\n<li><strong>Skill &ndash;</strong> Ops CS Escalations<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS Escalations')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Ops CS LME Alerts<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS LME Alerts')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Ops CS<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Ops CS')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Customer Experience Center<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'customer experience center')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Pfizer Prebooked EDI Tenders<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Pfizer Prebooked EDI Tenders')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Art<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders at 0630')$ --><!-- $if -agent(hasskill'Art')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n</ul>\n</div>",
+              "htmlID": "html4",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button4",
+                  "label": "Add Skills",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                      "skillName": "Ops CS Escalations"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                      "skillName": "Art"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                      "skillName": "Customer Experience Center"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                      "skillName": "Ops CS"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                      "skillName": "Ops CS LME Alerts"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders at 0630",
+                      "skillName": "Pfizer Prebooked EDI Tenders"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button5",
+                  "label": "Remove Skills",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Remove General iService for agents at 0900",
+                      "skillName": "Art"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Remove General iService for agents at 0900",
+                      "skillName": "Customer Experience Center"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Remove Ops CS Escalations and Alerts for agents at 0900",
+                      "skillName": "Ops CS Escalations"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Remove General iService for agents at 0900",
+                      "skillName": "Ops CS "
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Remove Ops CS Escalations and Alerts for agents at 0900",
+                      "skillName": "Ops CS LME Alerts"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Remove General iService for agents at 0900",
+                      "skillName": "Pfizer Prebooked EDI Tenders"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "adminsubmit",
+          "enabled": false,
+          "url": "weekly3",
+          "label": "Ops CS Weekly skill adjustments M-F at 1600 est",
+          "icon": "anchor",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<div>\n<h3 style=\"font-weight: bold; margin-bottom: 10px;\">Agents Skill Status</h3>\n<!-- All Ops CS iService Skills except AE and AE Tenders -->\n<div style=\"margin-bottom: 25px;\">\n<h4 style=\"font-size: 18px; margin-bottom: 5px;\"><span style=\"text-decoration: underline;\"><strong>Agent List &ndash;</strong> All Ops CS iService Skills except AE and AE Tenders (2nd shift agents@ 1600)</span></h4>\n<ul style=\"list-style-type: disc; margin-left: 20px;\">\n<li><strong>Skill &ndash;</strong> Ops CS Escalations<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Ops CS Escalations')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Ops CS LME Alerts<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Ops CS LME Alerts')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Ops CS<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Ops CS')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --><strong></strong></li>\n<li><strong>Skill &ndash;</strong> Customer Experience Center<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'customer experience center')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Pfizer Prebooked EDI Tenders<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Pfizer Prebooked EDI Tenders')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Art<br><!-- $repeat -workflow(agentlist'All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)')$ --><!-- $if -agent(hasskill'Art')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n</ul>\n</div>\n</div>",
+              "htmlID": "html5",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button6",
+                  "label": "Add Skills",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                      "skillName": "Art"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                      "skillName": "Ops CS Escalations"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                      "skillName": "Ops CS"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                      "skillName": "Ops CS LME Alerts"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                      "skillName": "Pfizer Prebooked EDI Tenders"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "All Ops CS iService Skills except AE and AE Tenders (2nd shift agents at 1600)",
+                      "skillName": "Customer Experience Center"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "weekdayskills",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "skills": {
+        "AE Tender Escalations": "122",
+        "AE Tenders": "67",
+        "Art": "13",
+        "Customer Experience Center": "98",
+        "Ops CS": "4",
+        "Ops CS Escalations": "205",
+        "Ops CS LME Alerts": "204",
+        "Pfizer Prebooked EDI Tenders": "175"
+      }
+    }
+  }
+]
