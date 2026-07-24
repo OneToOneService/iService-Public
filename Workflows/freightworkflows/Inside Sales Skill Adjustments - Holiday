@@ -1,0 +1,174 @@
+[
+  {
+    "skin": "holidayskills",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Inside Sales Skill Adjustments - Holiday",
+      "description": ""
+    }
+  },
+  {
+    "skin": "holidayskills",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "adminsubmit",
+          "enabled": true,
+          "url": "holiday",
+          "label": "Ops CS Holiday agents",
+          "icon": "pagelines",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<h3 style=\"font-weight: bold; margin-bottom: 10px;\">Agents Skill Status</h3>\n<!-- Agent holiday add AE Tenders -->\n<div style=\"margin-bottom: 25px;\">\n<div style=\"margin-bottom: 25px;\">\n<h4 style=\"font-size: 18px; margin-bottom: 5px;\"><span style=\"text-decoration: underline;\"><strong>Agent List &ndash;</strong> Holiday add all Ops CS iService Skills including AE and AE Tenders</span></h4>\n<ul style=\"list-style-type: disc; margin-left: 20px;\"></ul>\n</div>\n<div style=\"margin-bottom: 25px;\">\n<ul style=\"list-style-type: disc; margin-left: 20px;\">\n<li><strong>Skill &ndash;</strong> AE Tenders<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'AE Tenders')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> AE Tender Escalations<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'AE Tender Escalation')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Ops CS Escalation<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'Ops CS Escalations')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Ops CS LME Alerts<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'Ops CS LME Alerts')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Art<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'Art')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Customer Experience Center<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'Customer Experience Center')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --></li>\n<li><strong>Skill &ndash;</strong> Ops CS<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'Ops CS')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $endif$ --><!-- $endrepeat$ --><strong></strong></li>\n<li><strong>Skill &ndash;</strong> Pfizer Prebooked EDI Tenders<br><!-- $repeat -workflow(agentlist'Holiday add all Ops CS iService skills included AE and AE Tenders')$ --><!-- $if -agent(hasskill'Pfizer Prebooked EDI Tenders')$ --> <span style=\"color: #fff; background-color: #7c7; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span> <!-- $else$ --> <span style=\"color: #fff; background-color: #c77; padding: 2px 5px; margin: 3px; border-radius: 3px;\">$value -agent(displayname)$</span></li>\n</ul>\n</div>\n</div>\n<div style=\"margin-bottom: 25px;\">\n<div><!-- $endif$ --><!-- $endrepeat$ --></div>\n</div>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Add Skills",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "AE Tender Escalation"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "AE Tenders"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Ops CS Escalations"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Ops CS LME Alerts"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Art"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Customer Experience Center"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Ops CS"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": true,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Pfizer Prebooked EDI Tenders"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button1",
+                  "label": "Remove Skills",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "AE Tender Escalation"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "AE Tenders"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Ops CS Escalations"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Ops CS LME Alerts"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Art"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Customer Experience Center"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Ops CS"
+                    },
+                    {
+                      "type": "agentskill",
+                      "isAdd": false,
+                      "agentlistName": "Holiday add all Ops CS iService skills included AE and AE Tenders",
+                      "skillName": "Pfizer Prebooked EDI Tenders"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "holidayskills",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "skills": {
+        "AE Tender Escalation": "122",
+        "AE Tenders": "67",
+        "Art": "13",
+        "Customer Experience Center": "98",
+        "Ops CS": "4",
+        "Ops CS Escalations": "205",
+        "Ops CS LME Alerts": "204",
+        "Pfizer Prebooked EDI Tenders": "175"
+      }
+    }
+  }
+]
