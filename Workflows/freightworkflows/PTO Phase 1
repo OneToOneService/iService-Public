@@ -1,0 +1,1249 @@
+[
+  {
+    "skin": "pto",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "PTO Form Phase 1",
+      "description": ""
+    }
+  },
+  {
+    "skin": "pto",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": false,
+          "url": "ptophase1",
+          "label": "PTO PHASE 1",
+          "icon": "power-off",
+          "successtype": "custom",
+          "successHtml": "<p>Thanks for submitting your choice for this phase of the PTO. An email confirming your choice has been sent to you and your supervisor.&nbsp;</p>",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><span style=\"color: #fb0404;\"><strong>Please be sure to select your Supervisor's Name, Supervisor's email address, and Team in order to submit your requests or to Opt Out of PTO.</strong></span></p>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Supervisor Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Supervisor Email Address",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Team",
+              "placeholder": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-6",
+              "html": "<h3>If you do not want to request PTO for this phase, click this button:</h3>",
+              "htmlID": "html1",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Supervisor Email",
+                  "icon": "",
+                  "autoType": "empty",
+                  "autoProperty": "Supervisor Email Address",
+                  "inputs": []
+                },
+                {
+                  "label": "Supervisor Email",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": [
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Team",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "Team",
+                          "inputs": []
+                        },
+                        {
+                          "label": "Team",
+                          "icon": "",
+                          "autoType": "always",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button0",
+                                  "label": "I have no requests at this time.",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "$value -loggedin(name)$ has opted out of PTO Phase 1",
+                                      "bodytype": "preset",
+                                      "bodyName": "PTO Phase 1 Opt Out",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "$value -loggedin(name)$ has opted out of PTO Phase 1",
+                                      "bodytype": "preset",
+                                      "bodyName": "PTO Phase 1 Opt Out",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "cc": "$form -id'prop:pto:supervisor email address'$",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "PTO Phase 1 Opt Out",
+                                      "propertyValue": "Yes"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<div ng-hide=\"completed\">\n<p>Requests for PTO will be submitted in 3 phases this year and approved based on company seniority using the same Round Robin approach as last year. This request must be at least 1 full week, individual days will not be accepted. Phase 1 will be a<span>&nbsp;</span><span style=\"color: #fa0202;\"><span class=\"text-red\"><u><b>maximum</b></u></span>&nbsp;</span>of 2 weeks, as long as all days are consecutive scheduled work days. Requests less than 1 week will not be considered.</p>\n</div>\n<div ng-hide=\"completed\">\n<h4>Phase 1 Instructions</h4>\nYou may submit as many full week (consecutive event) requests as you would like, however only 1 event will be approved. Requests less than 1 week will not be considered. Please make sure to list your most important week as your 1st event and your least critical week as your<span>&nbsp;</span><span ng-show=\"showmore\" class=\"\">last event. If you select Partial Approval and we cannot approve your full request, we will approve the available dates and place you on the waiting list for unavailable dates. If you select I Do Not Want Partial Approval and we cannot fulfill your request you will not be approved or wait listed for any dates requested and we will try to fulfill your next available request.<br><br>Please review and pay close attention to the dates you are requesting. Do not include days that you are not scheduled to work.<br><br><strong>Weekend Team:</strong><span>&nbsp;</span>If you work a weekend there is a limit of 4 Saturdays and/or 4 Sundays you can request off during all 3 Phases of the PTO Process. Please track the total number of Saturdays and Sundays you request off before submitting your form for each Phase.<br><br>This is a combination of 4 Saturdays and/or 4 Sundays for all 3 Phases. After the round robin process is complete, you may request off any remaining Saturdays or Sundays on a first come first served basis. For those of you on 3rd shift who work both Saturday and Sunday, you may request off 4 Saturdays and 4 Sundays during the Round Robin.<br><br>Please do not submit your phase 2 requests at this time. An email will be sent to let you know when you may submit these requests upon completion of Phase 1. You will have an opportunity to view the calendar to see available dates before submitting your Phase 2 requests.<br></span></div>",
+              "htmlID": "html2",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><strong>Please type your Shift /Work hours in the SUN-SAT boxes below.&nbsp;<span>Enter \"NA\" for any days you do not work.&nbsp;<br></span></strong><span>&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Ex. I work M-F 0800-1630. I will enter NA for Sunday, Mon-Fri 0800-1630, NA for Saturday.</span><strong><span></span><span><br><span style=\"color: #f80303;\">DO NOT ENTER your PTO requests in these fields.&nbsp;</span></span></strong></p>",
+              "htmlID": "html3",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "inputClassFixed": "col-12",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "SUN",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "MON",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "TUE",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "WED",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "THU",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "FRI",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "SAT",
+              "placeholder": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><span>Select your dates below.<span style=\"color: #fa0303;\">&nbsp;</span></span><span class=\"text-red\" style=\"color: #fa0303;\"><b>Your events must be a minimum of 1 FULL week and no more than 2 FULL weeks. Dates must be consecutive work days. Do not include days that you are not scheduled to work.</b></span><span></span><br><br>To enter additional Events, click on the red button that states \"I do not want partial approval, please move on to my next request\"<br><br>Once you have entered all of your Events, click on the green button that states \"I will accept partial approval for any available dates and any unavailable dates will be added to the waiting list.\" to submit your form.&nbsp;</p>\n<p><span style=\"font-size: 14pt;\"><strong><span style=\"font-size: 12pt;\"><span style=\"background-color: #7aff05;\">Each Event must have a minimum of 1 full week of dates.&nbsp;<span style=\"color: #000000;\">No INDIVIDUAL DATES PER EVENT</span></span></span> </strong></span></p>\n<p><span style=\"font-size: 14pt;\"><strong>Take your time, no rush. Review your entries before submitting the form to ensure accuracy.&nbsp;</strong></span></p>",
+              "htmlID": "html4",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "Event 1",
+              "placeholder": ""
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-3",
+              "buttons": [
+                {
+                  "buttonID": "button1",
+                  "label": "I Do Not Want Partial Approval Please Move to My Next Request",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "setproperty",
+                      "propertyName": "New Event 2",
+                      "propertyValue": "Yes"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-3",
+              "tabs": [
+                {
+                  "label": "Partial",
+                  "icon": "",
+                  "autoType": "empty",
+                  "autoProperty": "New Event 2",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button2",
+                          "label": "I will accept partial approval for available dates and any unavailable dates added to the waiting list - SUBMIT FORM",
+                          "style": "success",
+                          "actions": [
+                            {
+                              "type": "agentticket",
+                              "agentInput": "",
+                              "destEmail": "",
+                              "topictype": "preset",
+                              "topicName": "PTO",
+                              "subjecttype": "preset",
+                              "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                              "bodytype": "preset",
+                              "bodyName": "Supervisor Notification",
+                              "tag": "",
+                              "resultName": ""
+                            },
+                            {
+                              "type": "emailtosubmitter",
+                              "topictype": "preset",
+                              "topicName": "PTO",
+                              "subjecttype": "preset",
+                              "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                              "bodytype": "preset",
+                              "bodyName": "Supervisor Notification",
+                              "tag": "",
+                              "mailboxName": "",
+                              "cc": "$form -id'prop:pto:supervisor email address'$",
+                              "resultName": "",
+                              "suppressRef": false
+                            },
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Class Seniority",
+                              "propertyValue": "$value -customer(property'class seniority')$"
+                            },
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Employee ID",
+                              "propertyValue": "$value -customer(property'employee id')$"
+                            },
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Hire Date",
+                              "propertyValue": "$value -customer(property'hire date')$"
+                            },
+                            {
+                              "type": "setproperty",
+                              "propertyName": "Initials",
+                              "propertyValue": "$value -customer(property'initials')$"
+                            },
+                            {
+                              "type": "setproperty",
+                              "propertyName": "PTO Phase",
+                              "propertyValue": "Phase 1"
+                            }
+                          ],
+                          "requiremode": "all",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Event 2",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "New Event 2",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-3",
+                      "labelStyle": "vertical",
+                      "propertyName": "Event 2",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-3",
+                      "buttons": [
+                        {
+                          "buttonID": "button3",
+                          "label": "I Do Not Want Partial Approval Please Move to My Next Request",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "New Event 3",
+                              "propertyValue": "Yes"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Partial",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 3",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button4",
+                                  "label": "I will accept partial approval for available dates and any unavailable dates added to the waiting list - SUBMIT FORM",
+                                  "style": "success",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "cc": "$form -id'prop:pto:supervisor email address'$",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Class Seniority",
+                                      "propertyValue": "$value -customer(property'class seniority')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Employee ID",
+                                      "propertyValue": "$value -customer(property'employee id')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Hire Date",
+                                      "propertyValue": "$value -customer(property'hire date')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Initials",
+                                      "propertyValue": "$value -customer(property'initials')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "PTO Phase",
+                                      "propertyValue": "Phase 1"
+                                    }
+                                  ],
+                                  "requiremode": "all",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Remove Event",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 3",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button5",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 2",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 2",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Event 3",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "New Event 3",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-3",
+                      "labelStyle": "vertical",
+                      "propertyName": "Event 3",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-3",
+                      "buttons": [
+                        {
+                          "buttonID": "button6",
+                          "label": "I Do Not Want Partial Approval Please Move to My Next Request",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "New Event 4",
+                              "propertyValue": "Yes"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Partial",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 4",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button7",
+                                  "label": "I will accept partial approval for available dates and any unavailable dates added to the waiting list - SUBMIT FORM",
+                                  "style": "success",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "cc": "$form -id'prop:pto:supervisor email address'$",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Class Seniority",
+                                      "propertyValue": "$value -customer(property'class seniority')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Employee ID",
+                                      "propertyValue": "$value -customer(property'employee id')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Hire Date",
+                                      "propertyValue": "$value -customer(property'hire date')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": " Initials",
+                                      "propertyValue": "$value -customer(property'initials')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "PTO Phase",
+                                      "propertyValue": "Phase 1"
+                                    }
+                                  ],
+                                  "requiremode": "all",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Remove",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 4",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button8",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 3",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 3",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Event 4",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "New Event 4",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-3",
+                      "labelStyle": "vertical",
+                      "propertyName": "Event 4",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-3",
+                      "buttons": [
+                        {
+                          "buttonID": "button9",
+                          "label": "I Do Not Want Partial Approval Please Move to My Next Request",
+                          "style": "danger",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "New Event 5",
+                              "propertyValue": "Yes"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Partial",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 5",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button10",
+                                  "label": "I will accept partial approval for available dates and any unavailable dates added to the waiting list - SUBMIT FORM",
+                                  "style": "success",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "cc": "$form -id'prop:pto:supervisor email address'$",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Class Seniority",
+                                      "propertyValue": "$value -customer(property'class seniority')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Employee ID",
+                                      "propertyValue": "$value -customer(property'employee id')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Hire Date",
+                                      "propertyValue": "$value -customer(property'hire date')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Initials",
+                                      "propertyValue": "$value -customer(property'initials')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "PTO Phase",
+                                      "propertyValue": "Phase 1"
+                                    }
+                                  ],
+                                  "requiremode": "all",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Remove",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 5",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button11",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 4",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 4",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Event 5",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "New Event 5",
+                          "autoValue": "Yes",
+                          "inputs": [
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-3",
+                              "labelStyle": "vertical",
+                              "propertyName": "Event 5",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-4",
+                              "buttons": [
+                                {
+                                  "buttonID": "button12",
+                                  "label": "NOTE: I understand that WFP will approve any available dates and I will be added to the waiting list for any unavailable dates. - At this point, we will review all Events and approve where the most days can be approved. - SUBMIT FORM",
+                                  "style": "success",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "Phase 1 PTO Request has been submitted for $value -loggedin(name)$",
+                                      "bodytype": "preset",
+                                      "bodyName": "Supervisor Notification",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "cc": "$form -id'prop:pto:supervisor email address'$",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Class Seniority",
+                                      "propertyValue": "$value -customer(property'class seniority')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Employee ID",
+                                      "propertyValue": "$value -customer(property'employee id')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Hire Date",
+                                      "propertyValue": "$value -customer(property'hire date')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Initials",
+                                      "propertyValue": "$value -customer(property'initials')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "PTO Phase",
+                                      "propertyValue": "Phase 1"
+                                    }
+                                  ],
+                                  "requiremode": "all",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-3",
+                              "buttons": [
+                                {
+                                  "buttonID": "button13",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 5",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 5",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "pto",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Class Seniority": "def",
+        "Employee ID": "def",
+        "Event 1": "def",
+        "Event 2": "def",
+        "Event 3": "def",
+        "Event 4": "def",
+        "Event 5": "def",
+        "FRI": "def",
+        "Hire Date": "def",
+        "Initials": "def",
+        "MON": "def",
+        "New Event 2": "def",
+        "New Event 3": "def",
+        "New Event 4": "def",
+        "New Event 5": "def",
+        "PTO Phase": "def",
+        "PTO Phase 1 Opt Out": "def",
+        "SAT": "def",
+        "SUN": "def",
+        "Supervisor Email Address": "def",
+        "Supervisor Name": "def",
+        "Team": "def",
+        "THU": "def",
+        "TUE": "def",
+        "WED": "def"
+      },
+      "defs": {
+        "Class Seniority": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Employee ID": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Event 1": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 2": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 3": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 4": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 5": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "FRI": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Hire Date": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Initials": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "MON": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "New Event 2": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 3": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 4": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 5": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "PTO Phase": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "PTO Phase 1 Opt Out": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "SAT": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "SUN": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Supervisor Email Address": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "bill.adams@fedex.com",
+            "carla.sturm@fedex.com",
+            "dan.common@fedex.com",
+            "heidi.wilhelm@fedex.com",
+            "j.p-smith@fedex.com",
+            "matt.boros@fedex.com",
+            "melanie.beal@fedex.com",
+            "mick.hanna@fedex.com",
+            "monica.winn@fedex.com",
+            "stacey.costello@fedex.com",
+            "vincia.stluce@fedex.com",
+            "wendy.davy@fedex.com",
+            "jodi.conner@fedex.com",
+            "meghan.mcnamara@fedex.com",
+            "tricia.infantino@fedex.com"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Supervisor Name": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Bill Adams",
+            "Carla Sturm",
+            "Dan Common",
+            "Heidi Wilhelm",
+            "Jodi Conner",
+            "JP Smith",
+            "Matt Boros",
+            "Melanie Beal",
+            "Mick Hanna",
+            "Monica Winn",
+            "Stacey Costello",
+            "Vincia St. Luce",
+            "Meghan McNamara",
+            "Tricia Infantino",
+            "Wendy Davy"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Team": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Gov't",
+            "Dedicated",
+            "Fleet Planner",
+            "Fleet Support",
+            "CMT",
+            "Specialized Solutions",
+            "ESS 3rd",
+            "HS 3rd",
+            "Ops CS"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "THU": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "TUE": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "WED": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "pto",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "PTO Phase 1 Opt Out": {
+        "name": "PTO Phase 1 Opt Out",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Supervisor Notification": {
+        "name": "Supervisor Notification",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      }
+    }
+  },
+  {
+    "skin": "pto",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<center style=\\\"width: 100%; background-color: #f1f1f1;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" class=\\\"email-container\\\" style=\\\"margin: 0 auto; max-width: 600px; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td><!-- BEGIN BODY -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background-color: #4d148c; padding: 10px; padding-left: 30px;\\\"><img src=\\\"https://www.iservice.info/emailer_assets/fedex/fedex-custom-critical-3-logo-png-transparent.png\\\" width=\\\"150\\\" alt=\\\"fedex-custom-critical-3-logo-png-transparent\\\" border=\\\"0\\\"></td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100.262%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 4.69807%;\\\">&nbsp;</td>\\n<td style=\\\"width: 90.1022%;\\\"><br><strong>$value -loggedin(name)$ </strong>has opted out of PTO for Phase 1.<br><br><span style=\\\"text-decoration: underline;\\\"><strong>Agent Details:<br></strong></span><br><strong>Supervisor's Name: </strong>$value -case(property'pto:Supervisor Name')$<br><br><strong>Team:</strong> $value -case(property'pto:Team')$<br><br><br></td>\\n<td style=\\\"width: 5.20143%;\\\"></td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 4.69807%;\\\"></td>\\n<td style=\\\"width: 90.1022%;\\\"></td>\\n<td style=\\\"width: 5.20143%;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; border-bottom: 2px solid #4d148c;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\""
+  },
+  {
+    "skin": "pto",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<center style=\\\"width: 100%; background-color: #f1f1f1;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" class=\\\"email-container\\\" style=\\\"margin: 0 auto; max-width: 600px; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td><!-- BEGIN BODY -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background-color: #4d148c; padding: 10px; padding-left: 30px;\\\"><img src=\\\"https://www.iservice.info/emailer_assets/fedex/fedex-custom-critical-3-logo-png-transparent.png\\\" width=\\\"150\\\" alt=\\\"fedex-custom-critical-3-logo-png-transparent\\\" border=\\\"0\\\"></td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100.262%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 5.21118%;\\\">&nbsp;</td>\\n<td style=\\\"width: 89.5987%;\\\">\\n<p style=\\\"font-family: Verdana; font-size: 14px; line-height: 23px;\\\"><span style=\\\"font-family: helvetica, arial, sans-serif;\\\">PTO request Details are below:&nbsp;</span><br><br><span style=\\\"font-family: helvetica, arial, sans-serif;\\\"><strong>Agent Name: </strong>$value -loggedin(name)$<br><span style=\\\"font-weight: 600;\\\">Supervisor Name:</span> $value -case(property'Supervisor Name')$<br><strong>Supervisor Email:&nbsp;</strong>$value -case(property'pto:Supervisor Email Address')$<br><span style=\\\"font-weight: 600;\\\">Team:</span> $value -case(property'Team')$<br><span style=\\\"font-weight: 600;\\\">PTO Phase:</span> Phase 1</span></p>\\n<a href=\\\"#\\\" style=\\\"text-decoration: none; color: #ffffff;\\\" class=\\\"text-info\\\">Answer Using Web App</a></td>\\n<td style=\\\"width: 5.21118%;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 5.21118%;\\\">&nbsp;</td>\\n<td style=\\\"width: 89.5987%;\\\">\\n<p><b>Shift Times:</b><br>Sun: $value -case(property'SUN')$<br>Mon: $value -case(property'MON')$<br>Tue: $value -case(property'TUE')$<br>Wed: $value -case(property'WED')$<br>Thu: $value -case(property'THU')$<br>Fri: $value -case(property'FRI')$<br>Sat: $value -case(property'SAT')$<br><br><br><span style=\\\"text-decoration: underline;\\\"><span style=\\\"font-size: 14pt;\\\"><strong>Dates requested:</strong></span></span><br><br><strong>Event 1:&nbsp;<br></strong>$value -case(property'Event 1')$<br><br><!-- $if -fieldregex'Prop:pto:Event 2'='.+'$ --><strong>Event 2: <br></strong>$value -case(property'Event 2')$<br><br><!-- $if -fieldregex'Prop:pto:Event 3'='.+'$ --><strong>Event 3:<br></strong>$value -case(property'Event 3')$<br><br><!-- $if -fieldregex'Prop:pto:Event 4'='.+'$ --><strong>Event 4:<br></strong>$value -case(property'Event 4')$<br><br><!-- $if -fieldregex'Prop:pto:Event 5'='.+'$ --><strong>Event 5:<br></strong>$value -case(property'Event 5')$</p>\\n</td>\\n<td style=\\\"width: 5.21118%;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; border-bottom: 2px solid #4d148c;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\""
+  }
+]
