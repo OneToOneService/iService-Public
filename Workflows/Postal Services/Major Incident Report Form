@@ -1,0 +1,145 @@
+[
+  {
+    "skin": "documentmajorincident",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "Major Incident",
+      "description": ""
+    }
+  },
+  {
+    "skin": "documentmajorincident",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "documentmajorincident",
+          "label": "Major Incident",
+          "icon": "exclamation",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><span style=\"font-size: 12pt;\">Use this form to document and notify IT Management about Major Incidents. </span><br><br><span style=\"font-size: 12pt;\"><strong><span style=\"color: rgb(224, 62, 45);\">NOTE: Please fill in all fields before Sending.</span></strong></span></p>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-6",
+              "labelStyle": "horizontal",
+              "contactPropName": "Contact First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "contactproperty",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "contactPropName": "Contact Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "Contact Email Address",
+              "placeholder": ""
+            },
+            {
+              "type": "plainmulti",
+              "inputClass": "col-md-10",
+              "labelStyle": "vertical",
+              "inputName": "Details of Incident",
+              "placeholder": ""
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Send to IT Management",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "All Topics",
+                      "subjecttype": "preset",
+                      "subject": "Major Incident Occurred",
+                      "bodytype": "preset",
+                      "bodyName": "Ticket Major Incident Occurred",
+                      "tag": "",
+                      "resultName": ""
+                    },
+                    {
+                      "type": "emailtosubmitter",
+                      "topictype": "preset",
+                      "topicName": "All Topics",
+                      "subjecttype": "preset",
+                      "subject": "Major Incident Occurred",
+                      "bodytype": "preset",
+                      "bodyName": "Document Major Incident Occurred",
+                      "tag": "",
+                      "mailboxName": "",
+                      "cc": "joshrosenholtz@mailserviceslc.com",
+                      "resultName": "",
+                      "suppressRef": false
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": "send"
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "documentmajorincident",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {}
+  },
+  {
+    "skin": "documentmajorincident",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "Document Major Incident Occurred": {
+        "name": "Document Major Incident Occurred",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Ticket Major Incident Occurred": {
+        "name": "Ticket Major Incident Occurred",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      }
+    }
+  },
+  {
+    "skin": "documentmajorincident",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<center><!-- NAME: 1 COLUMN --><!-- NAME: 1 COLUMN -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #f1f1f1; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td>&nbsp;</td>\\n<td width=\\\"680\\\" style=\\\"width: 680px;\\\"><center>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 680px;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; height: 80px; background-color: #3c8dbc;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"text-align: left; padding-left: 15px; color: #ffffff;\\\"><img src=\\\"https://www.mailserviceslc.com/images/global/mail-services-logo.gif\\\" alt=\\\"Mail Services, LLC\\\"></td>\\n<td style=\\\"text-align: center; padding-left: 15px;\\\"></td>\\n<td style=\\\"text-align: right; padding-right: 15px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 30px;\\\">&nbsp;</td>\\n<td><span style=\\\"font-family: Verdana; font-size: 14px; line-height: 24px;\\\"><span style=\\\"font-size: 18pt;\\\"><b>Major Incident Alert!</b></span><br><br></span>\\n<p><span style=\\\"font-family: verdana, geneva, sans-serif;\\\">We regret to inform you that a major incident has occurred. To access detailed information and updates, please log in to <a href=\\\"https://mailservices.iservicecrm.com/app/manage-messages\\\">iService</a> to see details. <br><br>Your immediate attention is required.<br><br></span></p>\\n<p><span style=\\\"font-family: verdana, geneva, sans-serif;\\\">Thank you for your cooperation.<br><br></span></p>\\n<span style=\\\"font-family: Verdana; font-size: 14px; line-height: 24px;\\\">Best Regards,<br>The Mail Services Team<br>Tel: <span>515.727.7700</span></span></td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>\\n<table cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"font-family: Arial; font-size: medium; vertical-align: -webkit-baseline-middle; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"vertical-align: middle;\\\">\\n<table align=\\\"right\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"font-family: Arial; font-size: medium; margin-top: 0px; vertical-align: -webkit-baseline-middle; width: 150px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\" style=\\\"height: 18px;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"5\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"5\\\" style=\\\"text-align: center;\\\"></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td style=\\\"background-color: #0f73ee; height: 32px;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\\"color: #ffffff;\\\"><strong>Your Original Question is as Follows</strong>:</span></td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>&nbsp;</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 20px;\\\">&nbsp;</td>\\n<td>$value -question(body)$</td>\\n<td style=\\\"width: 20px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background-color: #c4b8aa; background: #29292a; padding: 20px 40px 20px 40px;\\\">\\n<table width=\\\"100%\\\" border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"text-align: center; padding-left: 15px; color: #fff;\\\"><span>Mail Communications Group, LLC | 4100 121st Street | Des Moines, IA 50323-2334</span></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center></td>\\n<td>&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\\n<p></p>\""
+  },
+  {
+    "skin": "documentmajorincident",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<center><!-- NAME: 1 COLUMN --><!-- NAME: 1 COLUMN -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #f1f1f1; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td>&nbsp;</td>\\n<td width=\\\"680\\\" style=\\\"width: 680px;\\\"><center>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 680px;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; height: 80px; background-color: #3c8dbc;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"text-align: left; padding-left: 15px; color: #ffffff;\\\"><img src=\\\"https://www.mailserviceslc.com/images/global/mail-services-logo.gif\\\" alt=\\\"Mail Services, LLC\\\"></td>\\n<td style=\\\"text-align: center; padding-left: 15px;\\\"></td>\\n<td style=\\\"text-align: right; padding-right: 15px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 30px;\\\">&nbsp;</td>\\n<td><span style=\\\"font-family: Verdana; font-size: 14px; line-height: 24px;\\\"><span style=\\\"font-size: 18pt;\\\"><b>Major Incident Occurred!</b></span><br><br></span>\\n<p><span style=\\\"font-family: verdana, geneva, sans-serif;\\\">We regret to inform you that a major incident has occurred.&nbsp;<br><br>Full details are below:<br><br>$form -id'Value:Details of Incident'$<br><br>Immediate attention from IT management is required.<br><br></span></p>\\n<p><span style=\\\"font-family: verdana, geneva, sans-serif;\\\">Thank you for your cooperation.<br><br></span></p>\\n<span style=\\\"font-family: Verdana; font-size: 14px; line-height: 24px;\\\">Best Regards,<br>The Mail Services Team<br>Tel: <span>515.727.7700</span></span></td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>\\n<table cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"font-family: Arial; font-size: medium; vertical-align: -webkit-baseline-middle; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"vertical-align: middle;\\\">\\n<table align=\\\"right\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"font-family: Arial; font-size: medium; margin-top: 0px; vertical-align: -webkit-baseline-middle; width: 150px;\\\">\\n<tbody>\\n<tr>\\n<td colspan=\\\"2\\\" style=\\\"height: 18px;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"5\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td colspan=\\\"5\\\" style=\\\"text-align: center;\\\"></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td style=\\\"background-color: #0f73ee; height: 32px;\\\">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span style=\\\"color: #ffffff;\\\"><strong>Your Original Question is as Follows</strong>:</span></td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>&nbsp;</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n<td>\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"width: 20px;\\\">&nbsp;</td>\\n<td>$value -question(body)$</td>\\n<td style=\\\"width: 20px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n<td style=\\\"width: 30px;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background-color: #c4b8aa; background: #29292a; padding: 20px 40px 20px 40px;\\\">\\n<table width=\\\"100%\\\" border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"text-align: center; padding-left: 15px; color: #fff;\\\"><span>Mail Communications Group, LLC | 4100 121st Street | Des Moines, IA 50323-2334</span></td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center></td>\\n<td>&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\\n<p></p>\""
+  }
+]
