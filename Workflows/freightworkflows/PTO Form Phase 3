@@ -1,0 +1,1348 @@
+[
+  {
+    "skin": "ptothree",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "PTO Form Phase 3",
+      "description": ""
+    }
+  },
+  {
+    "skin": "ptothree",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": false,
+          "url": "ptophase3",
+          "label": "PTO PHASE 3",
+          "icon": "power-off",
+          "successtype": "custom",
+          "successHtml": "<p>Thanks for submitting your choice for this phase of the PTO. An email confirming your choice has been sent to you and your supervisor.&nbsp;</p>",
+          "inputs": [
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Supervisor Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Supervisor Email Address",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-7",
+              "labelStyle": "horizontal",
+              "propertyName": "Team",
+              "placeholder": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-6",
+              "html": "<h3>If you do not want to request PTO for this phase, click this button:</h3>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Supervisor Email",
+                  "icon": "",
+                  "autoType": "empty",
+                  "autoProperty": "Supervisor Email Address",
+                  "inputs": []
+                },
+                {
+                  "label": "Supervisor Email",
+                  "icon": "",
+                  "autoType": "always",
+                  "inputs": [
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Team",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "Team",
+                          "inputs": []
+                        },
+                        {
+                          "label": "Team",
+                          "icon": "",
+                          "autoType": "always",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button0",
+                                  "label": "I have no requests at this time.",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "agentticket",
+                                      "agentInput": "",
+                                      "destEmail": "",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "$value -loggedin(name)$ has opted out of PTO Phase 3",
+                                      "bodytype": "preset",
+                                      "bodyName": "PTO Phase 3 Opt Out",
+                                      "tag": "",
+                                      "resultName": ""
+                                    },
+                                    {
+                                      "type": "emailtosubmitter",
+                                      "topictype": "preset",
+                                      "topicName": "PTO",
+                                      "subjecttype": "preset",
+                                      "subject": "$value -loggedin(name)$ has opted out of PTO Phase 3",
+                                      "bodytype": "preset",
+                                      "bodyName": "PTO Phase 3 Opt Out",
+                                      "tag": "",
+                                      "mailboxName": "",
+                                      "cc": "$form -id'prop:ptothree:supervisor email address'$",
+                                      "resultName": "",
+                                      "suppressRef": false
+                                    },
+                                    {
+                                      "type": "setcontactproperty",
+                                      "propertyName": "PTO Phase",
+                                      "propertyValue": "Phase 3 Opted Out"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Class Seniority",
+                                      "propertyValue": "$value -customer(property'class seniority')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Employee ID",
+                                      "propertyValue": "$value -customer(property'employee id')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Hire Date",
+                                      "propertyValue": "$value -customer(property'hire date')$"
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Initials",
+                                      "propertyValue": "$value -customer(property'initials')$"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<div ng-hide=\"completed\">\n<p class=\"MsoNormal\">Requests for PTO will be submitted in 3 phases this year and approved based on company seniority using the same Round Robin approach as last year.<br><br><o:p></o:p><span style=\"text-decoration: underline; font-family: helvetica, arial, sans-serif;\"><span style=\"color: #e03e2d; text-decoration: underline;\"><strong>Phase 3 Instructions</strong></span></span></p>\n</div>\n<div ng-hide=\"completed\">\n<p><span style=\"font-family: helvetica, arial, sans-serif;\">Phase 3 is open for you to submit all of your remaining PTO requests.<br>- Requests can be in any format a full week/event <span style=\"text-decoration: underline;\"><strong>or</strong></span> up to your work week&rsquo;s amount of individual days for each event.&nbsp;<br>- Full week requests will no longer have priority over single day requests in Phase 3 as of 6/1/23.<br><o:p></o:p>- During Phase 3, Odd Rounds (1,3,5,etc) will be approved using Seniority order. Even Rounds (2,4,6, etc) will be approved using Reverse Seniority order (starting with least seniority to most seniority) as of 6/1/23.<o:p></o:p></span></p>\n<p class=\"MsoNormal\"><span style=\"font-family: helvetica, arial, sans-serif;\">To enter multiple events, click the <strong>Enter Additional Events </strong>button.&nbsp;<br><br>To submit your Phase 3 form, click on the <strong>Submit Form</strong> button.&nbsp;</span></p>\n<span ng-show=\"showmore\" class=\"\"><span style=\"font-size: 11pt; line-height: 107%; font-family: helvetica, arial, sans-serif;\">Please review and pay close attention to the dates you are requesting. Do not include days that you are not scheduled to work.<br><br><b>Weekend Team:</b>&nbsp;If you work a weekend there is a limit of 4 Saturdays and/or 4 Sundays you can request off during all 3 Phases of the PTO Process. Please track the total number of Saturdays and Sundays you request off before submitting your form for each Phase.<br><br>This is a combination of 4 Saturdays and/or 4 Sundays for all 3 Phases. After the round robin process is complete, you may request off any remaining Saturdays or Sundays on a first come first served basis. For those of you on 3rd shift who work both Saturday and Sunday, you may request off 4 Saturdays and 4 Sundays during the Round Robin.</span><br><br><span style=\"font-family: helvetica, arial, sans-serif;\">Please do not submit adhoc requests or cancellations at this time. An email will be sent to let you know when you may submit these requests upon completion of Phase 3. You will have an opportunity to view the calendar to see available dates before submitting adhoc requests and/or cancellations.&nbsp;</span><br></span></div>",
+              "htmlID": "html1",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><span style=\"font-size: 12pt;\"><strong>Please type your Shift /Work hours in the SUN-SAT boxes below.&nbsp;<span style=\"text-decoration: underline;\"><span style=\"color: #fa0202; text-decoration: underline;\">Enter \"NA\" for any days you do not work.&nbsp;<br></span></span></strong><span style=\"color: #000000;\">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Ex. I work M-F 0800-1630. I will enter NA for Sunday, Mon-Fri 0800-1630, NA for Saturday.</span><strong><span style=\"color: #000000;\"></span><span style=\"text-decoration: underline;\"><span style=\"color: #fa0202; text-decoration: underline;\"><br>DO NOT ENTER your PTO requests in these fields.&nbsp;</span></span></strong></span></p>",
+              "htmlID": "html2",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "inputClassFixed": "col-12",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "SUN",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "MON",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "TUE",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "WED",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "THU",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "FRI",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-3",
+              "labelStyle": "vertical",
+              "propertyName": "SAT",
+              "placeholder": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<p><span style=\"font-family: helvetica, arial, sans-serif;\"><b><span style=\"font-size: 11pt; line-height: 107%; color: red;\">Enter</span></b><span style=\"font-size: 11pt; line-height: 107%;\"> your PTO dates in the Event field(s) below. Dates must be listed individually, no date ranges. Please refer to the Instruction Reference guide that was attached to the Phase 3 email for assistance.&nbsp;<br><b><span style=\"color: red;\"><br></span></b></span>Requests can be in any format a full week/event <span style=\"text-decoration: underline;\"><strong>or</strong></span> up to your work week&rsquo;s amount of individual days for each event.&nbsp;<br>- Full week requests will no longer have priority over single day requests in Phase 3 as of 6/1/23.<br><o:p></o:p>- During Phase 3, Odd Rounds (1,3,5,etc) will be approved using Seniority order. Even Rounds (2,4,6, etc) will be approved using Reverse Seniority order (starting with least seniority to most seniority) as of 6/1/23.</span><br><br><span style=\"font-family: helvetica, arial, sans-serif;\">To enter additional Events - click the <span style=\"color: #fb0606;\"><b>Enter Additional Events </b><span style=\"color: #000000;\">button.</span></span></span><br><br><span style=\"font-family: helvetica, arial, sans-serif;\">To Submit the form - click the <span style=\"color: #fb0303;\"><strong>Submit Form</strong></span> button.&nbsp;<br><br></span><strong style=\"font-family: helvetica, arial, sans-serif; font-size: 14pt;\"><span style=\"color: #fb0404;\">PTO Dates must be <span style=\"text-decoration: underline;\">manually</span> entered into the Event field(s).&nbsp;</span><span style=\"color: #fd0303;\">NO DATE RANGES - must list days individually.</span></strong></p>\n<p><span style=\"font-size: 14pt; font-family: helvetica, arial, sans-serif;\"><strong><span style=\"font-size: 12pt;\">Take your time, no rush. Review your entries before submitting the form to ensure accuracy.&nbsp;</span></strong></span></p>",
+              "htmlID": "html3",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "vertical",
+              "propertyName": "Event 1",
+              "placeholder": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-3",
+              "tabs": [
+                {
+                  "label": "Enter Additional",
+                  "icon": "",
+                  "autoType": "empty",
+                  "autoProperty": "New Event 2",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button1",
+                          "label": "Enter Additional Events",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "setproperty",
+                              "propertyName": "New Event 2",
+                              "propertyValue": "Yes"
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Event 2",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "New Event 2",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-4",
+                      "labelStyle": "vertical",
+                      "propertyName": "Event 2",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Enter Additional",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 3",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button2",
+                                  "label": "Enter Additional Events",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 3",
+                                      "propertyValue": "Yes"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Remove Event",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 3",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button3",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 2",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 2",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Event 3",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "New Event 3",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-4",
+                      "labelStyle": "vertical",
+                      "propertyName": "Event 3",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Enter Additional",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 4",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button4",
+                                  "label": "Enter Additional Events",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 4",
+                                      "propertyValue": "Yes"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Remove",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 4",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button5",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 3",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 3",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Event 4",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "New Event 4",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "property",
+                      "inputClass": "col-md-4",
+                      "labelStyle": "vertical",
+                      "propertyName": "Event 4",
+                      "placeholder": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Enter Additional",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 5",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button6",
+                                  "label": "Enter Additional Events",
+                                  "style": "primary",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 5",
+                                      "propertyValue": "Yes"
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-3",
+                      "tabs": [
+                        {
+                          "label": "Remove",
+                          "icon": "",
+                          "autoType": "empty",
+                          "autoProperty": "New Event 5",
+                          "inputs": [
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-12",
+                              "buttons": [
+                                {
+                                  "buttonID": "button7",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 4",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 4",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Event 5",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "New Event 5",
+                          "autoValue": "Yes",
+                          "inputs": [
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-4",
+                              "labelStyle": "vertical",
+                              "propertyName": "Event 5",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-3",
+                              "tabs": [
+                                {
+                                  "label": "Enter Additional",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "New Event 6",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button8",
+                                          "label": "Enter Additional Events",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "New Event 6",
+                                              "propertyValue": "Yes"
+                                            }
+                                          ],
+                                          "requiremode": "all",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-3",
+                              "tabs": [
+                                {
+                                  "label": "Remove",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "New Event 6",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button9",
+                                          "label": "Remove Event",
+                                          "style": "danger",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "New Event 5",
+                                              "propertyValue": ""
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Event 5",
+                                              "propertyValue": ""
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Event 6",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "New Event 6",
+                          "autoValue": "Yes",
+                          "inputs": [
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-4",
+                              "labelStyle": "vertical",
+                              "propertyName": "Event 6",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-3",
+                              "tabs": [
+                                {
+                                  "label": "Enter Additional",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "New Event 7",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button10",
+                                          "label": "Enter Additional Events",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "New Event 7",
+                                              "propertyValue": "Yes"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-3",
+                              "tabs": [
+                                {
+                                  "label": "Remove",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "New Event 7",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button11",
+                                          "label": "Remove Event",
+                                          "style": "danger",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "New Event 6",
+                                              "propertyValue": ""
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Event 6",
+                                              "propertyValue": ""
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Event 7",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "New Event 7",
+                          "autoValue": "Yes",
+                          "inputs": [
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-4",
+                              "labelStyle": "vertical",
+                              "propertyName": "Event 7",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-3",
+                              "tabs": [
+                                {
+                                  "label": "Enter Additional",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "New Event 8",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button12",
+                                          "label": "Enter Additional Events",
+                                          "style": "primary",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "New Event 8",
+                                              "propertyValue": "Yes"
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            },
+                            {
+                              "type": "tabs",
+                              "inputClass": "col-md-3",
+                              "tabs": [
+                                {
+                                  "label": "Remove",
+                                  "icon": "",
+                                  "autoType": "empty",
+                                  "autoProperty": "New Event 8",
+                                  "inputs": [
+                                    {
+                                      "type": "buttons",
+                                      "inputClass": "col-md-12",
+                                      "buttons": [
+                                        {
+                                          "buttonID": "button13",
+                                          "label": "Remove Event",
+                                          "style": "danger",
+                                          "actions": [
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "New Event 7",
+                                              "propertyValue": ""
+                                            },
+                                            {
+                                              "type": "setproperty",
+                                              "propertyName": "Event 7",
+                                              "propertyValue": ""
+                                            }
+                                          ],
+                                          "requiremode": "",
+                                          "icon": ""
+                                        }
+                                      ],
+                                      "includeCancel": false
+                                    }
+                                  ]
+                                }
+                              ],
+                              "automaticTab": true,
+                              "autoBoxStyle": ""
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    },
+                    {
+                      "type": "tabs",
+                      "inputClass": "col-md-12",
+                      "tabs": [
+                        {
+                          "label": "Event 8",
+                          "icon": "",
+                          "autoType": "text=",
+                          "autoProperty": "New Event 8",
+                          "autoValue": "Yes",
+                          "inputs": [
+                            {
+                              "type": "property",
+                              "inputClass": "col-md-4",
+                              "labelStyle": "vertical",
+                              "propertyName": "Event 8",
+                              "placeholder": ""
+                            },
+                            {
+                              "type": "buttons",
+                              "inputClass": "col-md-3",
+                              "buttons": [
+                                {
+                                  "buttonID": "button14",
+                                  "label": "Remove Event",
+                                  "style": "danger",
+                                  "actions": [
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "Event 8",
+                                      "propertyValue": ""
+                                    },
+                                    {
+                                      "type": "setproperty",
+                                      "propertyName": "New Event 8",
+                                      "propertyValue": ""
+                                    }
+                                  ],
+                                  "requiremode": "",
+                                  "icon": ""
+                                }
+                              ],
+                              "includeCancel": false
+                            }
+                          ]
+                        }
+                      ],
+                      "automaticTab": true,
+                      "autoBoxStyle": ""
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button15",
+                  "label": "Submit Form",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "PTO",
+                      "subjecttype": "preset",
+                      "subject": "Phase 3 PTO Request has been submitted for $value -loggedin(name)$",
+                      "bodytype": "preset",
+                      "bodyName": "Supervisor Notification",
+                      "tag": "",
+                      "resultName": ""
+                    },
+                    {
+                      "type": "emailtosubmitter",
+                      "topictype": "preset",
+                      "topicName": "PTO",
+                      "subjecttype": "preset",
+                      "subject": "Phase 3 PTO Request has been submitted for $value -loggedin(name)$",
+                      "bodytype": "preset",
+                      "bodyName": "Supervisor Notification",
+                      "tag": "",
+                      "mailboxName": "",
+                      "cc": "$form -id'prop:ptothree:supervisor email address'$",
+                      "resultName": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Class Seniority",
+                      "propertyValue": "$value -customer(property'class seniority')$"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Employee ID",
+                      "propertyValue": "$value -customer(property'employee id')$"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Hire Date",
+                      "propertyValue": "$value -customer(property'hire date')$"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "Initials",
+                      "propertyValue": "$value -customer(property'initials')$"
+                    },
+                    {
+                      "type": "setproperty",
+                      "propertyName": "PTO Phase",
+                      "propertyValue": "Phase 3"
+                    },
+                    {
+                      "type": "setcontactproperty",
+                      "propertyName": "PTO Phase",
+                      "propertyValue": "Phase 3"
+                    }
+                  ],
+                  "requiremode": "all",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "ptothree",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Class Seniority": "def",
+        "Employee ID": "def",
+        "Event 1": "def",
+        "Event 2": "def",
+        "Event 3": "def",
+        "Event 4": "def",
+        "Event 5": "def",
+        "Event 6": "def",
+        "Event 7": "def",
+        "Event 8": "def",
+        "FRI": "def",
+        "Hire Date": "def",
+        "Initials": "def",
+        "MON": "def",
+        "New Event 2": "def",
+        "New Event 3": "def",
+        "New Event 4": "def",
+        "New Event 5": "def",
+        "New Event 6": "def",
+        "New Event 7": "def",
+        "New Event 8": "def",
+        "PTO Phase": "def",
+        "SAT": "def",
+        "SUN": "def",
+        "Supervisor Email Address": "def",
+        "Supervisor Name": "def",
+        "Team": "def",
+        "THU": "def",
+        "TUE": "def",
+        "WED": "def"
+      },
+      "defs": {
+        "Class Seniority": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Employee ID": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Event 1": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 2": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 3": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 4": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 5": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 6": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 7": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "Event 8": {
+          "type": "datemultiple",
+          "purpose": "case",
+          "indexed": true,
+          "minDate": true,
+          "minDateValue": "2026-06-01T00:00:00.000Z",
+          "maxDate": true,
+          "maxDateValue": "2027-01-02T00:00:00.000Z",
+          "fieldWidth": ""
+        },
+        "FRI": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Hire Date": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Initials": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "MON": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "New Event 2": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 3": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 4": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 5": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 6": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 7": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "New Event 8": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "PTO Phase": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "SAT": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "SUN": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Supervisor Email Address": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "bill.adams@fedex.com",
+            "carla.sturm@fedex.com",
+            "dan.common@fedex.com",
+            "heidi.wilhelm@fedex.com",
+            "j.p-smith@fedex.com",
+            "matt.boros@fedex.com",
+            "melanie.beal@fedex.com",
+            "mick.hanna@fedex.com",
+            "monica.winn@fedex.com",
+            "stacey.costello@fedex.com",
+            "vincia.stluce@fedex.com",
+            "wendy.davy@fedex.com",
+            "jodi.conner@fedex.com",
+            "meghan.mcnamara@fedex.com",
+            "tricia.infantino@fedex.com"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Supervisor Name": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Bill Adams",
+            "Carla Sturm",
+            "Dan Common",
+            "Heidi Wilhelm",
+            "Jodi Conner",
+            "JP Smith",
+            "Matt Boros",
+            "Melanie Beal",
+            "Mick Hanna",
+            "Monica Winn",
+            "Stacey Costello",
+            "Vincia St. Luce",
+            "Wendy Dave",
+            "Meghan McNamara",
+            "Tricia Infantino"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Team": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Gov't",
+            "Dedicated",
+            "Fleet Planner",
+            "Fleet Support",
+            "CMT",
+            "Specialized Solutions",
+            "ESS 3rd",
+            "HS 3rd",
+            "Ops CS"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "THU": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "TUE": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "WED": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "ptothree",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "PTO Phase 3 Opt Out": {
+        "name": "PTO Phase 3 Opt Out",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Supervisor Notification": {
+        "name": "Supervisor Notification",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      }
+    }
+  },
+  {
+    "skin": "ptothree",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<center style=\\\"width: 100%; background-color: #f1f1f1;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" class=\\\"email-container\\\" style=\\\"margin: 0 auto; max-width: 600px; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td><!-- BEGIN BODY -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background-color: #4d148c; padding: 10px; padding-left: 30px;\\\"><img src=\\\"https://www.iservice.info/emailer_assets/fedex/fedex-custom-critical-3-logo-png-transparent.png\\\" width=\\\"150\\\" alt=\\\"fedex-custom-critical-3-logo-png-transparent\\\" border=\\\"0\\\"></td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100.262%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 4.69807%;\\\">&nbsp;</td>\\n<td style=\\\"width: 90.1022%;\\\"><br><strong>$value -case(property'ptothree:Agent Name')$</strong> has opted out of PTO for Phase 3.<br><br><span style=\\\"text-decoration: underline;\\\"><strong>Agent Details:<br></strong></span><br><strong style=\\\"font-family: Helvetica, Arial, sans-serif;\\\">Agent Name:&nbsp;</strong><span style=\\\"font-family: Helvetica, Arial, sans-serif;\\\">$value -loggedin(name)$</span><br><br><strong>Supervisor's Name: </strong>$value -case(property'ptothree:Supervisor Name')$<br><br><strong>Team:</strong> $value -case(property'ptothree:Team')$<br><br><br></td>\\n<td style=\\\"width: 5.20143%;\\\"></td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 4.69807%;\\\"></td>\\n<td style=\\\"width: 90.1022%;\\\"></td>\\n<td style=\\\"width: 5.20143%;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; border-bottom: 2px solid #4d148c;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\""
+  },
+  {
+    "skin": "ptothree",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<center style=\\\"width: 100%; background-color: #f1f1f1;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" class=\\\"email-container\\\" style=\\\"margin: 0 auto; max-width: 600px; width: 600px;\\\">\\n<tbody>\\n<tr>\\n<td><!-- BEGIN BODY -->\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"background: #ffffff; border: 0px solid #cccccc; color: #666666; width: 100%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background-color: #4d148c; padding: 10px; padding-left: 30px;\\\"><img src=\\\"https://www.iservice.info/emailer_assets/fedex/fedex-custom-critical-3-logo-png-transparent.png\\\" width=\\\"150\\\" alt=\\\"fedex-custom-critical-3-logo-png-transparent\\\" border=\\\"0\\\"></td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; vertical-align: top;\\\">\\n<table border=\\\"0\\\" cellpadding=\\\"0\\\" cellspacing=\\\"0\\\" style=\\\"width: 100.262%;\\\">\\n<tbody>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 5.20143%;\\\">&nbsp;</td>\\n<td style=\\\"width: 89.5989%;\\\">\\n<p style=\\\"font-family: Verdana; font-size: 14px; line-height: 23px;\\\">PTO request Details are below:&nbsp;<br><br><br><strong style=\\\"font-family: Helvetica, Arial, sans-serif;\\\">Agent Name:&nbsp;</strong><span style=\\\"font-family: Helvetica, Arial, sans-serif;\\\"><span style=\\\"font-family: Helvetica, Arial, sans-serif;\\\">$value -loggedin(name)$</span><br></span><span style=\\\"font-weight: 600;\\\">Supervisor Name:</span><span style=\\\"font-family: Helvetica, Arial, sans-serif;\\\"> $value -case(property'Supervisor Name')$<br></span><strong style=\\\"font-family: Helvetica, Arial, sans-serif;\\\">Supervisor Email: </strong><span style=\\\"font-family: Helvetica, Arial, sans-serif;\\\">$value -case(property'ptothree:Supervisor Email Address')$<br></span><span style=\\\"font-weight: 600;\\\">Team:</span><span style=\\\"font-family: Helvetica, Arial, sans-serif;\\\"> $value -case(property'ptothree:Team')$<br></span><span style=\\\"font-weight: 600;\\\">PTO Phase:</span><span style=\\\"font-family: Helvetica, Arial, sans-serif;\\\"> Phase 3</span></p>\\n<a href=\\\"#\\\" style=\\\"text-decoration: none; color: #ffffff;\\\" class=\\\"text-info\\\">Answer Using Web App</a></td>\\n<td style=\\\"width: 5.20143%;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; width: 5.20143%;\\\">&nbsp;</td>\\n<td style=\\\"width: 89.5989%;\\\"><b>Shift Times:</b><br>Sun: $value -case(property'SUN')$<br>Mon: $value -case(property'MON')$<br>Tue: $value -case(property'TUE')$<br>Wed: $value -case(property'WED')$<br>Thu: $value -case(property'THU')$<br>Fri: $value -case(property'FRI')$<br>Sat: $value -case(property'SAT')$<br><br><br><span style=\\\"text-decoration: underline;\\\"><span style=\\\"font-size: 14pt;\\\"><strong>Dates requested:</strong></span></span><br><br><strong>Event 1:&nbsp;<br></strong>$value -case(property'Event 1')$<br><br><!-- $if -fieldregex'Prop:ptothree:Event 2'='.+'$ --><strong>Event 2: <br></strong>$value -case(property'Event 2')$<br><br><!-- $endif$--><!-- $if -fieldregex'Prop:ptothree:Event 3'='.+'$ --><strong>Event 3: <br></strong>$value -case(property'Event 3')$<strong><br><br></strong><!-- $endif$--><!-- $if -fieldregex'Prop:ptothree:Event 4'='.+'$ --><strong>Event 4: <br></strong>$value -case(property'Event 4')$<strong><br><br></strong><!-- $endif$--><!-- $if -fieldregex'Prop:ptothree:Event 5'='.+'$ --><strong>Event 5: <br></strong>$value -case(property'Event 5')$<br><br><!-- $endif$--><!-- $if -fieldregex'Prop:ptothree:Event 6'='.+'$ --><strong>Event 6:&nbsp;<br></strong>$value -case(property'Event 6')$<br><br><!-- $endif$--><!-- $if -fieldregex'Prop:ptothree:Event 7'='.+'$ --><strong>Event 7:&nbsp;<br></strong>$value -case(property'Event 7')$<strong><br><br></strong><!-- $endif$--><!-- $if -fieldregex'Prop:ptothree:Event 8'='.+'$ --><strong>Event 8:&nbsp;<br></strong>$value -case(property'Event 8')$<strong><br><br></strong><!-- $endif$--><br><br></td>\\n<td style=\\\"width: 5.20143%;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; border-bottom: 2px solid #4d148c;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"border-color: #ffffff; background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n<tr>\\n<td style=\\\"background: #f1f1f1;\\\">&nbsp;</td>\\n</tr>\\n</tbody>\\n</table>\\n</td>\\n</tr>\\n</tbody>\\n</table>\\n</center>\""
+  }
+]
