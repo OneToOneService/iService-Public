@@ -1,0 +1,761 @@
+[
+  {
+    "skin": "hrcomp",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "HR Compliance Workflow",
+      "description": ""
+    }
+  },
+  {
+    "skin": "hrcomp",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "newhire",
+          "label": "HR - New Employee",
+          "icon": "users",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Employee First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Employee Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Hire Date",
+              "placeholder": ""
+            },
+            {
+              "type": "plainsingle",
+              "inputClass": "col-md-6",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "Job Title",
+              "placeholder": ""
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Submit New Employee Tickets",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "HR All Topics",
+                      "subjecttype": "preset",
+                      "subject": "Employee Application or Resume for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                      "bodytype": "preset",
+                      "bodyName": "Employee Application Ticket",
+                      "tag": "",
+                      "resultName": ""
+                    },
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "HR All Topics",
+                      "subjecttype": "preset",
+                      "subject": "Background Check for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                      "bodytype": "preset",
+                      "bodyName": "Background Check Ticket",
+                      "tag": "",
+                      "resultName": ""
+                    },
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "HR All Topics",
+                      "subjecttype": "preset",
+                      "subject": "Handbook Acknowledgment for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                      "bodytype": "preset",
+                      "bodyName": "Handbook Ticket",
+                      "tag": "",
+                      "resultName": ""
+                    },
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "HR All Topics",
+                      "subjecttype": "preset",
+                      "subject": "Security Training for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                      "bodytype": "preset",
+                      "bodyName": "Security Training Ticket",
+                      "tag": "",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "useraccess",
+          "label": "HR - User Access Request",
+          "icon": "lock",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<h1>User Access Request</h1>\n<p>Use this form to request <strong>access for a new user or changes to an existing user.</strong> The form will create a ticket for management approval, and will be routed to IT for information system access and accounting for physical access after approval.&nbsp;</p>",
+              "htmlID": "html0",
+              "editorStyle": "editor"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "propertyName": "Employee First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Employee Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Job Title",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-8",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Additional Access Needed",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Date Requested",
+              "placeholder": ""
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "HR Contact Email",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Badge Number",
+              "placeholder": ""
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button1",
+                  "label": "Submit Access Request",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "Management Approval",
+                      "subjecttype": "preset",
+                      "subject": "User Access Request for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                      "bodytype": "preset",
+                      "bodyName": "User Access Request Ticket",
+                      "tag": "approve4it",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": true,
+          "check": "tagintopic",
+          "topic": "Management Approval",
+          "tag": "approve4it",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<h1>Approval Requested</h1>\n<p>The ticket below has been submitted to management for approval before forwarding to IT. Review the request and click the approve button. Enter any comments that you want to pass along to IT. If you reject the request, it will be sent back to HR.</p>",
+              "htmlID": "html1",
+              "editorStyle": "raw"
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button2",
+                  "label": "Approve",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "sign",
+                      "propertyName": "Approval",
+                      "notMyOwn": true
+                    },
+                    {
+                      "type": "topic",
+                      "topicName": "User Access"
+                    },
+                    {
+                      "type": "replacetag",
+                      "tag": ""
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "HR Contact Email",
+                      "recipient": "customer",
+                      "subject": "Access request has been approved",
+                      "bodyName": "Access approved notification",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "unassign"
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "check"
+                },
+                {
+                  "buttonID": "button3",
+                  "label": "Reject",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "replacetag",
+                      "tag": ""
+                    },
+                    {
+                      "type": "notification",
+                      "toInput": "",
+                      "recipient": "submitter",
+                      "subject": "Your access request was rejected",
+                      "bodyName": "Access request rejected",
+                      "tag": "",
+                      "suppressRef": false
+                    },
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": "close"
+                },
+                {
+                  "buttonID": "button4",
+                  "label": "Show standard answer panel",
+                  "style": "link",
+                  "actions": [
+                    {
+                      "type": "standard",
+                      "cancelLabel": "Back to workflow"
+                    }
+                  ],
+                  "requiremode": ""
+                }
+              ],
+              "includeCancel": false
+            },
+            {
+              "type": "toaddresses",
+              "inputClass": "col-md-6",
+              "labelStyle": "horizontal",
+              "inputName": "HR Contact Email",
+              "addressFilter": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "Management Comments",
+              "placeholder": ""
+            },
+            {
+              "type": "question",
+              "inputClass": "col-md-12"
+            }
+          ]
+        },
+        {
+          "type": "agentsubmit",
+          "enabled": true,
+          "url": "termination",
+          "label": "HR - User Termination",
+          "icon": "thumbs-o-down",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-12",
+              "html": "<h1>User termination Request</h1>\n<p>Use this form to request <strong>access removal for a terminated user.</strong> The form will be routed to IT for removing system access and accounting for badge access removal.</p>",
+              "htmlID": "html2",
+              "editorStyle": "raw"
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "propertyName": "Employee First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Employee Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Job Title",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Date Requested",
+              "placeholder": ""
+            },
+            {
+              "type": "statichtml",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "html": "Requested date cannot be later than the termination date.",
+              "htmlID": "html3",
+              "editorStyle": "raw"
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "inputName": "Badge Contact",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Badge Number",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Has IT Access",
+              "placeholder": ""
+            },
+            {
+              "type": "tabs",
+              "inputClass": "col-md-12",
+              "tabs": [
+                {
+                  "label": "Default",
+                  "icon": "",
+                  "autoType": "empty",
+                  "autoProperty": "Has IT Access",
+                  "inputs": [
+                    {
+                      "type": "statichtml",
+                      "inputClass": "col-md-12",
+                      "html": "<p>Select a value for <strong>Has IT Access</strong> to submit this form.</p>",
+                      "htmlID": "html4",
+                      "editorStyle": "raw"
+                    }
+                  ]
+                },
+                {
+                  "label": "Has IT Access",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Has IT Access",
+                  "autoValue": "Yes",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button5",
+                          "label": "Request Termination - Has IT Access",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "agentticket",
+                              "agentInput": "",
+                              "destEmail": "",
+                              "topictype": "preset",
+                              "topicName": "HR All Topics",
+                              "subjecttype": "preset",
+                              "subject": "Termination Request for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Termination Ticket for HR",
+                              "tag": "",
+                              "resultName": ""
+                            },
+                            {
+                              "type": "emailtocustomer",
+                              "destEmail": "Badge Contact",
+                              "topictype": "preset",
+                              "topicName": "HR All Topics",
+                              "subjecttype": "preset",
+                              "subject": "Remove badge access for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Badge Removal Request Email",
+                              "tag": "",
+                              "mailboxName": "",
+                              "resultName": "",
+                              "suppressRef": false
+                            },
+                            {
+                              "type": "agentticket",
+                              "agentInput": "",
+                              "destEmail": "",
+                              "topictype": "preset",
+                              "topicName": "User Access",
+                              "subjecttype": "preset",
+                              "subject": "Termination Request for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Termination Ticket for IT",
+                              "tag": "",
+                              "resultName": ""
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                },
+                {
+                  "label": "No IT Access",
+                  "icon": "",
+                  "autoType": "text=",
+                  "autoProperty": "Has IT Access",
+                  "autoValue": "No",
+                  "inputs": [
+                    {
+                      "type": "buttons",
+                      "inputClass": "col-md-12",
+                      "buttons": [
+                        {
+                          "buttonID": "button6",
+                          "label": "Submit Termination - No IT Access",
+                          "style": "primary",
+                          "actions": [
+                            {
+                              "type": "agentticket",
+                              "agentInput": "",
+                              "destEmail": "Badge Contact",
+                              "topictype": "preset",
+                              "topicName": "HR All Topics",
+                              "subjecttype": "preset",
+                              "subject": "Termination Request for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Termination Ticket for HR",
+                              "tag": "",
+                              "resultName": ""
+                            },
+                            {
+                              "type": "emailtocustomer",
+                              "destEmail": "Badge Contact",
+                              "topictype": "preset",
+                              "topicName": "HR All Topics",
+                              "subjecttype": "preset",
+                              "subject": "Remove badge access for $form -id'prop:hrcomp:Employee First Name'$ $form -id'prop:hrcomp:Employee Last Name'$ ",
+                              "bodytype": "preset",
+                              "bodyName": "Badge Removal Request Email",
+                              "tag": "",
+                              "mailboxName": "",
+                              "resultName": "",
+                              "suppressRef": false
+                            }
+                          ],
+                          "requiremode": "",
+                          "icon": ""
+                        }
+                      ],
+                      "includeCancel": false
+                    }
+                  ]
+                }
+              ],
+              "automaticTab": true,
+              "autoBoxStyle": ""
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "hrcomp",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Additional Access Needed": "def",
+        "Approval": "",
+        "Badge Number": "def",
+        "Date Requested": "def",
+        "Employee First Name": "def",
+        "Employee Last Name": "def",
+        "Has IT Access": "def",
+        "Hire Date": "def",
+        "Job Title": "def",
+        "Management Comments": "def"
+      },
+      "defs": {
+        "Additional Access Needed": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Badge Number": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Date Requested": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Employee First Name": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Employee Last Name": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Has IT Access": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "Yes",
+            "No"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Hire Date": {
+          "type": "date",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Job Title": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Management Comments": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "hrcomp",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "Access approved notification": {
+        "name": "Access approved notification",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Access request rejected": {
+        "name": "Access request rejected",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      },
+      "Background Check Ticket": {
+        "name": "Background Check Ticket",
+        "type": "rich",
+        "blobID": "wf-text-2"
+      },
+      "Badge Removal Request Email": {
+        "name": "Badge Removal Request Email",
+        "type": "rich",
+        "blobID": "wf-text-3"
+      },
+      "Employee Application Ticket": {
+        "name": "Employee Application Ticket",
+        "type": "rich",
+        "blobID": "wf-text-4"
+      },
+      "Handbook Ticket": {
+        "name": "Handbook Ticket",
+        "type": "rich",
+        "blobID": "wf-text-5"
+      },
+      "Security Training Ticket": {
+        "name": "Security Training Ticket",
+        "type": "rich",
+        "blobID": "wf-text-6"
+      },
+      "Termination Ticket for HR": {
+        "name": "Termination Ticket for HR",
+        "type": "rich",
+        "blobID": "wf-text-7"
+      },
+      "Termination Ticket for IT": {
+        "name": "Termination Ticket for IT",
+        "type": "rich",
+        "blobID": "wf-text-8"
+      },
+      "User Access Request Ticket": {
+        "name": "User Access Request Ticket",
+        "type": "rich",
+        "blobID": "wf-text-9"
+      }
+    }
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"<p>An access request has been approved for $value -case(property'hrcomp:Employee First Name')$ $value -case(property'hrcomp:Employee Last Name')$. If the person that approved the request left comments, they are shown below.&nbsp;<br><br><span style=\\\"text-decoration: underline;\\\">Management Comments</span><br><br>$value -case(property'hrcomp:Management Comments')$<br><br></p>\\n<h1>User Access Request</h1>\\n<p>New or revised user access has been requested for the person listed below. For new users, use their job title to determine the appropriate access. For changes to user access, ensure the new access rights do not create a segregation of duties issue.<br><br><strong>User's Name:</strong> &nbsp;$value -case(property'hrcomp:Employee First Name')$ $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title:</strong> $value -case(property'hrcomp:Job Title')$<br><strong>Additional Access Needed:</strong> $value -case(property'hrcomp:Additional Access Needed')$<br><strong>Date Change is Required:</strong> $value -case(property'hrcomp:Date Requested')$<br><strong>Badge Number:</strong> $value -case(property'hrcomp:Badge Number')$</p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<p>An access request has been rejected for $value -case(property'hrcomp:Employee First Name')$ $value -case(property'hrcomp:Employee Last Name')$. If the person that rejected the request left comments, they are shown below.&nbsp;<br><br><span style=\\\"text-decoration: underline;\\\">Management Comments</span><br><br>$value -case(property'hrcomp:Management Comments')$</p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-2",
+    "data": "\"<p>A new employee is being hired and we must obtain their background check. Details of the employee are below.&nbsp;<br><br><strong>First Name:</strong> $value -case(property'hrcomp:Employee First Name')$<br><strong>Last Name:</strong> $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title</strong>: $form -id'Value:Job Title'$<br><strong>Hire Date</strong>: $value -case(property'hrcomp:Hire Date')$</p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-3",
+    "data": "\"<h1>Badge Removal Request</h1>\\n<p>The person listed below will be leaving the company and must have their badge access removed on the date specified below. When you have removed the access, please be sure to reply to this email indicating access has been removed.&nbsp;<br><br><strong>User's Name:</strong> &nbsp;$value -case(property'hrcomp:Employee First Name')$ $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title:</strong> $value -case(property'hrcomp:Job Title')$<br><strong>Date to Remove Access:</strong> $value -case(property'hrcomp:Date Requested')$<br><strong>Badge Number:</strong> $value -case(property'hrcomp:Badge Number')$</p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-4",
+    "data": "\"<p>A new employee is being hired and we must obtain their application or resume. Details of the employee are below.&nbsp;<br><br><strong>First Name:</strong> $value -case(property'hrcomp:Employee First Name')$<br><strong>Last Name:</strong> $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title</strong>: $form -id'Value:Job Title'$<br><strong>Hire Date</strong>: $value -case(property'hrcomp:Hire Date')$<br><br><br></p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-5",
+    "data": "\"<p>A new employee is being hired and we must obtain their signed acknowledgement for the company handbook. Details of the employee are below.&nbsp;<br><br><strong>First Name:</strong> $value -case(property'hrcomp:Employee First Name')$<br><strong>Last Name:</strong> $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title</strong>: $form -id'Value:Job Title'$<br><strong>Hire Date</strong>: $value -case(property'hrcomp:Hire Date')$</p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-6",
+    "data": "\"<p>A new employee is being hired and they must complete security training within five business days. Details of the employee are below.&nbsp;<br><br><strong>First Name:</strong> $value -case(property'hrcomp:Employee First Name')$<br><strong>Last Name:</strong> $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title</strong>: $form -id'Value:Job Title'$<br><strong>Hire Date</strong>: $value -case(property'hrcomp:Hire Date')$</p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-7",
+    "data": "\"<h1>User Termination Request - HR</h1>\\n<p>The person listed below will be leaving the company and must have their badge access removed on the date specified below. When you have confirmed access is removed, resolve this ticket.&nbsp;<br><br><strong>User's Name:</strong> &nbsp;$value -case(property'hrcomp:Employee First Name')$ $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title:</strong> $value -case(property'hrcomp:Job Title')$<br><strong>Date Removal is Required:</strong> $value -case(property'hrcomp:Date Requested')$<br><strong>Badge Number:</strong> $value -case(property'hrcomp:Badge Number')$</p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-8",
+    "data": "\"<h1>User Termination Request - IT</h1>\\n<p>The person listed below will be leaving the company and must have their system access removed on the date specified below. Respond to the requester to confirm access is removed.<br><br><strong>User's Name:</strong> &nbsp;$value -case(property'hrcomp:Employee First Name')$ $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title:</strong> $value -case(property'hrcomp:Job Title')$<br><strong>Date Removal is Required:</strong> $value -case(property'hrcomp:Date Requested')$<br></p>\""
+  },
+  {
+    "skin": "hrcomp",
+    "application": "blob",
+    "name": "wf-text-9",
+    "data": "\"<h1>User Access Request</h1>\\n<p>New or revised user access has been requested for the person listed below. For new users, use their job title to determine the appropriate access. For changes to user access, ensure the new access rights do not create a segregation of duties issue.<br><br><strong>User's Name:</strong> &nbsp;$value -case(property'hrcomp:Employee First Name')$ $value -case(property'hrcomp:Employee Last Name')$<br><strong>Job Title:</strong> $value -case(property'hrcomp:Job Title')$<br><strong>Additional Access Needed:</strong> &nbsp;$value -case(property'hrcomp:Additional Access Needed')$<br><strong>Date Change is Required:</strong> $value -case(property'hrcomp:Date Requested')$<br><strong>Badge Number:</strong> $value -case(property'hrcomp:Badge Number')$</p>\""
+  }
+]
