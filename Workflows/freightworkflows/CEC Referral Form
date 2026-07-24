@@ -1,0 +1,352 @@
+[
+  {
+    "skin": "cec",
+    "application": "workflow",
+    "name": "basic",
+    "data": {
+      "label": "CEC Referral form",
+      "description": ""
+    }
+  },
+  {
+    "skin": "cec",
+    "application": "workflow",
+    "name": "panels",
+    "data": {
+      "items": [
+        {
+          "type": "agentsubmit",
+          "enabled": false,
+          "url": "submit",
+          "label": "Submit CEC Referral Form",
+          "icon": "check",
+          "successtype": "standard",
+          "inputs": [
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Company Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "propertyName": "Company Code",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Caller First Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "propertyName": "Caller Last Name",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "propertyName": "Caller Phone Number",
+              "placeholder": ""
+            },
+            {
+              "type": "email",
+              "inputClass": "col-md-4",
+              "labelStyle": "horizontal",
+              "inputName": "Caller Email Address",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-4",
+              "groupClass": "col-md-12",
+              "labelStyle": "horizontal",
+              "propertyName": "Reason for Referral",
+              "placeholder": ""
+            },
+            {
+              "type": "property",
+              "inputClass": "col-md-12",
+              "groupClass": "col-md-12",
+              "labelStyle": "vertical",
+              "propertyName": "Any Additional Information",
+              "placeholder": ""
+            },
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button0",
+                  "label": "Submit",
+                  "style": "primary",
+                  "actions": [
+                    {
+                      "type": "contactprops",
+                      "destEmail": "Caller Email Address"
+                    },
+                    {
+                      "type": "agentticket",
+                      "agentInput": "",
+                      "destEmail": "",
+                      "topictype": "preset",
+                      "topicName": "CEC Referral",
+                      "subjecttype": "preset",
+                      "subject": "CEC Referral",
+                      "bodytype": "preset",
+                      "bodyName": "Ticket Body",
+                      "tag": "",
+                      "resultName": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                }
+              ],
+              "includeCancel": false
+            }
+          ]
+        },
+        {
+          "type": "answer",
+          "enabled": false,
+          "check": "topic",
+          "topic": "CEC Referral",
+          "inputs": [
+            {
+              "type": "buttons",
+              "inputClass": "col-md-12",
+              "buttons": [
+                {
+                  "buttonID": "button1",
+                  "label": "Registered customer in CEC",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "setdraft",
+                      "bodyName": "resolve note",
+                      "subject": "Customer Registered in CEC"
+                    },
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button2",
+                  "label": "Booked Shipment",
+                  "style": "success",
+                  "actions": [
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button3",
+                  "label": "Customer not interested in using CEC",
+                  "style": "danger",
+                  "actions": [
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button4",
+                  "label": "Left Message",
+                  "style": "aqua",
+                  "actions": [
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button5",
+                  "label": "Sent email",
+                  "style": "aqua",
+                  "actions": [
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button6",
+                  "label": "Tried calling; unable to leave message",
+                  "style": "aqua",
+                  "actions": [
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button7",
+                  "label": "Other",
+                  "style": "aqua",
+                  "actions": [
+                    {
+                      "type": "shownote",
+                      "cancelLabel": "Notes"
+                    },
+                    {
+                      "type": "saveresolve",
+                      "tag": ""
+                    }
+                  ],
+                  "requiremode": "",
+                  "icon": ""
+                },
+                {
+                  "buttonID": "button8",
+                  "label": "Show standard answer panel",
+                  "style": "link",
+                  "actions": [
+                    {
+                      "type": "standard",
+                      "cancelLabel": "Back to workflow panel"
+                    }
+                  ],
+                  "requiremode": ""
+                }
+              ],
+              "includeCancel": false
+            },
+            {
+              "type": "caseprops",
+              "inputClass": "col-md-12",
+              "labelStyle": "vertical"
+            },
+            {
+              "type": "question",
+              "inputClass": "col-md-12"
+            }
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "skin": "cec",
+    "application": "workflow",
+    "name": "mappings",
+    "data": {
+      "intprops": {
+        "Any Additional Information": "def",
+        "Caller First Name": "def",
+        "Caller Last Name": "def",
+        "Caller Phone Number": "def",
+        "Company Code": "def",
+        "Company Name": "def",
+        "Reason for Referral": "def"
+      },
+      "defs": {
+        "Any Additional Information": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Caller First Name": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Caller Last Name": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Caller Phone Number": {
+          "type": "text",
+          "purpose": "case",
+          "fieldWidth": ""
+        },
+        "Company Code": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Company Name": {
+          "type": "text",
+          "purpose": "case",
+          "indexed": true,
+          "fieldWidth": ""
+        },
+        "Reason for Referral": {
+          "type": "choice",
+          "purpose": "case",
+          "valueChoices": [
+            "New Customer",
+            "Other",
+            "Schedule future shipments",
+            "Needing multiple quotes",
+            "Multiple same day shipments"
+          ],
+          "indexed": true,
+          "fieldWidth": ""
+        }
+      }
+    }
+  },
+  {
+    "skin": "cec",
+    "application": "workflow",
+    "name": "blobs",
+    "data": {
+      "resolve note": {
+        "name": "resolve note",
+        "type": "rich",
+        "blobID": "wf-text-0"
+      },
+      "Ticket Body": {
+        "name": "Ticket Body",
+        "type": "rich",
+        "blobID": "wf-text-1"
+      }
+    }
+  },
+  {
+    "skin": "cec",
+    "application": "blob",
+    "name": "wf-text-0",
+    "data": "\"The customer enrolled into the CEC program.\""
+  },
+  {
+    "skin": "cec",
+    "application": "blob",
+    "name": "wf-text-1",
+    "data": "\"<h2><strong>CEC Referral Information</strong></h2>\\n<br /><strong>Company Name:</strong> $value -case(property'Company Name')$<br /><strong>Company Code:</strong> $value -case(property'Company Code')$<br /><strong>Caller Name:&nbsp;</strong>$value -case(property'Caller First Name')$ $value -case(property'Caller Last Name')$&nbsp;<br /><strong>Caller Phone Number:&nbsp;</strong>$value -case(property'caller phone number')$<br /><strong>Caller Email Address:&nbsp;</strong>$value -question(fromemail)$<br /><strong>Reason for Referral: </strong>$value -case(property'Reason for Referral')$<br /><strong>Additional Information: </strong>$value -case(property'Any Additional Information')$<br /><br /><br />Thank you for reaching out to the customer!\""
+  }
+]
